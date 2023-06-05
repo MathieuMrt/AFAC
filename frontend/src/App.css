@@ -3,3 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --purple: #73668B;
+  --blue: #277594;
+  --light-purple: #B982AE;
+  --red: #80273F;
+  --pink: #BE7D61;
+  --grey: #404041;
+}
