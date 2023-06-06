@@ -11,6 +11,7 @@
     overflow: hidden;
     transform: rotate(30deg) translateX(-50%);
   }
+
   .hexagone:after {
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
@@ -20,6 +21,7 @@
     margin-top: 28.86751%;
     padding-bottom: 86.602%;
   }
+
   .hexagone .hexagonemain {
     display: block;
     position: absolute;
@@ -32,6 +34,7 @@
     transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
     z-index: 1;
   }
+
   .hexagone .hexagonemain:before {
     content: "";
     display: block;
