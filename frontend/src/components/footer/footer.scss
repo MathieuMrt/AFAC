@@ -1,0 +1,45 @@
+footer {
+  section {
+    display: flex;
+    align-items: center;
+    color: white;
+
+    a {
+      padding-left: 3%;
+      text-decoration: none;
+      color: white;
+    }
+
+    h3 {
+    }
+
+    h4 {
+    }
+  }
+
+  img {
+    height: 50%;
+  }
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-around;
+  background-color: #3e5b69;
+}
+
+.footer-mentions.rgpd {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.footer-logo-afac {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-partenaires {
+  display: flex;
+  justify-content: center;
+  gap: 1.3rem;
+}
