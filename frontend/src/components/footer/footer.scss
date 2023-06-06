@@ -1,5 +1,8 @@
 footer {
   display: flex;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 200;
 
   section {
     display: flex;
@@ -21,7 +24,7 @@ footer {
     }
 
     img {
-      height: 50%;
+      height: 80%;
     }
   }
 }
@@ -47,4 +50,14 @@ footer {
   justify-content: flex-end;
   gap: 1.3rem;
   padding-right: 2%;
+
+  h4 {
+    font-weight: 200;
+  }
+
+  a {
+    height: 80%;
+    display: flex;
+    align-items: center;
+  }
 }

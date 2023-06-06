@@ -42,11 +42,23 @@ function Footer() {
       {/*  /* ************* FOOTER PARTIE DROITE ************  */}
 
       <section className="footer-partenaires">
-        <h3>Nos Partenaires: </h3>
+        <h4>Nos Partenaires: </h4>
 
-        <img src={IHOI} alt="IHOI" />
+        <a
+          href="https://www.ihoi.org/app/photopro.sk/ihoi_icono/?"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={IHOI} alt="IHOI" />
+        </a>
 
-        <img src={OBJET_TEMOIN} alt="Objet Temoin" />
+        <a
+          href="https://museo.vandanjon.com/index.php/en/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={OBJET_TEMOIN} alt="Objet Temoin" />
+        </a>
       </section>
     </footer>
   );
