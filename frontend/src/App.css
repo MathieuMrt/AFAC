@@ -4,19 +4,18 @@
   box-sizing: border-box;
 }
 
-
 .header_main {
   background: linear-gradient(#73668b, #508da6);
   height: 100vh;
 }
 
 :root {
-  --purple: #73668B;
+  --purple: #73668b;
   --blue: #277594;
-  --light-purple: #B982AE;
-  --red: #80273F;
-  --pink: #BE7D61;
-  --grey: #404041; 
+  --light-purple: #b982ae;
+  --red: #80273f;
+  --pink: #be7d61;
+  --grey: #404041;
 }
 
 /* #root {

@@ -1,11 +1,11 @@
 import React from "react";
 
-function Favoris() {
+function Acceuil() {
   return (
     <div>
-      <p>fav</p>
+      <p>accueil</p>
     </div>
   );
 }
 
-export default Favoris;
+export default Acceuil;
