@@ -4,7 +4,22 @@
   box-sizing: border-box;
 }
 
+
 .header_main {
   background: linear-gradient(#73668b, #508da6);
   height: 100vh;
 }
+
+:root {
+  --purple: #73668B;
+  --blue: #277594;
+  --light-purple: #B982AE;
+  --red: #80273F;
+  --pink: #BE7D61;
+  --grey: #404041; 
+}
+
+/* #root {
+  background: rgb(39,117,148);
+  background: linear-gradient(0deg, rgba(39,117,148,1) 0%, rgba(107,122,159,1) 48%, rgba(178,127,170,1) 100%, rgba(2,0,36,1) 277594%);   width: 100vw; 
+} */
