@@ -1,11 +1,7 @@
 import React from "react";
 
 function User() {
-  return (
-    <div>
-      <p>user</p>
-    </div>
-  );
+  return <div />;
 }
 
 export default User;

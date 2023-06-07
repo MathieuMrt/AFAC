@@ -15,6 +15,7 @@ function Footer() {
         >
           © Wild Code School.
         </a>
+
       </section>
       <section className="footer-logo-afac">
         <img src={AFAC} alt="logo AFAC" />

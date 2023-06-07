@@ -45,6 +45,8 @@ section {
 
   a {
     display: flex;
+
+    /* justify-content: flex-end; */
     align-items: center;
     justify-content: end;
     height: 100%;
@@ -52,5 +54,10 @@ section {
     img {
       height: 65%;
     }
+  }
+
+  img {
+    height: 30px;
+    width: auto;
   }
 }
