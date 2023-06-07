@@ -1,12 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.header_main {
-  background: linear-gradient(#73668b, #508da6);
-  height: 90vh;
 }
 
 :root {
@@ -18,7 +14,8 @@
   --grey: #404041;
 }
 
-/* #root {
+ #root {
   background: rgb(39,117,148);
   background: linear-gradient(0deg, rgba(39,117,148,1) 0%, rgba(107,122,159,1) 48%, rgba(178,127,170,1) 100%, rgba(2,0,36,1) 277594%);   width: 100vw; 
-} */
+} 
+
