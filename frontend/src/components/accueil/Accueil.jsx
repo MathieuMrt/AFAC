@@ -1,8 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Accueil() {
   return (
-    <div className="acc-body">
+    <div className="acc-container">
       <div className="acc-main-text">
         <h2>
           Exposition des journées européennes du Patrimoine 2023
@@ -14,7 +15,7 @@ function Accueil() {
       </div>
       <div className="acc-bloc-img">
         <article className="div-bloc-oeuvre">
-          <div className="bloc-oeuvres">
+          <div className="bloc-oeuvre">
             <img
               className="img-bloc-oeuvres"
               src="src/assets/img/apercu1.jpg"
@@ -25,9 +26,11 @@ function Accueil() {
               src="src/assets/img/apercu2.jpg"
               alt="aquarelle paysage"
             />
-            <button type="button" className="voir-oeuvre-button">
-              Voir les Oeuvres
-            </button>
+            <NavLink to="/galerie">
+              <button type="button" className="voir-oeuvre-button">
+                Voir les Oeuvres
+              </button>
+            </NavLink>
           </div>
         </article>
         <div className="bloc-info-galerie">
