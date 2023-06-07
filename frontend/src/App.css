@@ -4,9 +4,18 @@
   box-sizing: border-box;
 }
 
-.header_main {
-  background: linear-gradient(#73668b, #508da6);
-  height: 90vh;
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app_main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  width: 100vw;
 }
 
 :root {
@@ -18,7 +27,13 @@
   --grey: #404041;
 }
 
-/* #root {
-  background: rgb(39,117,148);
-  background: linear-gradient(0deg, rgba(39,117,148,1) 0%, rgba(107,122,159,1) 48%, rgba(178,127,170,1) 100%, rgba(2,0,36,1) 277594%);   width: 100vw; 
-} */
+#root {
+  background: rgb(39, 117, 148);
+  background: linear-gradient(
+    0deg,
+    rgba(39, 117, 148, 1) 0%,
+    rgba(115, 102, 139, 1) 100%,
+    rgba(2, 0, 36, 1) 277594%
+  );
+  width: 100vw;
+}
