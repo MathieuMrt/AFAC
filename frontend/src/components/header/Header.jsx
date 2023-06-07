@@ -1,18 +1,21 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <div className="header">
-      <img
-        className="header_logo"
-        src="../../src/assets/img/AFAC974_Logo_600x237nega.png"
-        alt="logo AFAC"
-      />
-      <img
+      <NavLink to="/">
+        <img
+          className="header_logo"
+          src="../../src/assets/img/AFAC974_Logo_600x237nega.png"
+          alt="logo AFAC"
+        />
+         <img
         className="header_hexagone"
         src="../../src/assets/img/hexagone.png"
         alt="hexagone"
-      />
+        />
+      </NavLink>
       <div className="hexagone">
         <div className="hexagonemain" />
       </div>
@@ -20,10 +23,18 @@ function Header() {
         Connexion
       </button>
       <nav>
-        <li>ACCUEIL</li>
-        <li>GALERIE</li>
-        <li>A PROPOS</li>
-        <li>FAVORIS</li>
+        <NavLink className="navlinks" to="/">
+          ACCUEIL
+        </NavLink>
+        <NavLink className="navlinks" to="/galerie">
+          GALERIE
+        </NavLink>
+        <NavLink className="navlinks" to="/apropos">
+          A PROPOS
+        </NavLink>
+        <NavLink className="navlinks" to="/galerie/:id/favoris">
+          FAVORIS
+        </NavLink>
       </nav>
     </div>
   );

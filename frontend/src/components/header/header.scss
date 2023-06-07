@@ -28,8 +28,13 @@
     color: white;
     font-weight: bold;
 
-    li {
+    .navlinks {
       font-family: Verdana, sans-serif;
+      text-decoration: none;
+      color: white;
+      &:hover {
+        color: rgb(215, 215, 215);
+      }
     }
   }
 
