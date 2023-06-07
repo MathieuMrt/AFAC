@@ -10,6 +10,11 @@ function Header() {
           src="../../src/assets/img/AFAC974_Logo_600x237nega.png"
           alt="logo AFAC"
         />
+         <img
+        className="header_hexagone"
+        src="../../src/assets/img/hexagone.png"
+        alt="hexagone"
+        />
       </NavLink>
       <div className="hexagone">
         <div className="hexagonemain" />
