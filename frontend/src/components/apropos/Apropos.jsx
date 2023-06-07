@@ -40,6 +40,11 @@ function Apropos() {
           oeuvrer à la promotion d'une société plus solidaire et participative à
           La Réunion.
         </p>
+        <br />
+        <p>
+          Mentions légales : Les images visibles sur le site ne sont pas libre
+          de droit.
+        </p>
       </article>
 
       <article className="apropos-partenaires">

@@ -18,7 +18,7 @@ function Footer() {
           © Wild Code School.
         </a>
         <a
-          href="https://www.wildcodeschool.com/fr-FR/campus/nantes?utm_source=google&utm_medium=cpc&utm_campaign=brand-nantes&utm_campaign=FR_SEARCH+-+Marque&utm_term=wild%20code%20school%20nantes&utm_source=adwords&utm_medium=ppc&hsa_grp=127727580662&hsa_src=g&hsa_cam=14821000047&hsa_ad=629206314182&hsa_ver=3&hsa_kw=wild%20code%20school%20nantes&hsa_net=adwords&hsa_tgt=aud-1387390045139:kwd-731198544407&hsa_mt=e&hsa_acc=4421706736&gclid=Cj0KCQjwj_ajBhCqARIsAA37s0xf6uFSHq00sSok1TZLOnGIxVA6uw1cECSIRjhhgCyj8XCcZk7yAUAaAlM7EALw_wcB"
+          href="http://localhost:3000/apropos"
           target="_blank"
           rel="noreferrer"
         >
@@ -26,7 +26,7 @@ function Footer() {
         </a>
         <p> - </p>
         <a
-          href="https://www.wildcodeschool.com/fr-FR/campus/nantes?utm_source=google&utm_medium=cpc&utm_campaign=brand-nantes&utm_campaign=FR_SEARCH+-+Marque&utm_term=wild%20code%20school%20nantes&utm_source=adwords&utm_medium=ppc&hsa_grp=127727580662&hsa_src=g&hsa_cam=14821000047&hsa_ad=629206314182&hsa_ver=3&hsa_kw=wild%20code%20school%20nantes&hsa_net=adwords&hsa_tgt=aud-1387390045139:kwd-731198544407&hsa_mt=e&hsa_acc=4421706736&gclid=Cj0KCQjwj_ajBhCqARIsAA37s0xf6uFSHq00sSok1TZLOnGIxVA6uw1cECSIRjhhgCyj8XCcZk7yAUAaAlM7EALw_wcB"
+          href="http://localhost:3000/apropos"
           target="_blank"
           rel="noreferrer"
         >
