@@ -6,8 +6,6 @@ import OBJET_TEMOIN from "../../assets/img/footer/logo_objet_temoin.png";
 function Footer() {
   return (
     <footer>
-      {/* ************** FOOTER PARTIE GAUCHE ************  */}
-
       <section className="footer-mentions-rgpd">
         <a
           id="link-wild"
@@ -17,33 +15,13 @@ function Footer() {
         >
           © Wild Code School.
         </a>
-        <a
-          href="http://localhost:3000/apropos"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Mentions Légales
-        </a>
-        <p> - </p>
-        <a
-          href="http://localhost:3000/apropos"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Politique RGPD
-        </a>
-      </section>
 
-      {/*  ************** FOOTER PARTIE CENTRALE ************  */}
+      </section>
       <section className="footer-logo-afac">
         <img src={AFAC} alt="logo AFAC" />
       </section>
-
-      {/*  /* ************* FOOTER PARTIE DROITE ************  */}
-
       <section className="footer-partenaires">
         <h4>Nos Partenaires: </h4>
-
         <a
           href="https://www.ihoi.org/app/photopro.sk/ihoi_icono/?"
           target="_blank"
