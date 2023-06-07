@@ -1,11 +1,7 @@
 import React from "react";
 
 function Description() {
-  return (
-    <div>
-      <p>description</p>
-    </div>
-  );
+  return <div />;
 }
 
 export default Description;
