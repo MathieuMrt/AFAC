@@ -1,0 +1,48 @@
+.singleCard {
+  display: flex;
+  max-width: 399px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ffffff30;
+  max-height: 258px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: all 0.3s;
+
+  .image-container {
+    width: 50%;
+  }
+
+  .galerie-img {
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .info-container {
+    width: 50%;
+    height: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+
+    .bouton-plus-info {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: var(--red);
+      padding: 8px;
+      border-radius: 5px;
+      width: 60%;
+      font-size: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+  }
+}
