@@ -24,7 +24,7 @@ footer {
     }
 
     img {
-      height: 80%;
+      width: 80%;
     }
   }
 }
@@ -43,6 +43,7 @@ footer {
 .footer-logo-afac {
   display: flex;
   justify-content: center;
+  width: 20%;
 }
 
 .footer-partenaires {
@@ -56,8 +57,14 @@ footer {
   }
 
   a {
-    height: 80%;
     display: flex;
+
+    /* justify-content: flex-end; */
     align-items: center;
+  }
+
+  img {
+    height: 30px;
+    width: auto;
   }
 }
