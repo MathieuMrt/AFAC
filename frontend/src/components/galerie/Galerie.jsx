@@ -1,7 +1,11 @@
 import React from "react";
 
 function Galerie() {
-  return <div />;
+  return (
+    <div>
+      <p>galerie</p>
+    </div>
+  );
 }
 
 export default Galerie;

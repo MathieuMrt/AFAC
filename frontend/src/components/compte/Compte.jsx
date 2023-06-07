@@ -1,7 +1,11 @@
 import React from "react";
 
 function Compte() {
-  return <div />;
+  return (
+    <div>
+      <p>compte</p>
+    </div>
+  );
 }
 
 export default Compte;
