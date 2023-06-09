@@ -1,10 +1,12 @@
-.acc-body {
+.acc-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   font-family: Montserrat;
-  height: 100vh;
+  width: 100vw;
+  padding: 20px 0 20px 0;
+  max-height: 800px;
 
   .acc-main-text {
     display: flex;
@@ -16,9 +18,10 @@
 
     h2 {
       text-align: center;
-      font-size: clamp(1.2rem, 5vh, 2.5rem);
+      font-size: clamp(1em, 2.5vw, 2.1em);
+
       span {
-        font-size: clamp(0.8rem, 2.5vh, 2rem);
+        font-size: clamp(0.6em, 1.5vw, 2em);
         font-weight: 500;
       }
     }
@@ -27,31 +30,28 @@
   .acc-bloc-img {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-
-    max-width: 100%;
-    min-height: 200px;
+    justify-content: center;
+    max-height: 300px;
+    width: 100%;
     padding: 10px;
-    gap: 10px;
 
     .div-bloc-oeuvre {
       display: flex;
-      max-width: 50%;
+      width: 50%;
       height: 100%;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      transform: translate(15%, 0);
 
-      .bloc-oeuvres {
+      .bloc-oeuvre {
         position: relative;
         display: flex;
         justify-content: center;
-        max-width: 60%;
-        height: 100%;
 
-        .img-bloc-oeuvres {
-          height: auto;
-        }
+        width: 60%;
+        height: 100%;
+        z-index: 3;
 
         .voir-oeuvre-button {
           position: absolute;
@@ -79,6 +79,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transform: translate(-15%, 0);
 
       .bloc-info-container {
         display: flex;
@@ -90,6 +91,7 @@
         padding: 15px;
         gap: 5%;
         height: 100%;
+        min-width: 50%;
         overflow: hidden;
         img {
           height: auto;
@@ -100,10 +102,11 @@
         h4 {
           text-align: center;
           color: white;
-          font-size: 0.8rem;
+          font-size: 1rem;
         }
         h4 {
-          font-size: 0.6rem;
+          font-size: 0.8rem;
+          font-weight: 500;
         }
       }
     }

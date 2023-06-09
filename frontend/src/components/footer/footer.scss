@@ -1,56 +1,43 @@
 footer {
   display: flex;
+  justify-content: space-between;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 200;
+  width: 100%;
+  overflow: hidden;
+  background-color: #3e5b69;
+  height: 70px;
+  padding: 0 10px 0 10px;
 
-  section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  a {
+    text-decoration: none;
     color: white;
-    background-color: #3e5b69;
-    height: 10vh;
-    width: 100%;
-
-    a {
-      text-decoration: none;
-      color: white;
-      text-decoration: underline;
-    }
-
-    #link-wild {
-      text-decoration: none;
-    }
-
-    img {
-      width: 80%;
-    }
   }
 }
 
-.footer-mentions-rgpd {
+section {
   display: flex;
-  justify-content: flex-start;
-  gap: 1.3rem;
-  padding-left: 2%;
-
-  a {
-    text-decoration: underline;
-  }
+  align-items: center;
+  justify-content: space-between;
+  color: white;
 }
 
 .footer-logo-afac {
   display: flex;
   justify-content: center;
-  width: 20%;
+  height: 100%;
+
+  img {
+    height: 65%;
+  }
 }
 
 .footer-partenaires {
   display: flex;
   justify-content: flex-end;
-  gap: 1.3rem;
-  padding-right: 2%;
+  height: 100%;
+  gap: 20px;
 
   h4 {
     font-weight: 200;
@@ -61,6 +48,12 @@ footer {
 
     /* justify-content: flex-end; */
     align-items: center;
+    justify-content: end;
+    height: 100%;
+
+    img {
+      height: 65%;
+    }
   }
 
   img {

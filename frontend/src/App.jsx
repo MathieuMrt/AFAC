@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Router />
       <main className="app_main">
-        <Footer />
+        <Router />
       </main>
+      <Footer />
     </div>
   );
 }
