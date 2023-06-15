@@ -7,7 +7,7 @@ function Compte() {
         <h2>Connectez-vous :</h2>
 
         <form
-          className="fomulaire_compte_connexion"
+          className="formulaire_compte_connexion"
           id="id_form_connexion"
           method="POST"
         >
@@ -23,7 +23,7 @@ function Compte() {
           />
         </form>
         <button type="submit" form="id_form_connexion">
-          Connection
+          Connexion
         </button>
       </div>
 
@@ -34,7 +34,7 @@ function Compte() {
         <h2>Créez votre compte</h2>
 
         <form
-          className="fomulaire_compte_connexion"
+          className="formulaire_compte_connexion"
           id="id_form_inscription"
           method="POST"
         >
@@ -52,7 +52,7 @@ function Compte() {
           <input
             type="text"
             placeholder="Prénom"
-            name="premnom"
+            name="prenom"
             id=""
             required
           />
