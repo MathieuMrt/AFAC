@@ -7,12 +7,13 @@
 
   .connectez_vous {
     display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 40vw;
-    gap: 25px;
+    width: 45vw;
+    gap: 30px;
   }
 
   .ou {
@@ -21,17 +22,18 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 20vw;
+    width: 10vw;
   }
 
   .inscription {
     display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 40vw;
-    gap: 25px;
+    width: 45vw;
+    gap: 30px;
   }
 
   input {
@@ -39,6 +41,7 @@
     width: 30vw;
     height: 5vh;
     border-radius: 3px;
+    padding: 5px;
     border: none;
   }
 
@@ -46,8 +49,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 16vw;
-    height: 5h;
+    width: 12vw;
+    height: 5vh;
     border: none;
     padding: 10px;
     margin-top: 10px;
@@ -55,7 +58,7 @@
     cursor: pointer;
     color: white;
     background-color: var(--red);
-    font-size: clamp(0.6em, 1.5vw, 2em);
+    font-size: clamp(0.7em, 1.5vw, 2em);
     &:hover {
       background-color: #bc627a;
     }
@@ -70,5 +73,29 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+  }
+
+  @media screen and (max-width: 414px) {
+    input {
+      height: 3vh;
+    }
+    button {
+      height: 4vh;
+      width: 20vw;
+    }
+  }
+  @media screen and (min-width: 412px) and (max-width: 1109px) {
+    button {
+      height: 4vh;
+      width: 14vw;
+    }
+  }
+  @media screen and (min-height: 713px) {
+    input {
+      height: 4vh;
+    }
+    form {
+      gap: 30px;
+    }
   }
 }
