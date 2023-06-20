@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE `oeuvres` (
     `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `ref_archives` VARCHAR(45) NOT NULL,
