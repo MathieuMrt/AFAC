@@ -1,9 +1,9 @@
 .description {
-  background-color: yellow;
   display: flex;
   align-items: center;
   flex-direction: column;
   min-height: 70vh;
+  width: 100%;
 
   .description_oeuvre {
     display: flex;
@@ -16,49 +16,44 @@
   .description_details_oeuvre {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 50px;
+    justify-content: space-around;
     align-items: center;
-    background-color: green;
-    width: 100vw;
-    height: 300px;
-  }
-
-  .description_note {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: pink;
-    width: 100vw;
-    min-height: 200px;
-  }
-
-  .description_avis {
     width: 80%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 10px 0 10px 0;
+    margin-bottom: 50px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
-    .description_stars {
-      width: 60%;
+    .description_title {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      text-align: center;
     }
 
-    .description_text_button {
+    .description_descriptif {
       display: flex;
-      flex-direction: column;
+      width: 80%;
+      height: 80%;
+      text-align: center;
       align-items: center;
+      font-size: 1.3rem;
+      justify-content: center;
+    }
+
+    .description_informations {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
       width: 100%;
+      flex-wrap: wrap;
 
-      .description_text {
-        width: 60%;
-        height: 100px;
-        caret-color: initial;
-      }
-
-      .description_button {
-        height: 30px;
-        width: 100px;
+      span {
+        font-weight: bold;
+        text-decoration: underline;
       }
     }
   }
