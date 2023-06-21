@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 function SingleCard({ titreResume, titre, categorie, image, id }) {
+  const [isFavorite, setIsFavorite] = useState("notFavorite");
+
+  const handleClick = () => {
+    if (isFavorite === "notFavorite") {
+      setIsFavorite("favorite");
+    } else {
+      setIsFavorite("notFavorite");
+    }
+  };
+
   return (
     <div className="singleCard">
+      <div className="icon-container">
+        {isFavorite === "notFavorite" ? (
+          <AiOutlineHeart
+            className="heart-not-fav"
+            onClick={handleClick}
+            style={{ color: isFavorite }}
+          />
+        ) : (
+          <AiFillHeart
+            className="heart-fav"
+            onClick={handleClick}
+            style={{ color: isFavorite }}
+          />
+        )}
+      </div>
       <div className="image-container">
         <img className="galerie-img" src={image} alt="oeuvre" />
       </div>
