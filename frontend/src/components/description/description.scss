@@ -4,13 +4,43 @@
   flex-direction: column;
   min-height: 70vh;
   width: 100%;
+  overflow: hidden;
 
   .description_oeuvre {
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: blue;
     height: 550px;
+    width: 100%;
     margin: 20px 0 20px 0;
+
+    button {
+      height: 100%;
+      border: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .zoomed {
+      width: 100%;
+      height: auto;
+      max-width: 100vw;
+      max-height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      z-index: 9999;
+      cursor: zoom-out;
+      transition: transform 0.3s ease-in-out;
+      object-fit: contain;
+      background-color: black;
+    }
   }
 
   .description_details_oeuvre {
