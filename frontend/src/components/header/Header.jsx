@@ -37,6 +37,9 @@ function Header() {
         <NavLink className="navlinks" to="/galerie/:id/favoris">
           FAVORIS
         </NavLink>
+        <NavLink className="navlinks" to="/admin">
+          ADMIN
+        </NavLink>
       </nav>
     </div>
   );
