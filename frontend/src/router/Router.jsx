@@ -17,7 +17,7 @@ function Router() {
       <Route path="/compte" element={<Compte />} />
       <Route path="/galerie" element={<Galerie />} />
       <Route path="/galerie/:id" element={<Description />} />
-      <Route path="/galerie/:id/favoris" element={<Favoris />} />
+      <Route path="/favoris" element={<Favoris />} />
       <Route path="/utilisateur" element={<User />} />
       <Route path="/admin" element={<Admin />} />
     </Routes>
