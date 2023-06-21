@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 function Description() {
   const [details, setDetails] = useState("");
+  const [zoomed, setZoomed] = useState(false);
 
   const { id } = useParams();
 
@@ -21,10 +22,31 @@ function Description() {
       );
   }, []);
 
+  const handleZoomClick = () => {
+    setZoomed(!zoomed);
+  };
+
+  // L'objectif de cette fonction est d'améliorer l'accessibilité des sites web en s'assurant que les utilisateurs qui naviguent principalement avec un clavier, plutôt qu'avec une souris ou un écran tactile, puissent toujours interagir avec les éléments qui répondent aux événements de clic.
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      handleZoomClick();
+    }
+  }
+
   return (
     <div className="description">
       <div className="description_oeuvre">
-        <img src={details.img} alt={details.titre} />
+        <button
+          type="button"
+          onClick={handleZoomClick}
+          onKeyDown={handleKeyDown}
+        >
+          <img
+            src={details.img}
+            alt={details.titre}
+            className={zoomed ? "zoomed" : ""}
+          />
+        </button>
       </div>
       <div className="description_details_oeuvre">
         <h1 className="description_title">{details.titre}</h1>
