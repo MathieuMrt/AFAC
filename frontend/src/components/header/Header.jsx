@@ -19,9 +19,11 @@ function Header() {
       <div className="hexagone">
         <div className="hexagonemain" />
       </div>
-      <button type="button" className="connexion">
-        Connexion
-      </button>
+      <NavLink to="/compte">
+        <button type="button" className="connexion">
+          Connexion
+        </button>
+      </NavLink>
       <nav>
         <NavLink className="navlinks" to="/">
           ACCUEIL
