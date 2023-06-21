@@ -1,5 +1,6 @@
 .singleCard {
   display: flex;
+  position: relative;
   max-width: 399px;
   justify-content: flex-start;
   align-items: center;
@@ -12,6 +13,22 @@
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   transition: all 0.3s;
+
+  .icon-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    .heart-not-fav {
+      color: #ffffffaf;
+      font-size: 20px;
+    }
+
+    .heart-fav {
+      color: #ffffff;
+      font-size: 20px;
+    }
+  }
 
   .image-container {
     width: 50%;
