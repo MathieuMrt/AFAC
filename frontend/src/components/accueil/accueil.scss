@@ -35,6 +35,12 @@
     width: 100%;
     padding: 10px;
 
+    @media screen and (max-width: 590px) {
+      flex-direction: column;
+      max-height: none;
+      gap: 20px;
+    }
+
     .div-bloc-oeuvre {
       display: flex;
       width: 50%;
@@ -43,15 +49,22 @@
       align-items: center;
       overflow: hidden;
       transform: translate(15%, 0);
+      @media screen and (max-width: 590px) {
+        max-height: 300px;
+        transform: translate(0);
+        width: 80%;
+      }
 
       .bloc-oeuvre {
         position: relative;
         display: flex;
         justify-content: center;
-
         width: 60%;
         height: 100%;
         z-index: 3;
+        @media screen and (max-width: 590px) {
+          width: 100%;
+        }
 
         .voir-oeuvre-button {
           position: absolute;
@@ -65,9 +78,12 @@
           border: none;
           border-radius: 3px;
           cursor: pointer;
+          transition: 0.3s;
 
           &:hover {
-            background-color: #bc627a;
+            scale: 1.2;
+            transform: translate(-40%, -40%);
+            transition: 0.2s;
           }
         }
       }
@@ -80,6 +96,11 @@
       justify-content: center;
       align-items: center;
       transform: translate(-15%, 0);
+      @media screen and (max-width: 590px) {
+        max-height: 300px;
+        transform: translate(0);
+        width: 80%;
+      }
 
       .bloc-info-container {
         display: flex;
