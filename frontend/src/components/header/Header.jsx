@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import MenuBurger from "./MenuBurger";
 
 function Header() {
   return (
     <div className="header">
+      <div className="hiddenMenu">
+        <MenuBurger />
+      </div>
       <NavLink to="/">
         <img
           className="header_logo"
