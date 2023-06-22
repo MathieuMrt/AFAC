@@ -2,6 +2,7 @@ import React from "react";
 import { FiEdit } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 function Admin() {
   return (
@@ -53,10 +54,13 @@ function Admin() {
               </tr>
 
               <th className="admin-button-ajout-oeuvre-container" colSpan="5">
-                <button type="button" className="admin-button-ajout-oeuvre">
-                  {" "}
-                  + Ajouter une oeuvre
-                </button>
+                <NavLink to="/ajoutOeuvre">
+                  <button type="button" className="admin-button-ajout-oeuvre">
+                    {" "}
+                    + Ajouter une oeuvre
+                  </button>
+                </NavLink>
+                `
               </th>
             </tbody>
           </table>

@@ -8,6 +8,7 @@ import Favoris from "../components/favoris/Favoris";
 import Galerie from "../components/galerie/Galerie";
 import User from "../components/user/User";
 import Admin from "../components/admin/Admin";
+import AjoutOeuvre from "../components/ajoutOeuvre/AjoutOeuvre";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/galerie/:id/favoris" element={<Favoris />} />
       <Route path="/utilisateur" element={<User />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/ajoutOeuvre" element={<AjoutOeuvre />} />
     </Routes>
   );
 }
