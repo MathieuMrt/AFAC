@@ -9,6 +9,7 @@ import Galerie from "../components/galerie/Galerie";
 import User from "../components/user/User";
 import Admin from "../components/admin/Admin";
 import AjoutOeuvre from "../components/ajoutOeuvre/AjoutOeuvre";
+import ModifierOeuvre from "../components/modifierOeuvre/ModifierOeuvre";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/utilisateur" element={<User />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/ajoutOeuvre" element={<AjoutOeuvre />} />
+      <Route path="/modifierOeuvre" element={<ModifierOeuvre />} />
     </Routes>
   );
 }

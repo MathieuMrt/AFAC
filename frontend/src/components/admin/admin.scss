@@ -1,5 +1,6 @@
 .page-admin-globale {
   width: 100%;
+  text-decoration: none;
 }
 
 .page-admin-container {
@@ -21,6 +22,10 @@
   justify-content: flex-start;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 3px;
+
+  .admin-navlink {
+    color: black;
+  }
 
   table {
     width: 100%;
