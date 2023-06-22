@@ -1,3 +1,16 @@
+.hidden {
+  visibility: hidden;
+}
+
+.hidden_bouton-burger {
+  visibility: visible;
+  background-color: brown;
+  z-index: 20000;
+  height: 100px;
+  width: 100px;
+  color: burlywood;
+}
+
 .menuBurger {
   position: relative;
   z-index: 10000;
