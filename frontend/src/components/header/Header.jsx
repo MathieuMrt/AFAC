@@ -28,7 +28,7 @@ function Header() {
           Connexion
         </button>
       </NavLink>
-      <nav>
+      <nav className="hiddenNavPrinc">
         <NavLink
           to="/"
           className={({ isActive }) =>
