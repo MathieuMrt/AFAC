@@ -34,9 +34,11 @@ function Admin() {
                 <td>Effet de nuit sur la Cheminée usine du Tampon</td>
                 <td>Hippolyte Charles Napoléon Mortier, Duc de Trévise</td>
                 <td>
-                  {" "}
-                  <FiEdit />
+                  <NavLink className="admin-navlink" to="/modifierOeuvre">
+                    <FiEdit />
+                  </NavLink>
                 </td>
+
                 <td>
                   <FaTrashAlt />
                 </td>
@@ -46,7 +48,9 @@ function Admin() {
                 <td>Effet de nuit sur la Cheminée usine du Tampon</td>
                 <td>Hippolyte Charles Napoléon Mortier, Duc de Trévise</td>
                 <td>
-                  <FiEdit />
+                  <NavLink className="admin-navlink" to="/modifierOeuvre">
+                    <FiEdit />
+                  </NavLink>
                 </td>
                 <td>
                   <FaTrashAlt />

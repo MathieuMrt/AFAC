@@ -1,12 +1,12 @@
 import React from "react";
 
-function AjoutOeuvre() {
+function ModifierOeuvre() {
   return (
-    <div className="ajoutOeuvre">
-      <h2>Ajouter une oeuvre</h2>
+    <div className="modifierOeuvre">
+      <h2>Modifier une oeuvre</h2>
 
       <form
-        className="ajoutOeuvre-formulaire"
+        className="modifierOeuvre-formulaire"
         id="id_form_ajoutOeuvre"
         method="POST"
       >
@@ -65,17 +65,17 @@ function AjoutOeuvre() {
         <input type="text" placeholder="Resume" name="resume" id="" required />
         <input type="text" placeholder="Image" name="img" id="" required />
       </form>
-      <div className="ajoutOeuvre-button-container">
+      <div className="modifierOeuvre-button-container">
         <button
-          className="ajoutOeuvre-button"
+          className="modifierOeuvre-button"
           type="submit"
           form="id_form_ajoutOeuvre"
         >
-          Ajouter
+          Modifier
         </button>
       </div>
     </div>
   );
 }
 
-export default AjoutOeuvre;
+export default ModifierOeuvre;
