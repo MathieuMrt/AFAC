@@ -1,16 +1,14 @@
 .hidden {
   visibility: hidden;
 }
-
 .hidden_bouton-burger {
   visibility: visible;
-  background-color: brown;
+  background-color: transparent;
   z-index: 20000;
-  height: 100px;
-  width: 100px;
-  color: burlywood;
+  height: 50px;
+  width: 50px;
 }
-
+//-----
 .menuBurger {
   position: relative;
   z-index: 10000;
@@ -21,30 +19,28 @@
   width: 47vw;
   height: 100vh;
   background-color: var(--blue);
-  gap: 2%;
-
-  .hiddenMenu {
-    visibility: visible;
-    display: flex;
-  }
 
   .mb_header_logo {
     background-color: none;
-    height: 10vh;
+    height: 8vh;
     width: auto;
+    z-index: 3000;
+    margin-top: 8%;
   }
 
   .mb_navbar {
     display: flex;
     flex-direction: column;
-    height: 100%;
     align-items: center;
+    justify-content: flex-start;
+    margin-top: 10%;
+    gap: 3%;
+    height: 100%;
     list-style: none;
     width: 60%;
     color: white;
     font-weight: bold;
     padding: 0 0 20px 0;
-    gap: 2%;
   }
   .mb_navlinks {
     font-family: "Bebas Neue", sans-serif;
@@ -71,10 +67,167 @@
   }
 
   .mb_burger {
-    background-color: brown;
+    background-color: transparent;
     z-index: 20000;
-    height: 100px;
-    width: 100px;
-    color: burlywood;
+    width: 10vw;
+    aspect-ratio: 1/1;
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.mb_container {
+  position: absolute;
+  top: 0px;
+  left: 10%;
+  height: 10%;
+  width: 10%;
+}
+// ANIMATION  BAR -------------
+.mb_bar {
+  width: 45px;
+  height: 4px;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.mb_burger::before,
+.mb_burger::after {
+  content: "";
+  /* before et after dans le flow html, sert a crer une forme et styliser une div vide en gros...*/
+  content: "";
+  width: 45px;
+  height: 4px;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.mb_burger::before {
+  transform: translateY(-14px);
+}
+.mb_burger.cross::before {
+  transform: rotate(45deg);
+}
+
+.mb_burger::after {
+  transform: translateY(14px);
+}
+
+.mb_burger.cross::after {
+  transform: rotate(-45deg) translateY(0px);
+}
+
+.mb_burger.cross .mb_bar {
+  opacity: 0;
+}
+
+// ---------------------------MEDIA QUERIES -----------------------
+
+@media screen and (max-width: 583px) and (min-width: 356px) {
+  .mb_bar {
+    width: 30px;
+    height: 2px;
+  }
+
+  .mb_burger::before,
+  .mb_burger::after {
+    content: "";
+    content: "";
+    width: 30px;
+    height: 2px;
+  }
+
+  .mb_burger::before {
+    transform: translateY(-12px);
+  }
+  .mb_burger::after {
+    transform: translateY(12px);
+  }
+
+  .menuBurger .mb_header_logo {
+    height: 6vh;
+  }
+
+  .menuBurger .mb_navlinks {
+    font-size: 1.7rem;
+  }
+
+  .menuBurger .mb_connexion {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 356px) and (min-width: 267px) {
+  .mb_bar {
+    width: 20px;
+    height: 2px;
+  }
+
+  .mb_burger::before,
+  .mb_burger::after {
+    content: "";
+    content: "";
+    width: 20px;
+    height: 2px;
+  }
+
+  .mb_burger::before {
+    transform: translateY(-10px);
+  }
+
+  .mb_burger::after {
+    transform: translateY(10px);
+  }
+
+  .menuBurger .mb_header_logo {
+    height: 5vh;
+  }
+
+  .menuBurger .mb_navlinks {
+    font-size: 1.2rem;
+  }
+
+  .menuBurger .mb_connexion {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 267px) {
+  .mb_bar {
+    width: 15px;
+    height: 2px;
+  }
+
+  .mb_burger::before,
+  .mb_burger::after {
+    content: "";
+    content: "";
+    width: 15px;
+    height: 2px;
+  }
+  .mb_burger::before {
+    transform: translateY(-8px);
+  }
+
+  .mb_burger::after {
+    transform: translateY(8px);
+  }
+
+  .menuBurger .mb_header_logo {
+    height: 5vh;
+  }
+
+  .menuBurger .mb_navlinks {
+    font-size: 1.2rem;
+  }
+
+  .menuBurger .mb_connexion {
+    font-size: 1.2rem;
   }
 }

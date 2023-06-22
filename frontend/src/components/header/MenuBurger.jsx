@@ -10,28 +10,25 @@ function MenuBurger() {
 
   return (
     <div className={`menuBurger ${menuVisible ? "visible" : "hidden"}`}>
-      <button
-        className={`mb_burger ${
-          menuVisible ? "visible" : "hidden_bouton-burger"
-        }`}
-        type="button"
-        onClick={toggleMenu}
-      >
-        <span className="mb_bar" />
-        <span className="mb_bar" />
-        <span className="mb_bar" />
-      </button>
-
-      <NavLink to="/">
-        <img
-          className="mb_header_logo"
-          src="../../src/assets/img/AFAC974_Logo_600x237nega.png"
-          alt="logo AFAC"
+      <div className="mb_container">
+        <button
+          className={`mb_burger ${
+            menuVisible ? "cross" : "hidden_bouton-burger"
+          }`}
+          type="button"
           onClick={toggleMenu}
-          role="presentation"
-        />
-      </NavLink>
+        >
+          <span className="mb_bar" />
+        </button>
+      </div>
       <nav className="mb_navbar">
+        <NavLink to="/" onClick={toggleMenu} role="presentation">
+          <img
+            className="mb_header_logo"
+            src="../../src/assets/img/AFAC974_Logo_600x237nega.png"
+            alt="logo AFAC"
+          />
+        </NavLink>
         <NavLink
           className="mb_navlinks"
           to="/"
