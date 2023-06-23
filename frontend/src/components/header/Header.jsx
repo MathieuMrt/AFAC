@@ -34,7 +34,7 @@ function Header() {
         <NavLink className="navlinks" to="/apropos">
           A PROPOS
         </NavLink>
-        <NavLink className="navlinks" to="/galerie/:id/favoris">
+        <NavLink className="navlinks" to="/favoris">
           FAVORIS
         </NavLink>
       </nav>
