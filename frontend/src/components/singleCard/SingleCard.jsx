@@ -2,22 +2,25 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+// import axios from "axios";
 
 function SingleCard({ titreResume, titre, categorie, image, id }) {
-  const [isFavorite, setIsFavorite] = useState("notFavorite");
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleClick = () => {
-    if (isFavorite === "notFavorite") {
-      setIsFavorite("favorite");
-    } else {
-      setIsFavorite("notFavorite");
-    }
+    setIsFavorite(!isFavorite);
+
+    // const userId = req.params.id
+    // const oeuvreId = {id}
+
+    // axios.post('http://localhost:5001/utilisateurs/:id/favoris', userId, oeuvreId)
+    //   .then((result) => console.log(userId, oeuvreId))
   };
 
   return (
     <div className="singleCard">
       <div className="icon-container">
-        {isFavorite === "notFavorite" ? (
+        {isFavorite === false ? (
           <AiOutlineHeart
             className="heart-not-fav"
             onClick={handleClick}

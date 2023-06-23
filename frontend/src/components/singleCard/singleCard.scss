@@ -4,7 +4,7 @@
   max-width: 399px;
   justify-content: flex-start;
   align-items: center;
-  background-color: #ffffff30;
+  background-color: transparent;
   max-height: 258px;
   min-height: 258px;
   border-radius: 20px;
@@ -22,47 +22,67 @@
     .heart-not-fav {
       color: #ffffffaf;
       font-size: 20px;
+      &:hover {
+        transform: scale(1.2);
+        background-position: -60px;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.4);
+        background-position: 500px;
+      }
     }
 
     .heart-fav {
       color: #ffffff;
       font-size: 20px;
+      &:hover {
+        transform: scale(1.2);
+        background-position: -60px;
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(1.4);
+        background-position: 500px;
+      }
     }
   }
+}
 
-  .image-container {
-    width: 50%;
-  }
+.image-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
 
-  .galerie-img {
-    width: 100%;
-    padding: 20px;
-    min-width: 160px;
-    overflow: hidden;
-  }
+.galerie-img {
+  max-width: 100%;
+  max-height: 95%;
+}
 
-  .info-container {
-    width: 50%;
-    height: 80%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px;
+.info-container {
+  width: 50%;
+  height: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
 
-    .bouton-plus-info {
-      text-decoration: none;
-      color: #ffffff;
-      background-color: var(--red);
-      padding: 8px;
-      border-radius: 5px;
-      width: 60%;
-      font-size: 10px;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    }
+  .bouton-plus-info {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: var(--red);
+    padding: 8px;
+    border-radius: 5px;
+    width: 60%;
+    font-size: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 }
 
