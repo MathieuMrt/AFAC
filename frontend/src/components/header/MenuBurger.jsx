@@ -55,7 +55,7 @@ function MenuBurger() {
         </NavLink>
         <NavLink
           className="mb_navlinks"
-          to="/galerie/:id/favoris"
+          to="favoris"
           onClick={toggleMenu}
           role="button"
         >

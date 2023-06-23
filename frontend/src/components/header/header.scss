@@ -96,3 +96,27 @@
     display: none;
   }
 }
+@media screen and (min-width: 1039px) and (max-width: 1192px) {
+  .header nav .navlinks {
+    font-size: 1.5rem;
+  }
+  .header .activeNavlinks {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 1039px) and (min-width: 835px) {
+  .header nav .navlinks {
+    font-size: 1.2rem;
+  }
+  .header .activeNavlinks {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 835px) {
+  .header nav .navlinks {
+    font-size: 1rem;
+  }
+  .header .activeNavlinks {
+    font-size: 1rem;
+  }
+}
