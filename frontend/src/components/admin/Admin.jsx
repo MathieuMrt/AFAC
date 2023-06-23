@@ -2,6 +2,7 @@ import React from "react";
 import { FiEdit } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 function Admin() {
   return (
@@ -33,9 +34,11 @@ function Admin() {
                 <td>Effet de nuit sur la Cheminée usine du Tampon</td>
                 <td>Hippolyte Charles Napoléon Mortier, Duc de Trévise</td>
                 <td>
-                  {" "}
-                  <FiEdit />
+                  <NavLink className="admin-navlink" to="/modifierOeuvre">
+                    <FiEdit />
+                  </NavLink>
                 </td>
+
                 <td>
                   <FaTrashAlt />
                 </td>
@@ -45,7 +48,9 @@ function Admin() {
                 <td>Effet de nuit sur la Cheminée usine du Tampon</td>
                 <td>Hippolyte Charles Napoléon Mortier, Duc de Trévise</td>
                 <td>
-                  <FiEdit />
+                  <NavLink className="admin-navlink" to="/modifierOeuvre">
+                    <FiEdit />
+                  </NavLink>
                 </td>
                 <td>
                   <FaTrashAlt />
@@ -53,10 +58,13 @@ function Admin() {
               </tr>
 
               <th className="admin-button-ajout-oeuvre-container" colSpan="5">
-                <button type="button" className="admin-button-ajout-oeuvre">
-                  {" "}
-                  + Ajouter une oeuvre
-                </button>
+                <NavLink to="/ajoutOeuvre">
+                  <button type="button" className="admin-button-ajout-oeuvre">
+                    {" "}
+                    + Ajouter une oeuvre
+                  </button>
+                </NavLink>
+                `
               </th>
             </tbody>
           </table>
