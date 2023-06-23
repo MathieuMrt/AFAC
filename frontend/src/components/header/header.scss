@@ -6,11 +6,16 @@
 
   .header_logo {
     z-index: 1;
-    width: 140px;
+    width: 160px;
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
+    @media screen and (max-width: 590px) {
+      scale: 80%;
+      transform: translateX(-60%);
+      top: 5px;
+    }
   }
 
   .header_hexagone {
@@ -18,6 +23,9 @@
     width: 20%;
     left: 50%;
     transform: translate(-50%, -10%);
+    @media screen and (max-width: 590px) {
+      width: 60%;
+    }
   }
 
   nav {
@@ -43,6 +51,16 @@
       }
     }
   }
+  .activeNavlinks {
+    font-family: galaxy, sans-serif;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: white;
+    z-index: 1;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
+  }
 
   .connexion {
     position: absolute;
@@ -61,5 +79,20 @@
 
   .connexion:hover {
     background-color: rgba(255, 255, 255, 0.465);
+  }
+}
+/*________Small device / Menu Burger ________*/
+
+@media screen and (max-width: 718px) {
+  .connexion {
+    visibility: hidden;
+  }
+  .hiddenNavPrinc {
+    visibility: hidden;
+  }
+}
+@media screen and (min-width: 718px) {
+  .header .hiddenMenu {
+    display: none;
   }
 }

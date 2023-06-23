@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import MenuBurger from "./MenuBurger";
 
 function Header() {
   return (
     <div className="header">
+      <div className="hiddenMenu">
+        <MenuBurger />
+      </div>
       <NavLink to="/">
         <img
           className="header_logo"
@@ -24,18 +28,41 @@ function Header() {
           Connexion
         </button>
       </NavLink>
-      <nav>
-        <NavLink className="navlinks" to="/">
+      <nav className="hiddenNavPrinc">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "activeNavlinks" : "navlinks"
+          }
+        >
           ACCUEIL
         </NavLink>
-        <NavLink className="navlinks" to="/galerie">
+        <NavLink
+          to="/galerie"
+          className={({ isActive }) =>
+            isActive ? "activeNavlinks" : "navlinks"
+          }
+        >
           GALERIE
         </NavLink>
-        <NavLink className="navlinks" to="/apropos">
+        <NavLink
+          to="/apropos"
+          className={({ isActive }) =>
+            isActive ? "activeNavlinks" : "navlinks"
+          }
+        >
           A PROPOS
         </NavLink>
-        <NavLink className="navlinks" to="/favoris">
+        <NavLink
+          to="/favoris"
+          className={({ isActive }) =>
+            isActive ? "activeNavlinks" : "navlinks"
+          }
+        >
           FAVORIS
+        </NavLink>
+        <NavLink className="navlinks" to="/admin">
+          ADMIN
         </NavLink>
       </nav>
     </div>
