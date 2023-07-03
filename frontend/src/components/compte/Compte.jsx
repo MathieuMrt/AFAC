@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Compte() {
+  const handleConnexion = (e) => {
+    e.preventDefault();
+  };
+
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="compte">
       <div className="connectez_vous">
@@ -11,18 +18,36 @@ function Compte() {
           id="id_form_connexion"
           method="POST"
         >
-          <input type="email" placeholder="Mail" name="mail" id="" required />
           <input
+            id="email"
+            type="email"
+            placeholder="Mail"
+            name="mail"
+            required
+            value={mail}
+            onChange={(e) => setMail(e.target.value)}
+          />
+          {/* {console.log(mail)} */}
+
+          <input
+            id=""
             type="password"
             placeholder="Mot de passe"
             name="mot_de_passe"
-            id=""
             required
+            value={password}
             minLength="6"
             maxLength="15"
+            onChange={(e) => setPassword(e.target.value)}
           />
+          {/* {console.log(password)} */}
         </form>
-        <button type="submit" form="id_form_connexion">
+
+        <button
+          type="submit"
+          form="id_form_connexion"
+          onClick={handleConnexion}
+        >
           Connexion
         </button>
       </div>
@@ -42,20 +67,20 @@ function Compte() {
           id="id_form_inscription"
           method="POST"
         >
-          <input type="text" placeholder="Nom" name="nom" id="" required />
+          <input id="login" type="text" placeholder="Nom" name="nom" required />
           <input
+            id=""
             type="text"
             placeholder="Prénom"
             name="prenom"
-            id=""
             required
           />
-          <input type="email" placeholder="Mail" name="mail" id="" required />
+          <input id="" type="email" placeholder="Mail" name="mail" required />
           <input
+            id=""
             type="password"
             placeholder="Mot de passe"
             name="mot_de_passe"
-            id=""
             required
             minLength="6"
             maxLength="15"
