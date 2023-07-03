@@ -27,9 +27,13 @@ function Compte() {
         </button>
       </div>
 
+      {/* -------------------- OU ------------------- */}
+
       <div className="ou">
         <h2>Ou</h2>
       </div>
+
+      {/* -------------------- INSCRIPTION ------------------- */}
       <div className="inscription">
         <h2>Créez votre compte</h2>
 
@@ -38,6 +42,14 @@ function Compte() {
           id="id_form_inscription"
           method="POST"
         >
+          <input type="text" placeholder="Nom" name="nom" id="" required />
+          <input
+            type="text"
+            placeholder="Prénom"
+            name="prenom"
+            id=""
+            required
+          />
           <input type="email" placeholder="Mail" name="mail" id="" required />
           <input
             type="password"
@@ -47,14 +59,6 @@ function Compte() {
             required
             minLength="6"
             maxLength="15"
-          />
-          <input type="text" placeholder="Nom" name="nom" id="" required />
-          <input
-            type="text"
-            placeholder="Prénom"
-            name="prenom"
-            id=""
-            required
           />
         </form>
         <button type="submit" form="id_form_inscription">
