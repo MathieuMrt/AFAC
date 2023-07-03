@@ -1,12 +1,23 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Compte() {
-  const handleConnexion = (e) => {
-    e.preventDefault();
-  };
-
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleConnexion = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+        mail,
+        password,
+      })
+      .then((res) => {
+        localStorage.setItem("utilisateur", JSON.stringify(res.data));
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="compte">

@@ -1,5 +1,36 @@
 const models = require("../models");
 
+const getUserByLoginWithPasswordAndPassToNext = (req, res, next) => {
+  models.utilisateur
+    .getUserByLogin(req.body)
+    .then(([utilisateur]) => {
+      if (utilisateur[0] != null) {
+        req.utilisateur = utilisateur[0]; // eslint-disable-line prefer-destructuring
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
+const postUser = (req, res) => {
+  const utilisateur = req.body;
+
+  models.utilisateur
+    .insert(utilisateur)
+    .then(([result]) => {
+      res.location(`/utilisateurs/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const browse = (req, res) => {
   models.utilisateur
     .findAll()
@@ -88,4 +119,6 @@ module.exports = {
   edit,
   add,
   destroy,
+  getUserByLoginWithPasswordAndPassToNext,
+  postUser,
 };
