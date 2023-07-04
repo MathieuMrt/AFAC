@@ -61,7 +61,12 @@ function Header() {
         >
           FAVORIS
         </NavLink>
-        <NavLink className="navlinks" to="/admin">
+        <NavLink
+          to="/admin"
+          className={({ isActive }) =>
+            isActive ? "activeNavlinks" : "navlinks"
+          }
+        >
           ADMIN
         </NavLink>
       </nav>
