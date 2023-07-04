@@ -33,11 +33,13 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
     `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(45) NOT NULL,
     `prenom` VARCHAR(45) NOT NULL,
-    `mail` VARCHAR(45) NOT NULL,
-    `mot_de_passe` VARCHAR(45) NOT NULL,
-    `estAdmin` TINYINT NOT NULL,
-    `commentaire_bloque` TINYINT
+    `mail` VARCHAR(45) NOT NULL UNIQUE,
+    `mot_de_passe` VARCHAR(200) NOT NULL,
+    `estAdmin` BOOLEAN NOT NULL DEFAULT false,
+    `commentaire_bloque` TINYINT DEFAULT 0
 );
+
+
 
 INSERT INTO oeuvres(ref_archives,titre,auteur,date_creation,format,technique,lien_page_auteur,lien_article,categorie,details,resume,img) VALUES ('40FI79','Effet de nuit sur la Cheminée usine du Tampon','Hippolyte Charles Napoléon Mortier, Duc de Trévise','1866','20 X 14','Aquarelle','https://forgetmenot.objettemoin.org/index.php/fr/actus/35-hippolyte-charles-napoleon-mortier-duc-de-trevise',NULL,'Usines','Attribuée parfois à l''usine du Grand Tampon, mais c''est peu probable: l''usine du Grand Tampon ayant été une scierie. Or, ici, il s''agit sans doute de l''usine de Bel Air: on reconnaît les deux corps principaux du bâtiment industriel (purgerie et bâtiment abritant la machine à vapeur) en parallèle, comme sur les figures 2 et 3. La cheminée carrée est sur le côté Nord, construite en basalte, avec intercalation de poutres deux côtés par deux côtés. Devant, un gardien, dont l''ombre se projette sur la cheminée. En arrière-plan, une allée de palmiers, qui semble mener vers la maison de maître. La disposition des lieux correspond à celle qui existait à Bel Air. Scène d''apparence paisible ?','Cheminée du Tampon','http://localhost:5001/assets/images/afac-img/1-40FI79-Cheminée_du_Tampon.jpg');
 INSERT INTO oeuvres(ref_archives,titre,auteur,date_creation,format,technique,lien_page_auteur,lien_article,categorie,details,resume,img) VALUES ('40FI78','Arrivée à l''établissement du Tampon','Hippolyte Charles Napoléon Mortier, Duc de Trévise','1866','15 X 13.5','Aquarelle','https://forgetmenot.objettemoin.org/index.php/fr/actus/35-hippolyte-charles-napoleon-mortier-duc-de-trevise',NULL,'Usines','Le chemin de l''Etablissement existe toujours aujourd''hui, à 400 mètres d''altitude. Les deux cavaliers sont sans doute Ch. H. N; Mortier de Trévise lui-même, et son beau-frère (Denis-André de K/véguen)? En avant, 3 autres personnages cheminent à pied. La route traverse le lit desseché de la Rivière d''Abord, et remonte légèrement vers l''Etablissement (c''est-à-dire l''ensemble du fonds avec usine, bâtiments annexes, et camp des travailleurs engagés, non représenté ici. L''usine elle-même est composée de deux corps parallèles de bâtiments, flanqués chacun d''une cheminée: l''une pour évacuer les fumées de combustion pour la batterie Gimart, l''autre la fumée de la machine à vapeur. En quinconce, un autre bâtiment à l''avant, abritant les "tables" pour le séchage du sucre?','L''Établissement','http://localhost:5001/assets/images/afac-img/2-40FI78-L''Établissement.jpg');
