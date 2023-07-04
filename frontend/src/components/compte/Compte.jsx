@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Compte() {
+
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +18,29 @@ function Compte() {
         localStorage.setItem("utilisateur", JSON.stringify(res.data));
       })
       .catch((err) => console.error(err));
+
+  const [credentials, setCredentials] = useState({
+    mail: "",
+    mot_de_passe: "",
+    nom: "",
+    prenom: "",
+  });
+
+  const compteHandleChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      axios
+        .post("http://localhost:5001/utilisateurs", credentials)
+        .then((res) => console.warn(res));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -63,7 +87,6 @@ function Compte() {
         </button>
       </div>
 
-      {/* -------------------- OU ------------------- */}
 
       <div className="ou">
         <h2>Ou</h2>
@@ -77,24 +100,44 @@ function Compte() {
           className="formulaire_compte_connexion"
           id="id_form_inscription"
           method="POST"
+          onSubmit={handleSubmit}
         >
-          <input id="login" type="text" placeholder="Nom" name="nom" required />
+
           <input
+            type="email"
+            placeholder="Mail"
+            name="mail"
+            required
+            onChange={compteHandleChange}
+          />
+
+         
+          <input
+            type="text"
+            placeholder="Nom"
+            name="nom"
             id=""
+            required
+            onChange={compteHandleChange}
+          />
+          <input
             type="text"
             placeholder="Prénom"
             name="prenom"
             required
+             onChange={compteHandleChange}
+
           />
-          <input id="" type="email" placeholder="Mail" name="mail" required />
           <input
             id=""
             type="password"
             placeholder="Mot de passe"
             name="mot_de_passe"
             required
+            onChange={compteHandleChange}
             minLength="6"
             maxLength="15"
+
           />
         </form>
         <button type="submit" form="id_form_inscription">

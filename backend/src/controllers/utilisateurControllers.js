@@ -1,3 +1,4 @@
+const argon2 = require("@node-rs/argon2");
 const models = require("../models");
 
 const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
@@ -84,17 +85,24 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const utilisateur = req.body;
 
-  // TODO validations (length, format...)
+  argon2.hash(req.body.mot_de_passe).then((hashedPassword) => {
+    utilisateur.hashedPassword = hashedPassword;
 
-  models.utilisateur
-    .insert(utilisateur)
-    .then(([result]) => {
-      res.location(`/utilisateurs/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+    models.utilisateur
+      .insert(utilisateur)
+      .then(() => {
+        return res.status(201).send("Created");
+      })
+      .catch((err) => {
+        if (err.code === "ER_DUP_ENTRY") {
+          return res.status(400).send("Email déjà utilisé");
+        }
+        console.error(err);
+        return res.sendStatus(500);
+      });
+  });
+
+  // TODO validations (length, format...)
 };
 
 const destroy = (req, res) => {

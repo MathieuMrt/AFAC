@@ -31,11 +31,14 @@ const models = {};
 
 const UtilisateursManager = require("./UtilisateursManager");
 const OeuvresManager = require("./OeuvresManager");
+const FavorisManager = require("./FavorisManager");
 
 models.oeuvre = new OeuvresManager();
 models.utilisateur = new UtilisateursManager();
+models.favori = new FavorisManager();
 models.utilisateur.setDatabase(database);
 models.oeuvre.setDatabase(database);
+models.favori.setDatabase(database);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
