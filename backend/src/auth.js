@@ -10,10 +10,12 @@ const hashingOptions = {
 
 const hashPassword = (req, res, next) => {
   argon2
-    .hash(req.body.mot_de_passe, hashingOptions)
+    .hash("req.body.mot_de_passe", hashingOptions)
     .then((hashedPassword) => {
       req.body.hashedPassword = hashedPassword;
+      delete req.body.mot_de_passe;
       console.warn("hashedPassword: ", hashedPassword);
+
       next();
     })
     .catch((err) => {
@@ -23,20 +25,14 @@ const hashPassword = (req, res, next) => {
 };
 
 // const verifyPassword = (req, res) => {
-//   const storedPassword = req.utilisateur && req.utilisateur.mot_de_passe; // Vérifier si req.user et req.user.mdp sont définis
-
-//   if (!storedPassword) {
-//     res.status(401).send("Authentication failed");
-//     return;
-//   }
-
+//   console.log(req.utilisateur)
 //   argon2
-//     .verify(storedPassword, req.body.mot_de_passe)
-//     .then((passwordMatch) => {
-//       if (passwordMatch) {
-//         res.status(200).send("Authentication verified");
+//     .verify(req.utilisateur.mot_de_passe, req.body.mot_de_passe)
+//     .then((isVerified) => {
+//       if (isVerified) {
+//         res.send("Credentials are valid");
 //       } else {
-//         res.status(401).send("Authentication failed");
+//         res.sendStatus(401);
 //       }
 //     })
 //     .catch((err) => {
@@ -47,5 +43,5 @@ const hashPassword = (req, res, next) => {
 
 module.exports = {
   hashPassword,
-  //   verifyPassword,
+  // verifyPassword,
 };
