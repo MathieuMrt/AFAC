@@ -5,7 +5,7 @@ const router = express.Router();
 const oeuvreControllers = require("./controllers/oeuvreControllers");
 const utilisateurControllers = require("./controllers/utilisateurControllers");
 
-const { hashPassword } = require("./auth");
+const { hashPassword, verifyPassword } = require("./auth");
 //  verifyPassword
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
@@ -18,12 +18,13 @@ router.get("/utilisateurs/:id", utilisateurControllers.read); // OK
 router.put("/utilisateurs/:id", utilisateurControllers.edit);
 router.delete("/utilisateurs/:id", utilisateurControllers.destroy);
 
-// router.post(
-//   "/login",
-//   utilisateurControllers.getUserByEmailWithPasswordAndPassToNext,
-//   verifyPassword
-// );
+router.post(
+  "/login",
+  utilisateurControllers.getUserByEmailWithPasswordAndPassToNext,
+  hashPassword,
+  verifyPassword
+);
 
-router.post("/utilisateurs", hashPassword, utilisateurControllers.postUser);
+router.post("/utilisateurs", hashPassword, utilisateurControllers.postUser); // OK
 
 module.exports = router;

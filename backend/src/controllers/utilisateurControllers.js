@@ -1,24 +1,21 @@
 const models = require("../models");
 
-// const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
-//   const { mail } = req.body;
-
-//   database
-//     .query("select * from users where mail = ?", [mail])
-//     .then(([utilisateur]) => {
-//       if (utilisateur[0] != utilisateur) {
-//         req.utilisateur = utilisateur[0];
-
-//         next();
-//       } else {
-//         res.sendStatus(401);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.status(500).send("Error retrieving data from database");
-//     });
-// };
+const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  models.utilisateur
+    .getUserByLogin(req.body)
+    .then(([utilisateur]) => {
+      if (utilisateur[0] != null) {
+        req.utilisateur = utilisateur[0]; // eslint-disable-line prefer-destructuring
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
 
 const postUser = (req, res) => {
   const utilisateur = req.body;
@@ -122,6 +119,6 @@ module.exports = {
   edit,
   add,
   destroy,
-  // getUserByEmailWithPasswordAndPassToNext,
+  getUserByEmailWithPasswordAndPassToNext,
   postUser,
 };

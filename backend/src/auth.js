@@ -24,24 +24,23 @@ const hashPassword = (req, res, next) => {
     });
 };
 
-// const verifyPassword = (req, res) => {
-//   console.log(req.utilisateur)
-//   argon2
-//     .verify(req.utilisateur.mot_de_passe, req.body.mot_de_passe)
-//     .then((isVerified) => {
-//       if (isVerified) {
-//         res.send("Credentials are valid");
-//       } else {
-//         res.sendStatus(401);
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
+const verifyPassword = (req, res) => {
+  argon2
+    .verify(req.utilisateur.hashedPassword, "req.body.mot_de_passe")
+    .then((isVerified) => {
+      if (isVerified) {
+        res.send("Credentials are valid");
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   hashPassword,
-  // verifyPassword,
+  verifyPassword,
 };
