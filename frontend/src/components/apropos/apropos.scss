@@ -83,3 +83,17 @@
     transform: scale(1.2);
   }
 }
+
+@media screen and (max-width: 718px) {
+  .apropos-afac-partie1 {
+    font-weight: 400;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .apropos-afac-partie2 {
+    font-weight: 200;
+    text-align: left;
+    font-size: 1rem;
+  }
+}
