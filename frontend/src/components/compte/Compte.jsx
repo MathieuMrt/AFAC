@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Compte() {
-
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,6 +17,7 @@ function Compte() {
         localStorage.setItem("utilisateur", JSON.stringify(res.data));
       })
       .catch((err) => console.error(err));
+  };
 
   const [credentials, setCredentials] = useState({
     mail: "",
@@ -87,7 +87,6 @@ function Compte() {
         </button>
       </div>
 
-
       <div className="ou">
         <h2>Ou</h2>
       </div>
@@ -102,7 +101,6 @@ function Compte() {
           method="POST"
           onSubmit={handleSubmit}
         >
-
           <input
             type="email"
             placeholder="Mail"
@@ -111,7 +109,6 @@ function Compte() {
             onChange={compteHandleChange}
           />
 
-         
           <input
             type="text"
             placeholder="Nom"
@@ -125,8 +122,7 @@ function Compte() {
             placeholder="Prénom"
             name="prenom"
             required
-             onChange={compteHandleChange}
-
+            onChange={compteHandleChange}
           />
           <input
             id=""
@@ -137,7 +133,6 @@ function Compte() {
             onChange={compteHandleChange}
             minLength="6"
             maxLength="15"
-
           />
         </form>
         <button type="submit" form="id_form_inscription">

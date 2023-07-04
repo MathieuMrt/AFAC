@@ -19,7 +19,6 @@ router.get("/utilisateurs/:id", utilisateurControllers.read); // OK
 router.put("/utilisateurs/:id", utilisateurControllers.edit);
 router.delete("/utilisateurs/:id", utilisateurControllers.destroy);
 
-
 router.post(
   "/login",
   utilisateurControllers.getUserByEmailWithPasswordAndPassToNext,
@@ -32,6 +31,5 @@ router.post("/utilisateurs", hashPassword, utilisateurControllers.postUser); // 
 router.get("/utilisateurs/:id/favoris", favoriControllers.getFavoritesByUser);
 router.post("/utilisateurs/:id/favoris", favoriControllers.add);
 router.delete("/utilisateurs/:id/favoris/:id", favoriControllers.destroy);
-
 
 module.exports = router;
