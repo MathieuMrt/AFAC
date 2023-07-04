@@ -4,6 +4,7 @@ const router = express.Router();
 
 const oeuvreControllers = require("./controllers/oeuvreControllers");
 const utilisateurControllers = require("./controllers/utilisateurControllers");
+const favoriControllers = require("./controllers/favoriControllers");
 
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
@@ -16,5 +17,9 @@ router.get("/utilisateurs/:id", utilisateurControllers.read);
 router.put("/utilisateurs/:id", utilisateurControllers.edit);
 router.post("/utilisateurs", utilisateurControllers.add);
 router.delete("/utilisateurs/:id", utilisateurControllers.destroy);
+
+router.get("/utilisateurs/:id/favoris", favoriControllers.getFavoritesByUser);
+router.post("/utilisateurs/:id/favoris", favoriControllers.add);
+router.delete("/utilisateurs/:id/favoris/:id", favoriControllers.destroy);
 
 module.exports = router;

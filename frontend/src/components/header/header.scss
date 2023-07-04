@@ -81,3 +81,18 @@
     background-color: rgba(255, 255, 255, 0.465);
   }
 }
+/*________Small device / Menu Burger ________*/
+
+@media screen and (max-width: 718px) {
+  .connexion {
+    visibility: hidden;
+  }
+  .hiddenNavPrinc {
+    visibility: hidden;
+  }
+}
+@media screen and (min-width: 718px) {
+  .header .hiddenMenu {
+    display: none;
+  }
+}

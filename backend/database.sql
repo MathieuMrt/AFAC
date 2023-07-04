@@ -15,16 +15,18 @@ CREATE TABLE IF NOT EXISTS `oeuvres` (
     `img` VARCHAR(200)
 );
 
-CREATE TABLE IF NOT EXISTS `favoris` (
+CREATE TABLE IF NOT EXISTS `favoris`(
     `oeuvres_id` INT NOT NULL,
-    `utilisateur_id` INT NOT NULL
+    `utilisateur_id` INT NOT NULL,
+    PRIMARY KEY (oeuvres_id, utilisateur_id)
 );
 
 CREATE TABLE IF NOT EXISTS `reaction` (
     `oeuvres_reaction_id` INT NOT NULL,
     `utilisateur_reaction_id` INT NOT NULL,
     `commentaire` VARCHAR(500),
-    `etoiles` INT
+    `etoiles` INT,
+    PRIMARY KEY (oeuvres_reaction_id, utilisateur_reaction_id)
 );
 
 CREATE TABLE IF NOT EXISTS `utilisateurs` (
