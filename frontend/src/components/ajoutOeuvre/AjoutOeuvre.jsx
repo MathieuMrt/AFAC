@@ -1,80 +1,185 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AjoutOeuvre() {
-  return (
-    <div className="ajoutOeuvre">
-      <h2>Ajouter une oeuvre</h2>
+  const [isOeuvreSended, setIsOeuvreSended] = useState(false);
 
-      <form
-        className="ajoutOeuvre-formulaire"
-        id="id_form_ajoutOeuvre"
-        method="POST"
-      >
-        <input
-          type="text"
-          placeholder="Ref_archives"
-          name="ref_archives"
-          id=""
-          required
-        />
-        <input type="text" placeholder="Titre" name="titre" id="" required />
-        <input type="text" placeholder="Auteur" name="auteur" id="" required />
-        <input
-          type="text"
-          placeholder="Date_creation"
-          name="date_creation"
-          id=""
-          required
-        />
-        <input type="text" placeholder="Format" name="format" id="" required />
-        <input
-          type="text"
-          placeholder="Technique"
-          name="technique"
-          id=""
-          required
-        />
-        <input
-          type="text"
-          placeholder="Lien_page_auteur"
-          name="lien_page_auteur"
-          id=""
-          required
-        />
-        <input
-          type="text"
-          placeholder="Lien_article"
-          name="lien_article"
-          id=""
-          required
-        />
-        <input
-          type="text"
-          placeholder="Categorie"
-          name="categorie"
-          id=""
-          required
-        />
-        <textarea
-          type="text"
-          placeholder="Details"
-          name="details"
-          id=""
-          required
-        />
-        <input type="text" placeholder="Resume" name="resume" id="" required />
-        <input type="text" placeholder="Image" name="img" id="" required />
-      </form>
-      <div className="ajoutOeuvre-button-container">
-        <button
-          className="ajoutOeuvre-button"
-          type="submit"
-          form="id_form_ajoutOeuvre"
-        >
-          Ajouter
-        </button>
-      </div>
-    </div>
+  const [formData, setFormData] = useState({
+    ref_archives: "",
+    titre: "",
+    auteur: "",
+    img: "",
+    date_creation: "",
+    format: "",
+    technique: "",
+    lien_page_auteur: "",
+    lien_article: "",
+    categorie: "",
+    details: "",
+    resume: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:5001/oeuvres", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then(() => {
+        setIsOeuvreSended(true);
+
+        setTimeout(() => {
+          navigate("/galerie");
+        }, 4000);
+        console.warn("Insertion réussie");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  return (
+    <ul className="ajoutOeuvre">
+      <li>
+        <h2>Ajouter une oeuvre</h2>
+      </li>
+
+      {!isOeuvreSended && (
+        <li>
+          <form
+            className="ajoutOeuvre-formulaire"
+            id="id_form_ajoutOeuvre"
+            method="POST"
+          >
+            <input
+              type="text"
+              placeholder="Ref_archives"
+              name="ref_archives"
+              onChange={handleChange}
+              value={formData.ref_archives}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Titre"
+              name="titre"
+              onChange={handleChange}
+              value={formData.titre}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Auteur"
+              name="auteur"
+              onChange={handleChange}
+              value={formData.auteur}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Date_creation"
+              name="date_creation"
+              onChange={handleChange}
+              value={formData.date_creation}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Format"
+              name="format"
+              onChange={handleChange}
+              value={formData.format}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Technique"
+              name="technique"
+              onChange={handleChange}
+              value={formData.technique}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Lien_page_auteur"
+              name="lien_page_auteur"
+              onChange={handleChange}
+              value={formData.lien_page_auteur}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Lien_article"
+              name="lien_article"
+              onChange={handleChange}
+              value={formData.lien_article}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Categorie"
+              name="categorie"
+              onChange={handleChange}
+              value={formData.categorie}
+              required
+            />
+            <textarea
+              type="text"
+              placeholder="Details"
+              name="details"
+              onChange={handleChange}
+              value={formData.details}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Resume"
+              name="resume"
+              onChange={handleChange}
+              value={formData.resume}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Image"
+              name="img"
+              onChange={handleChange}
+              value={formData.img}
+              required
+            />
+
+            <div className="ajoutOeuvre-button-container">
+              <button
+                className="ajoutOeuvre-button"
+                onClick={handleSubmit}
+                type="submit"
+                form="id_form_ajoutOeuvre"
+              >
+                Ajouter
+              </button>
+            </div>
+          </form>
+        </li>
+      )}
+      {isOeuvreSended && (
+        <li>
+          <div className="progress-bar" />
+          <p>L'oeuvre a bien été ajoutée à la base de donnée </p>
+        </li>
+      )}
+    </ul>
   );
 }
 
