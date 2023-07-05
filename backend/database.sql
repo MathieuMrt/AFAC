@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 
     `mail` VARCHAR(45) NOT NULL UNIQUE,
     `hashedPassword` VARCHAR(200) NOT NULL,
-    `estAdmin` TINYINT NOT NULL,   
+    `estAdmin` TINYINT DEFAULT 0,  
     `commentaire_bloque` TINYINT DEFAULT 0
 );
 
