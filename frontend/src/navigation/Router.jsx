@@ -23,7 +23,7 @@ function Router() {
       <Route path="/utilisateur" element={<User />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/ajoutOeuvre" element={<AjoutOeuvre />} />
-      <Route path="/modifierOeuvre" element={<ModifierOeuvre />} />
+      <Route path="/oeuvre/admin/:id" element={<ModifierOeuvre />} />
     </Routes>
   );
 }
