@@ -73,7 +73,7 @@ const edit = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.status(204).send("Utilisateur modifié");
       }
     })
     .catch((err) => {
@@ -95,7 +95,7 @@ const editAdmin = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.status(204).send("Cet utilisateur est désormais admin");
       }
     })
     .catch((err) => {

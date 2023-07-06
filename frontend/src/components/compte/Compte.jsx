@@ -4,6 +4,7 @@ import axios from "axios";
 function Compte() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [compteConfirmation, setCompteConfirmation] = useState(false);
 
   const handleConnexion = (e) => {
     e.preventDefault();
@@ -41,10 +42,34 @@ function Compte() {
     } catch (error) {
       console.error(error);
     }
+
+    setCompteConfirmation(!compteConfirmation);
+  };
+
+  const compteConfirmationCloseHandler = () => {
+    setCompteConfirmation(!compteConfirmation);
+    setCredentials({
+      mail: "",
+      mot_de_passe: "",
+      nom: "",
+      prenom: "",
+    });
   };
 
   return (
     <div className="compte">
+      {compteConfirmation && (
+        <div className="compteCreationConfirmation">
+          <button
+            type="button"
+            className="compteConfirmationClose"
+            onClick={compteConfirmationCloseHandler}
+          >
+            X
+          </button>
+          <h4>Votre compte a bien été enregistré !</h4>
+        </div>
+      )}
       <div className="connectez_vous">
         <h2>Connectez-vous :</h2>
 
@@ -62,7 +87,6 @@ function Compte() {
             value={mail}
             onChange={(e) => setMail(e.target.value)}
           />
-          {/* {console.log(mail)} */}
 
           <input
             id=""
@@ -75,7 +99,6 @@ function Compte() {
             maxLength="15"
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* {console.log(password)} */}
         </form>
 
         <button
@@ -105,6 +128,7 @@ function Compte() {
             type="email"
             placeholder="Mail"
             name="mail"
+            value={credentials.mail}
             required
             onChange={compteHandleChange}
           />
@@ -114,6 +138,7 @@ function Compte() {
             placeholder="Nom"
             name="nom"
             id=""
+            value={credentials.nom}
             required
             onChange={compteHandleChange}
           />
@@ -121,14 +146,17 @@ function Compte() {
             type="text"
             placeholder="Prénom"
             name="prenom"
+            value={credentials.prenom}
             required
             onChange={compteHandleChange}
           />
+
           <input
             id=""
             type="password"
             placeholder="Mot de passe"
             name="mot_de_passe"
+            value={credentials.mot_de_passe}
             required
             onChange={compteHandleChange}
             minLength="6"
