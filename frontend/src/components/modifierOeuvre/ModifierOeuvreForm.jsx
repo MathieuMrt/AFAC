@@ -1,11 +1,6 @@
 import PropTypes from "prop-types";
 
-function ModifierOeuvreForm({
-  formData,
-  setFormData,
-  handleSubmit,
-  handleChange,
-}) {
+function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
   return (
     <form id="id_form_ajoutOeuvre" method="POST">
       <input
@@ -53,7 +48,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Technique"
         name="technique"
-        onChange={(e) => setFormData.technique(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.technique}
         required
       />
@@ -61,7 +56,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Lien_page_auteur"
         name="lien_page_auteur"
-        onChange={(e) => setFormData.lien_page_auteur(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.lien_page_auteur}
         required
       />
@@ -69,7 +64,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Lien_article"
         name="lien_article"
-        onChange={(e) => setFormData.lien_article(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.lien_article}
         required
       />
@@ -77,7 +72,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Categorie"
         name="categorie"
-        onChange={(e) => setFormData.categorie(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.categorie}
         required
       />
@@ -85,7 +80,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Details"
         name="details"
-        onChange={(e) => setFormData.details(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.details}
         required
       />
@@ -93,7 +88,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Resume"
         name="resume"
-        onChange={(e) => setFormData.resume(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.resume}
         required
       />
@@ -101,7 +96,7 @@ function ModifierOeuvreForm({
         type="text"
         placeholder="Image"
         name="img"
-        onChange={(e) => setFormData.img(e.target.value)}
+        onChange={(e) => handleChange(e)}
         value={formData.img}
         required
       />
@@ -124,7 +119,6 @@ export default ModifierOeuvreForm;
 
 ModifierOeuvreForm.propTypes = {
   formData: PropTypes.string.isRequired,
-  setFormData: PropTypes.string.isRequired,
   handleChange: PropTypes.string.isRequired,
   handleSubmit: PropTypes.string.isRequired,
 };
