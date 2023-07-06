@@ -35,6 +35,13 @@ class UtilisateursManager extends AbstractManager {
     );
   }
 
+  updatePassword(utilisateur) {
+    return this.database.query(
+      `update ${this.table} set hashedPassword = ? where id = ?`,
+      [utilisateur.hashedPassword, utilisateur.id]
+    );
+  }
+
   updateAdmin(utilisateur) {
     return this.database.query(
       `update ${this.table} set estAdmin = ? where id = ?`,

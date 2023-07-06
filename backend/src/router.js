@@ -17,7 +17,14 @@ router.delete("/oeuvres/:id", oeuvreControllers.destroy);
 router.get("/utilisateurs", utilisateurControllers.browse); // OK
 router.get("/utilisateurs/:id", utilisateurControllers.read); // OK
 router.put("/utilisateurs/:id", utilisateurControllers.edit);
+router.put(
+  "/utilisateurs/:id/password",
+  hashPassword,
+  utilisateurControllers.editPassword
+);
+
 router.put("/utilisateurs/admin/:id", utilisateurControllers.editAdmin);
+
 router.delete("/utilisateurs/:id", utilisateurControllers.destroy);
 
 router.post(

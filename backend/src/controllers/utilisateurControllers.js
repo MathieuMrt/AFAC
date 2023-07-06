@@ -81,6 +81,28 @@ const edit = (req, res) => {
     });
 };
 
+const editPassword = (req, res) => {
+  const utilisateur = req.body;
+
+  // TODO validations (length, format...)
+
+  utilisateur.id = parseInt(req.params.id, 10);
+
+  models.utilisateur
+    .updatePassword(utilisateur)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const editAdmin = (req, res) => {
   const utilisateur = req.body;
 
@@ -102,30 +124,6 @@ const editAdmin = (req, res) => {
       res.sendStatus(500);
     });
 };
-
-/* const add = (req, res) => {
-  const utilisateur = req.body;
-
- */
-//   argon2.hash(req.body.password).then((hashedPassword) => {
-//     utilisateur.hashedPassword = hashedPassword;
-
-//     models.utilisateur
-//       .insert(utilisateur)
-//       .then(() => {
-//         return res.status(201).send("Created");
-//       })
-//       .catch((err) => {
-//         if (err.code === "ER_DUP_ENTRY") {
-//           return res.status(400).send("Email déjà utilisé");
-//         }
-//         console.error(err);
-//         return res.sendStatus(500);
-//       });
-//   });
-
-// TODO validations (length, format...)
-// };
 
 const destroy = (req, res) => {
   models.utilisateur
@@ -151,5 +149,6 @@ module.exports = {
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
   postUser,
+  editPassword,
   editAdmin,
 };
