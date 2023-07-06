@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+import LoginContext from "../../navigation/LoginContext";
 
 function Compte() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useContext(LoginContext);
+
+  // const navigate = useNavigate();
   const [compteConfirmation, setCompteConfirmation] = useState(false);
 
   const handleConnexion = (e) => {
@@ -15,14 +20,15 @@ function Compte() {
         password,
       })
       .then((res) => {
-        localStorage.setItem("utilisateur", JSON.stringify(res.data));
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+        setUser(res.data.user);
       })
       .catch((err) => console.error(err));
   };
 
   const [credentials, setCredentials] = useState({
     mail: "",
-    mot_de_passe: "",
+    password: "",
     nom: "",
     prenom: "",
   });
@@ -92,7 +98,7 @@ function Compte() {
             id=""
             type="password"
             placeholder="Mot de passe"
-            name="mot_de_passe"
+            name="password"
             required
             value={password}
             minLength="6"
