@@ -7,7 +7,7 @@ const utilisateurControllers = require("./controllers/utilisateurControllers");
 const favoriControllers = require("./controllers/favoriControllers");
 
 const { hashPassword, verifyPassword } = require("./auth");
-//  verifyPassword
+
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
 router.put("/oeuvres/:id", oeuvreControllers.edit);
@@ -23,7 +23,6 @@ router.delete("/utilisateurs/:id", utilisateurControllers.destroy);
 router.post(
   "/login",
   utilisateurControllers.getUserByEmailWithPasswordAndPassToNext,
-  hashPassword,
   verifyPassword
 );
 
