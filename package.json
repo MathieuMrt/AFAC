@@ -36,7 +36,7 @@
     "docker": "^1.0.0",
     "prop-types": "^15.8.1",
     "react-cookie-consent": "^8.0.1",
-    "react-icons": "^4.9.0",
+    "react-icons": "^4.10.1",
     "react-router-dom": "^6.11.2",
     "sass": "^1.62.1"
   }
