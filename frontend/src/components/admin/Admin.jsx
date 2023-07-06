@@ -9,7 +9,11 @@ function Admin() {
   const [oeuvresData, setOeuvresData] = useState([]);
   const [userData, setUserData] = useState([]);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
-  const [currentId, setCurrentId] = useState();
+  const [userDeleteConfirmation, setUserDeleteConfirmation] = useState(false);
+  const [OeuvreCurrentId, setOeuvreCurrentId] = useState();
+  const [userCurrentId, setUserCurrentId] = useState();
+  const [oeuvresNewFetch, setOeuvresNewFetch] = useState(false);
+  const [usersNewFetch, setUsersNewFetch] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,7 +22,8 @@ function Admin() {
         setUserData(res.data);
       })
       .catch((err) => console.error(err));
-  }, []);
+    setUsersNewFetch(false);
+  }, [usersNewFetch]);
 
   useEffect(() => {
     axios
@@ -27,24 +32,68 @@ function Admin() {
         setOeuvresData(res.data);
       })
       .catch((err) => console.error(err));
-  }, []);
+    setOeuvresNewFetch(false);
+  }, [oeuvresNewFetch]);
 
   const adminDeleteOeuvreHandler = (id) => {
     setDeleteConfirmation(!deleteConfirmation);
-    setCurrentId(id);
+    setOeuvreCurrentId(id);
+  };
+
+  const adminDeleteUserHandler = (id) => {
+    setUserDeleteConfirmation(!userDeleteConfirmation);
+    setUserCurrentId(id);
   };
 
   const validateDeleteOeuvreHandler = () => {
-    const id = currentId;
+    const id = OeuvreCurrentId;
     axios
       .delete(`http://localhost:5001/oeuvres/${id}`)
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
+
+    setOeuvresNewFetch(!oeuvresNewFetch);
+    setDeleteConfirmation(!deleteConfirmation);
+  };
+
+  const validateDeleteUserHandler = () => {
+    const id = userCurrentId;
+    axios
+      .delete(`http://localhost:5001/utilisateurs/${id}`)
+      .then((res) => console.warn(res))
+      .catch((err) => console.error(err));
+
+    setUsersNewFetch(!usersNewFetch);
+    setUserDeleteConfirmation(!userDeleteConfirmation);
+  };
+
+  const adminChange = (id, estAdmin) => {
+    if (estAdmin === 0) {
+      axios
+        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+          estAdmin: 1,
+        })
+        .then((res) => console.warn(res))
+        .catch((err) => console.error(err));
+    } else {
+      axios
+        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+          estAdmin: 0,
+        })
+        .then((res) => console.warn(res))
+        .catch((err) => console.error(err));
+    }
+    setUsersNewFetch(!usersNewFetch);
+  };
+
+  const adminCheckboxHandler = (id, estAdmin) => {
+    adminChange(id, estAdmin);
   };
 
   return (
     <div className="page-admin-globale">
       <div className="page-admin-container">
+        {/* ----------------------------------------Fenêtre Delete Oeuvre------------------------------------------ */}
         {deleteConfirmation && (
           <div className="admin-delete-user-confirmation">
             <h4>Êtes-vous sûr(e) de vouloir supprimer cette oeuvre ?</h4>
@@ -67,6 +116,30 @@ function Admin() {
             </div>
           </div>
         )}
+        {/* ----------------------------------------Fenêtre Delete User------------------------------------------ */}
+        {userDeleteConfirmation && (
+          <div className="admin-delete-user-confirmation">
+            <h4>Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?</h4>
+            <h5>(Définitif)</h5>
+            <div className="admin-button-delete-validation">
+              <button
+                type="button"
+                onClick={validateDeleteUserHandler}
+                onKeyDown={validateDeleteUserHandler}
+              >
+                OUI
+              </button>
+              <button
+                type="button"
+                onClick={adminDeleteUserHandler}
+                onKeyDown={adminDeleteUserHandler}
+              >
+                NON
+              </button>
+            </div>
+          </div>
+        )}
+
         <section className="admin-tableau-container">
           <table>
             <thead>
@@ -88,6 +161,7 @@ function Admin() {
               </tr>
             </thead>
             <tbody>
+              {/* ----------------------------------------Oeuvres------------------------------------------ */}
               {oeuvresData.map((i) => {
                 return (
                   <tr key={i.id}>
@@ -113,14 +187,16 @@ function Admin() {
                   </tr>
                 );
               })}
-              <td className="admin-button-ajout-oeuvre-container" colSpan="5">
-                <NavLink to="/ajoutOeuvre">
-                  <button type="button" className="admin-button-ajout-oeuvre">
-                    {" "}
-                    + Ajouter une oeuvre
-                  </button>
-                </NavLink>
-              </td>
+              <tr>
+                <td className="admin-button-ajout-oeuvre-container" colSpan="5">
+                  <NavLink to="/ajoutOeuvre">
+                    <button type="button" className="admin-button-ajout-oeuvre">
+                      {" "}
+                      + Ajouter une oeuvre
+                    </button>
+                  </NavLink>
+                </td>
+              </tr>
             </tbody>
           </table>
         </section>
@@ -144,6 +220,7 @@ function Admin() {
               </tr>
             </thead>
             <tbody>
+              {/* ---------------------------------------Users------------------------------------------ */}
               {userData.map((i) => {
                 return (
                   <tr key={i.id}>
@@ -154,10 +231,21 @@ function Admin() {
                       <MdOutlineCheckBoxOutlineBlank />
                     </td>
                     <td className="td-center">
-                      <MdOutlineCheckBoxOutlineBlank />
+                      <input
+                        type="checkbox"
+                        defaultChecked={i.estAdmin === 1}
+                        onChange={() => adminCheckboxHandler(i.id, i.estAdmin)}
+                      />
                     </td>
-                    <td>
-                      <FaTrashAlt />
+                    <td className="trash-cell">
+                      <button
+                        type="button"
+                        className="td-center admin-trash"
+                        onKeyDown={() => adminDeleteUserHandler(i.id)}
+                        onClick={() => adminDeleteUserHandler(i.id)}
+                      >
+                        <FaTrashAlt />
+                      </button>
                     </td>
                   </tr>
                 );
