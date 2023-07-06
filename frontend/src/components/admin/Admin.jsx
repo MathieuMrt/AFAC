@@ -1,13 +1,145 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 function Admin() {
+  const [oeuvresData, setOeuvresData] = useState([]);
+  const [userData, setUserData] = useState([]);
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+  const [userDeleteConfirmation, setUserDeleteConfirmation] = useState(false);
+  const [OeuvreCurrentId, setOeuvreCurrentId] = useState();
+  const [userCurrentId, setUserCurrentId] = useState();
+  const [oeuvresNewFetch, setOeuvresNewFetch] = useState(false);
+  const [usersNewFetch, setUsersNewFetch] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5001/utilisateurs")
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => console.error(err));
+    setUsersNewFetch(false);
+  }, [usersNewFetch]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5001/oeuvres")
+      .then((res) => {
+        setOeuvresData(res.data);
+      })
+      .catch((err) => console.error(err));
+    setOeuvresNewFetch(false);
+  }, [oeuvresNewFetch]);
+
+  const adminDeleteOeuvreHandler = (id) => {
+    setDeleteConfirmation(!deleteConfirmation);
+    setOeuvreCurrentId(id);
+  };
+
+  const adminDeleteUserHandler = (id) => {
+    setUserDeleteConfirmation(!userDeleteConfirmation);
+    setUserCurrentId(id);
+  };
+
+  const validateDeleteOeuvreHandler = () => {
+    const id = OeuvreCurrentId;
+    axios
+      .delete(`http://localhost:5001/oeuvres/${id}`)
+      .then((res) => console.warn(res))
+      .catch((err) => console.error(err));
+
+    setOeuvresNewFetch(!oeuvresNewFetch);
+    setDeleteConfirmation(!deleteConfirmation);
+  };
+
+  const validateDeleteUserHandler = () => {
+    const id = userCurrentId;
+    axios
+      .delete(`http://localhost:5001/utilisateurs/${id}`)
+      .then((res) => console.warn(res))
+      .catch((err) => console.error(err));
+
+    setUsersNewFetch(!usersNewFetch);
+    setUserDeleteConfirmation(!userDeleteConfirmation);
+  };
+
+  const adminChange = (id, estAdmin) => {
+    if (estAdmin === 0) {
+      axios
+        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+          estAdmin: 1,
+        })
+        .then((res) => console.warn(res))
+        .catch((err) => console.error(err));
+    } else {
+      axios
+        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+          estAdmin: 0,
+        })
+        .then((res) => console.warn(res))
+        .catch((err) => console.error(err));
+    }
+    setUsersNewFetch(!usersNewFetch);
+  };
+
+  const adminCheckboxHandler = (id, estAdmin) => {
+    adminChange(id, estAdmin);
+  };
+
   return (
     <div className="page-admin-globale">
       <div className="page-admin-container">
+        {/* ----------------------------------------Fenêtre Delete Oeuvre------------------------------------------ */}
+        {deleteConfirmation && (
+          <div className="admin-delete-user-confirmation">
+            <h4>Êtes-vous sûr(e) de vouloir supprimer cette oeuvre ?</h4>
+            <h5>(Définitif)</h5>
+            <div className="admin-button-delete-validation">
+              <button
+                type="button"
+                onClick={validateDeleteOeuvreHandler}
+                onKeyDown={validateDeleteOeuvreHandler}
+              >
+                OUI
+              </button>
+              <button
+                type="button"
+                onClick={adminDeleteOeuvreHandler}
+                onKeyDown={adminDeleteOeuvreHandler}
+              >
+                NON
+              </button>
+            </div>
+          </div>
+        )}
+        {/* ----------------------------------------Fenêtre Delete User------------------------------------------ */}
+        {userDeleteConfirmation && (
+          <div className="admin-delete-user-confirmation">
+            <h4>Êtes-vous sûr(e) de vouloir supprimer cet utilisateur ?</h4>
+            <h5>(Définitif)</h5>
+            <div className="admin-button-delete-validation">
+              <button
+                type="button"
+                onClick={validateDeleteUserHandler}
+                onKeyDown={validateDeleteUserHandler}
+              >
+                OUI
+              </button>
+              <button
+                type="button"
+                onClick={adminDeleteUserHandler}
+                onKeyDown={adminDeleteUserHandler}
+              >
+                NON
+              </button>
+            </div>
+          </div>
+        )}
+
         <section className="admin-tableau-container">
           <table>
             <thead>
@@ -29,47 +161,46 @@ function Admin() {
               </tr>
             </thead>
             <tbody>
+              {/* ----------------------------------------Oeuvres------------------------------------------ */}
+              {oeuvresData.map((i) => {
+                return (
+                  <tr key={i.id}>
+                    <td>{i.ref_archives}</td>
+                    <td>{i.titre}</td>
+                    <td>{i.auteur}</td>
+                    <td className="td-center">
+                      <NavLink className="admin-navlink " to="/modifierOeuvre">
+                        <FiEdit />
+                      </NavLink>
+                    </td>
+
+                    <td className="trash-cell">
+                      <button
+                        type="button"
+                        className="td-center admin-trash"
+                        onKeyDown={() => adminDeleteOeuvreHandler(i.id)}
+                        onClick={() => adminDeleteOeuvreHandler(i.id)}
+                      >
+                        <FaTrashAlt />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
               <tr>
-                <td>40FI79</td>
-                <td>Effet de nuit sur la Cheminée usine du Tampon</td>
-                <td>Hippolyte Charles Napoléon Mortier, Duc de Trévise</td>
-                <td>
-                  <NavLink className="admin-navlink" to="/modifierOeuvre">
-                    <FiEdit />
+                <td className="admin-button-ajout-oeuvre-container" colSpan="5">
+                  <NavLink to="/ajoutOeuvre">
+                    <button type="button" className="admin-button-ajout-oeuvre">
+                      {" "}
+                      + Ajouter une oeuvre
+                    </button>
                   </NavLink>
                 </td>
-
-                <td>
-                  <FaTrashAlt />
-                </td>
               </tr>
-              <tr>
-                <td>40FI79</td>
-                <td>Effet de nuit sur la Cheminée usine du Tampon</td>
-                <td>Hippolyte Charles Napoléon Mortier, Duc de Trévise</td>
-                <td>
-                  <NavLink className="admin-navlink" to="/modifierOeuvre">
-                    <FiEdit />
-                  </NavLink>
-                </td>
-                <td>
-                  <FaTrashAlt />
-                </td>
-              </tr>
-
-              <th className="admin-button-ajout-oeuvre-container" colSpan="5">
-                <NavLink to="/ajoutOeuvre">
-                  <button type="button" className="admin-button-ajout-oeuvre">
-                    {" "}
-                    + Ajouter une oeuvre
-                  </button>
-                </NavLink>
-                `
-              </th>
             </tbody>
           </table>
         </section>
-        <section className="admin-tableau-container">
+        <section className="admin-tableau-container admin-user-small-table">
           <table>
             <thead>
               <tr>
@@ -78,8 +209,10 @@ function Admin() {
                 </th>
               </tr>
               <tr className="admin-tableau-champs">
-                <th>Nom de l'utilisateur</th>
-                <th>Bloquer les commentaires</th>
+                <th className="admin-table-name">Nom de l'utilisateur</th>
+                <th className="admin-table-comment">
+                  Bloquer les commentaires
+                </th>
                 <th>Admin</th>
                 <th>
                   <FaTrashAlt />
@@ -87,42 +220,36 @@ function Admin() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>John Doe </td>
-                <td>
-                  <MdOutlineCheckBoxOutlineBlank />
-                </td>
-                <td>
-                  <MdOutlineCheckBoxOutlineBlank />
-                </td>
-                <td>
-                  <FaTrashAlt />
-                </td>
-              </tr>
-              <tr>
-                <td>John Doe 1 </td>
-                <td>
-                  <MdOutlineCheckBoxOutlineBlank />
-                </td>
-                <td>
-                  <MdOutlineCheckBoxOutlineBlank />
-                </td>
-                <td>
-                  <FaTrashAlt />
-                </td>
-              </tr>
-              <tr>
-                <td> John Doe 2 </td>
-                <td>
-                  <MdOutlineCheckBoxOutlineBlank />
-                </td>
-                <td>
-                  <MdOutlineCheckBoxOutlineBlank />
-                </td>
-                <td>
-                  <FaTrashAlt />
-                </td>
-              </tr>
+              {/* ---------------------------------------Users------------------------------------------ */}
+              {userData.map((i) => {
+                return (
+                  <tr key={i.id}>
+                    <td>
+                      {i.nom} {i.prenom}
+                    </td>
+                    <td className="td-center">
+                      <MdOutlineCheckBoxOutlineBlank />
+                    </td>
+                    <td className="td-center">
+                      <input
+                        type="checkbox"
+                        defaultChecked={i.estAdmin === 1}
+                        onChange={() => adminCheckboxHandler(i.id, i.estAdmin)}
+                      />
+                    </td>
+                    <td className="trash-cell">
+                      <button
+                        type="button"
+                        className="td-center admin-trash"
+                        onKeyDown={() => adminDeleteUserHandler(i.id)}
+                        onClick={() => adminDeleteUserHandler(i.id)}
+                      >
+                        <FaTrashAlt />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </section>
