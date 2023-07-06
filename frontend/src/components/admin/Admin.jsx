@@ -95,7 +95,10 @@ function Admin() {
                     <td>{i.titre}</td>
                     <td>{i.auteur}</td>
                     <td className="td-center">
-                      <NavLink className="admin-navlink " to="/modifierOeuvre">
+                      <NavLink
+                        className="admin-navlink "
+                        to={`/oeuvre/admin/${i.id}`}
+                      >
                         <FiEdit />
                       </NavLink>
                     </td>
