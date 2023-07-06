@@ -35,6 +35,13 @@ class UtilisateursManager extends AbstractManager {
     );
   }
 
+  updateAdmin(utilisateur) {
+    return this.database.query(
+      `update ${this.table} set estAdmin = ? where id = ?`,
+      [utilisateur.estAdmin, utilisateur.id]
+    );
+  }
+
   getUserByLogin(utilisateur) {
     return this.database.query(`select * from utilisateurs where mail = ?`, [
       utilisateur.mail,

@@ -1,4 +1,4 @@
-const argon2 = require("@node-rs/argon2");
+// const argon2 = require("@node-rs/argon2");
 const models = require("../models");
 
 const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
@@ -7,10 +7,9 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
     .then(([utilisateur]) => {
       if (utilisateur[0] != null) {
         req.utilisateur = utilisateur[0]; // eslint-disable-line prefer-destructuring
-        next();
-      } else {
-        res.sendStatus(401);
+        return next();
       }
+      return res.status(404).send("Not found");
     })
     .catch((err) => {
       console.error(err);
@@ -82,28 +81,51 @@ const edit = (req, res) => {
     });
 };
 
+const editAdmin = (req, res) => {
+  const utilisateur = req.body;
+
+  // TODO validations (length, format...)
+
+  utilisateur.id = parseInt(req.params.id, 10);
+
+  models.utilisateur
+    .updateAdmin(utilisateur)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const add = (req, res) => {
   const utilisateur = req.body;
 
-  argon2.hash(req.body.mot_de_passe).then((hashedPassword) => {
-    utilisateur.hashedPassword = hashedPassword;
 
-    models.utilisateur
-      .insert(utilisateur)
-      .then(() => {
-        return res.status(201).send("Created");
-      })
-      .catch((err) => {
-        if (err.code === "ER_DUP_ENTRY") {
-          return res.status(400).send("Email déjà utilisé");
-        }
-        console.error(err);
-        return res.sendStatus(500);
-      });
-  });
+//   argon2.hash(req.body.password).then((hashedPassword) => {
+//     utilisateur.hashedPassword = hashedPassword;
 
-  // TODO validations (length, format...)
-};
+//     models.utilisateur
+//       .insert(utilisateur)
+//       .then(() => {
+//         return res.status(201).send("Created");
+//       })
+//       .catch((err) => {
+//         if (err.code === "ER_DUP_ENTRY") {
+//           return res.status(400).send("Email déjà utilisé");
+//         }
+//         console.error(err);
+//         return res.sendStatus(500);
+//       });
+//   });
+
+// TODO validations (length, format...)
+// };
 
 const destroy = (req, res) => {
   models.utilisateur
@@ -125,8 +147,9 @@ module.exports = {
   browse,
   read,
   edit,
-  add,
+  // add,
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
   postUser,
+  editAdmin,
 };
