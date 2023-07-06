@@ -103,10 +103,10 @@ const editAdmin = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+/* const add = (req, res) => {
   const utilisateur = req.body;
 
-
+ */
 //   argon2.hash(req.body.password).then((hashedPassword) => {
 //     utilisateur.hashedPassword = hashedPassword;
 
