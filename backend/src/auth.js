@@ -30,12 +30,12 @@ const verifyPassword = (req, res) => {
     .verify(req.utilisateur.hashedPassword, req.body.password)
     .then((isVerified) => {
       if (isVerified) {
-        const payload = { sub: req.utilisateur.id };
+        delete req.utilisateur.hashedPassword;
+        const payload = { utilisateur: req.utilisateur };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: "1h",
         });
-        delete req.utilisateur.hashedPassword;
 
         res.status(200).send({ token, utilisateur: req.utilisateur });
       }

@@ -6,7 +6,7 @@ const oeuvreControllers = require("./controllers/oeuvreControllers");
 const utilisateurControllers = require("./controllers/utilisateurControllers");
 const favoriControllers = require("./controllers/favoriControllers");
 
-const { hashPassword, verifyPassword } = require("./auth");
+const { hashPassword, verifyPassword, verifyToken } = require("./auth");
 
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
@@ -35,8 +35,16 @@ router.post(
 
 router.post("/utilisateurs", hashPassword, utilisateurControllers.postUser); // OK
 
-router.get("/utilisateurs/:id/favoris", favoriControllers.getFavoritesByUser);
-router.post("/utilisateurs/:id/favoris", favoriControllers.add);
-router.delete("/utilisateurs/:id/favoris/:id", favoriControllers.destroy);
+router.get(
+  "/utilisateurs/:id/favoris",
+  verifyToken,
+  favoriControllers.getFavoritesByUser
+);
+router.post("/utilisateurs/:id/favoris", verifyToken, favoriControllers.add);
+router.delete(
+  "/utilisateurs/:id/favoris/:id",
+  verifyToken,
+  favoriControllers.destroy
+);
 
 module.exports = router;
