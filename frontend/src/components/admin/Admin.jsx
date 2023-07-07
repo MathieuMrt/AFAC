@@ -68,7 +68,7 @@ function Admin() {
   };
 
   const adminChange = (id, estAdmin) => {
-    if (estAdmin === 0) {
+    if (estAdmin === 0 || estAdmin === null) {
       axios
         .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
           estAdmin: 1,
