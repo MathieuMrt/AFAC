@@ -8,6 +8,11 @@ function Compte() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser, setIsConnected } = useContext(LoginContext);
+  const [errPasswordConexion, setErrPasswordConexion] = useState(false);
+
+  const closeErrPasswordConexion = () => {
+    setErrPasswordConexion(false);
+  };
 
   // const navigate = useNavigate();
   const [compteConfirmation, setCompteConfirmation] = useState(false);
@@ -35,8 +40,12 @@ function Compte() {
         console.warn("TOKEN UTILISATEUR", utilisateur);
         setUser(utilisateur);
         setIsConnected(true);
+        console.warn("token validé ");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error("mot de passe incorrect", err);
+        setErrPasswordConexion(true);
+      });
   };
 
   const [credentials, setCredentials] = useState({
@@ -77,6 +86,20 @@ function Compte() {
 
   return (
     <div className="compte">
+      {errPasswordConexion && (
+        <div className="error_message_password">
+          <div className="error_message_password_content">
+            <h4>Oups !</h4>
+            <br />
+            <p>Il semble que votre mot de passe soit incorrect</p>
+            <button type="button" onClick={closeErrPasswordConexion}>
+              {" "}
+              Fermer{" "}
+            </button>
+          </div>
+        </div>
+      )}
+
       {compteConfirmation && (
         <div className="compteCreationConfirmation">
           <button
@@ -87,6 +110,10 @@ function Compte() {
             X
           </button>
           <h4>Votre compte a bien été enregistré !</h4>
+          <p>
+            Vous pouvez à présent ajouter des oeuvres à vos favoris, et aussi
+            laisser des commentaires !
+          </p>
         </div>
       )}
       <div className="connectez_vous">
