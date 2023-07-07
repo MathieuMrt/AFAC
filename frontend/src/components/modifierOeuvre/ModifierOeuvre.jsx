@@ -1,80 +1,115 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import ModifierOeuvreForm from "./ModifierOeuvreForm";
 
 function ModifierOeuvre() {
-  return (
-    <div className="modifierOeuvre">
-      <h2>Modifier une oeuvre</h2>
+  const [isOeuvreUpdated, setIsOeuvreUpdated] = useState(false);
 
-      <form
-        className="modifierOeuvre-formulaire"
-        id="id_form_ajoutOeuvre"
-        method="POST"
-      >
-        <input
-          type="text"
-          placeholder="Ref_archives"
-          name="ref_archives"
-          id=""
-          required
-        />
-        <input type="text" placeholder="Titre" name="titre" id="" required />
-        <input type="text" placeholder="Auteur" name="auteur" id="" required />
-        <input
-          type="text"
-          placeholder="Date_creation"
-          name="date_creation"
-          id=""
-          required
-        />
-        <input type="text" placeholder="Format" name="format" id="" required />
-        <input
-          type="text"
-          placeholder="Technique"
-          name="technique"
-          id=""
-          required
-        />
-        <input
-          type="text"
-          placeholder="Lien_page_auteur"
-          name="lien_page_auteur"
-          id=""
-          required
-        />
-        <input
-          type="text"
-          placeholder="Lien_article"
-          name="lien_article"
-          id=""
-          required
-        />
-        <input
-          type="text"
-          placeholder="Categorie"
-          name="categorie"
-          id=""
-          required
-        />
-        <textarea
-          type="text"
-          placeholder="Details"
-          name="details"
-          id=""
-          required
-        />
-        <input type="text" placeholder="Resume" name="resume" id="" required />
-        <input type="text" placeholder="Image" name="img" id="" required />
-      </form>
-      <div className="modifierOeuvre-button-container">
-        <button
-          className="modifierOeuvre-button"
-          type="submit"
-          form="id_form_ajoutOeuvre"
-        >
-          Modifier
-        </button>
-      </div>
-    </div>
+  const [formData, setFormData] = useState({
+    ref_archives: "",
+    titre: "",
+    auteur: "",
+    img: "",
+    date_creation: "",
+    format: "",
+    technique: "",
+    lien_page_auteur: "",
+    lien_article: "",
+    categorie: "",
+    details: "",
+    resume: "",
+  });
+  const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:5001/oeuvres/${id}`)
+      .then((response) => response.json())
+      .then((res) => {
+        console.warn("Artoung", res);
+        setFormData({
+          ref_archives: res.ref_archives,
+          titre: res.titre,
+          auteur: res.auteur,
+          img: res.img,
+          date_creation: res.date_creation,
+          format: res.format,
+          technique: res.technique,
+          lien_page_auteur: res.lien_page_auteur,
+          lien_article: res.lien_article,
+          categorie: res.categorie,
+          details: res.details,
+          resume: res.resume,
+        });
+      })
+      .catch((err) =>
+        console.error(
+          "Une erreur est survenue dans la récupération des données",
+          err
+        )
+      );
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData((previousValue) => ({
+      ...previousValue,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Vérification de la validité des champs requis
+    const form = document.getElementById("id_form_ajoutOeuvre");
+    if (!form.checkValidity()) {
+      // Afficher les erreurs ou effectuer une action appropriée
+      return;
+    }
+    axios
+      .put(`http://localhost:5001/oeuvres/${id}`, formData)
+      .then((res) => {
+        console.warn(res.data);
+      })
+      .then(() => {
+        setIsOeuvreUpdated(true);
+
+        setTimeout(() => {
+          navigate("/admin");
+        }, 4000);
+        console.warn("Modification réussie");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  return (
+    <ul className="modifierOeuvre">
+      {!isOeuvreUpdated && (
+        <>
+          <li className="modifierOeuvre_title">
+            <h2>Modifier une oeuvre</h2>
+          </li>
+
+          <li className="modifierOeuvre_form">
+            <ModifierOeuvreForm
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              formData={formData}
+              setFormData={setFormData}
+            />
+          </li>
+        </>
+      )}
+      {isOeuvreUpdated && (
+        <li className="modifierOeuvre_message_success">
+          <div className="progress-bar" />
+          <p>L'oeuvre a bien été modifiée </p>
+        </li>
+      )}
+    </ul>
   );
 }
 

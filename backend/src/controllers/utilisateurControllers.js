@@ -81,6 +81,28 @@ const edit = (req, res) => {
     });
 };
 
+const editPassword = (req, res) => {
+  const utilisateur = req.body;
+
+  // TODO validations (length, format...)
+
+  utilisateur.id = parseInt(req.params.id, 10);
+
+  models.utilisateur
+    .updatePassword(utilisateur)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.status(204).send("Cet utilisateur est désormais admin");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const editAdmin = (req, res) => {
   const utilisateur = req.body;
 
@@ -94,7 +116,7 @@ const editAdmin = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.status(204).send("Cet utilisateur est désormais admin");
+        res.sendStatus(204);
       }
     })
     .catch((err) => {
@@ -102,6 +124,7 @@ const editAdmin = (req, res) => {
       res.sendStatus(500);
     });
 };
+
 const destroy = (req, res) => {
   models.utilisateur
     .delete(req.params.id)
@@ -126,5 +149,6 @@ module.exports = {
   destroy,
   getUserByEmailWithPasswordAndPassToNext,
   postUser,
+  editPassword,
   editAdmin,
 };

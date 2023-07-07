@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import MenuBurger from "./MenuBurger";
+import LoginContext from "../../navigation/LoginContext";
 
 function Header() {
+  const { setUser, isConnected, setIsConnected } = useContext(LoginContext);
+
+  const handleDisconnect = () => {
+    setUser(undefined);
+    setIsConnected(false);
+    localStorage.removeItem("token");
+  };
+
   return (
     <div className="header">
       <div className="hiddenMenu">
@@ -24,9 +33,19 @@ function Header() {
         <div className="hexagonemain" />
       </div>
       <NavLink to="/compte">
-        <button type="button" className="connexion">
-          Connexion
-        </button>
+        {!isConnected ? (
+          <button type="button" className="connexion">
+            Connexion
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="connexion"
+            onClick={handleDisconnect}
+          >
+            Déconnexion
+          </button>
+        )}
       </NavLink>
       <nav className="hiddenNavPrinc">
         <NavLink
@@ -53,14 +72,16 @@ function Header() {
         >
           A PROPOS
         </NavLink>
-        <NavLink
-          to="/favoris"
-          className={({ isActive }) =>
-            isActive ? "activeNavlinks" : "navlinks"
-          }
-        >
-          FAVORIS
-        </NavLink>
+        {isConnected && (
+          <NavLink
+            to="/favoris"
+            className={({ isActive }) =>
+              isActive ? "activeNavlinks" : "navlinks"
+            }
+          >
+            FAVORIS
+          </NavLink>
+        )}
         <NavLink
           to="/admin"
           className={({ isActive }) =>

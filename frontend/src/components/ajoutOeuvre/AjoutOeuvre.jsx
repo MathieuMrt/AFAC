@@ -182,7 +182,7 @@ function AjoutOeuvre() {
       {isOeuvreSended && (
         <li className="ajoutOeuvre_message_success">
           <div className="progress-bar" />
-          <p>L'oeuvre a bien été ajoutée à la base de donnée </p>
+          <p>L'oeuvre a bien été ajoutée à la base de données </p>
         </li>
       )}
     </ul>

@@ -14,7 +14,11 @@ function App() {
   // };
 
   const [user, setUser] = useState(undefined);
-  const loginContextValue = useMemo(() => ({ user, setUser }), [user]);
+  const [isConnected, setIsConnected] = useState(false);
+  const loginContextValue = useMemo(
+    () => ({ user, setUser, isConnected, setIsConnected }),
+    [user]
+  );
 
   useEffect(() => {
     function disableRightClick(event) {
