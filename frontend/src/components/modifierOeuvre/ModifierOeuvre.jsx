@@ -62,7 +62,7 @@ function ModifierOeuvre() {
     e.preventDefault();
 
     // Vérification de la validité des champs requis
-    const form = document.getElementById("id_form_ajoutOeuvre");
+    const form = document.getElementById("id_form_modifierOeuvre");
     if (!form.checkValidity()) {
       // Afficher les erreurs ou effectuer une action appropriée
       return;

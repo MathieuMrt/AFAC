@@ -2,14 +2,13 @@ import PropTypes from "prop-types";
 
 function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
   return (
-    <form id="id_form_ajoutOeuvre" method="POST">
+    <form id="id_form_modifierOeuvre" method="POST">
       <input
         type="text"
         placeholder="Ref_archives"
         name="ref_archives"
         onChange={(e) => handleChange(e)}
         value={formData.ref_archives}
-        required
       />
 
       <input
@@ -26,7 +25,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="auteur"
         onChange={(e) => handleChange(e)}
         value={formData.auteur}
-        required
       />
       <input
         type="text"
@@ -34,7 +32,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="date_creation"
         onChange={(e) => handleChange(e)}
         value={formData.date_creation}
-        required
       />
       <input
         type="text"
@@ -42,7 +39,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="format"
         onChange={(e) => handleChange(e)}
         value={formData.format}
-        required
       />
       <input
         type="text"
@@ -58,7 +54,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="lien_page_auteur"
         onChange={(e) => handleChange(e)}
         value={formData.lien_page_auteur}
-        required
       />
       <input
         type="text"
@@ -66,7 +61,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="lien_article"
         onChange={(e) => handleChange(e)}
         value={formData.lien_article}
-        required
       />
       <input
         type="text"
@@ -74,7 +68,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="categorie"
         onChange={(e) => handleChange(e)}
         value={formData.categorie}
-        required
       />
       <input
         type="text"
@@ -82,7 +75,6 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
         name="details"
         onChange={(e) => handleChange(e)}
         value={formData.details}
-        required
       />
       <input
         type="text"
@@ -106,7 +98,7 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
           className="ajoutOeuvre-button"
           onClick={handleSubmit}
           type="submit"
-          form="id_form_ajoutOeuvre"
+          form="id_form_modifierOeuvre"
         >
           Modifier
         </button>

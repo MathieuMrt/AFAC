@@ -73,7 +73,6 @@ function AjoutOeuvre() {
                 name="ref_archives"
                 onChange={handleChange}
                 value={formData.ref_archives}
-                required
               />
 
               <input
@@ -90,7 +89,6 @@ function AjoutOeuvre() {
                 name="auteur"
                 onChange={handleChange}
                 value={formData.auteur}
-                required
               />
               <input
                 type="text"
@@ -98,7 +96,6 @@ function AjoutOeuvre() {
                 name="date_creation"
                 onChange={handleChange}
                 value={formData.date_creation}
-                required
               />
               <input
                 type="text"
@@ -106,7 +103,6 @@ function AjoutOeuvre() {
                 name="format"
                 onChange={handleChange}
                 value={formData.format}
-                required
               />
               <input
                 type="text"
@@ -114,7 +110,6 @@ function AjoutOeuvre() {
                 name="technique"
                 onChange={handleChange}
                 value={formData.technique}
-                required
               />
               <input
                 type="text"
@@ -122,7 +117,6 @@ function AjoutOeuvre() {
                 name="lien_page_auteur"
                 onChange={handleChange}
                 value={formData.lien_page_auteur}
-                required
               />
               <input
                 type="text"
@@ -130,7 +124,6 @@ function AjoutOeuvre() {
                 name="lien_article"
                 onChange={handleChange}
                 value={formData.lien_article}
-                required
               />
               <input
                 type="text"
@@ -146,7 +139,6 @@ function AjoutOeuvre() {
                 name="details"
                 onChange={handleChange}
                 value={formData.details}
-                required
               />
               <input
                 type="text"
