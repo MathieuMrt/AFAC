@@ -9,13 +9,18 @@ function Compte() {
   const [password, setPassword] = useState("");
   const { setUser, setIsConnected } = useContext(LoginContext);
   const [errPasswordConexion, setErrPasswordConexion] = useState(false);
+  const [compteConfirmation, setCompteConfirmation] = useState(false);
+  const [emailDejaUtilise, setEmailDejaUtilise] = useState(false);
 
   const closeErrPasswordConexion = () => {
     setErrPasswordConexion(false);
   };
 
+  const closeErrEmailDejaUtilise = () => {
+    setEmailDejaUtilise(false);
+  };
+
   // const navigate = useNavigate();
-  const [compteConfirmation, setCompteConfirmation] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -54,28 +59,8 @@ function Compte() {
     nom: "",
     prenom: "",
   });
-
-  const compteHandleChange = (e) => {
-    setCredentials({
-      ...credentials,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      axios
-        .post("http://localhost:5001/utilisateurs", credentials)
-        .then((res) => console.warn(res));
-    } catch (error) {
-      console.error(error);
-    }
-
-    setCompteConfirmation(!compteConfirmation);
-  };
-
   const compteConfirmationCloseHandler = () => {
-    setCompteConfirmation(!compteConfirmation);
+    setCompteConfirmation(false);
     setCredentials({
       mail: "",
       password: "",
@@ -84,23 +69,31 @@ function Compte() {
     });
   };
 
+  const compteHandleChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios
+      .post("http://localhost:5001/utilisateurs", credentials)
+      .then((res) => {
+        console.warn(res);
+        setCompteConfirmation(true);
+      })
+      .catch((error) => {
+        console.error("Oups il semble qu'il y ait eu un problème", error);
+        setEmailDejaUtilise(true);
+      });
+  };
+
   return (
     <div className="compte">
-      {errPasswordConexion && (
-        <div className="error_message_password">
-          <div className="error_message_password_content">
-            <h4>Oups !</h4>
-            <br />
-            <p>Il semble que votre mot de passe soit incorrect</p>
-            <button type="button" onClick={closeErrPasswordConexion}>
-              {" "}
-              Fermer{" "}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {compteConfirmation && (
+      {!emailDejaUtilise && compteConfirmation && (
         <div className="compteCreationConfirmation">
           <button
             type="button"
@@ -116,6 +109,32 @@ function Compte() {
           </p>
         </div>
       )}
+      {emailDejaUtilise && (
+        <div className="error_message_password">
+          <div className="error_message_password_content">
+            <h4>Oups !</h4>
+            <br />
+            <p>NOOOOOOOOOOOOIl semble cet email soit déjà utilisé !</p>
+            <button type="button" onClick={closeErrEmailDejaUtilise}>
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+
+      {errPasswordConexion && (
+        <div className="error_message_password">
+          <div className="error_message_password_content">
+            <h4>Oups !</h4>
+            <br />
+            <p>Il semble que votre mot de passe soit incorrect</p>
+            <button type="button" onClick={closeErrPasswordConexion}>
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="connectez_vous">
         <h2>Connectez-vous :</h2>
 
