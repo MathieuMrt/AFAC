@@ -69,7 +69,7 @@ function Compte() {
     setCompteConfirmation(!compteConfirmation);
     setCredentials({
       mail: "",
-      mot_de_passe: "",
+      password: "",
       nom: "",
       prenom: "",
     });
@@ -174,8 +174,8 @@ function Compte() {
             id=""
             type="password"
             placeholder="Mot de passe"
-            name="mot_de_passe"
-            value={credentials.mot_de_passe}
+            name="password"
+            value={credentials.password}
             required
             onChange={compteHandleChange}
             minLength="6"

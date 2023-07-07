@@ -37,9 +37,9 @@ const verifyPassword = (req, res) => {
           expiresIn: "1h",
         });
 
-        res.status(200).send({ token, utilisateur: req.utilisateur });
+        return res.status(200).send({ token, utilisateur: req.utilisateur });
       }
-      // return res.status(400).send("wrong password")
+      return res.status(400).send("wrong password");
     })
     .catch((err) => {
       console.error(err);
