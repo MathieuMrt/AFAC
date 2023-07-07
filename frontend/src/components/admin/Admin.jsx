@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
-import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
@@ -14,6 +13,7 @@ function Admin() {
   const [userCurrentId, setUserCurrentId] = useState();
   const [oeuvresNewFetch, setOeuvresNewFetch] = useState(false);
   const [usersNewFetch, setUsersNewFetch] = useState(false);
+  const [adminChecked, setAdminChecked] = useState(false);
 
   useEffect(() => {
     axios
@@ -87,6 +87,7 @@ function Admin() {
   };
 
   const adminCheckboxHandler = (id, estAdmin) => {
+    setAdminChecked(!adminChecked);
     adminChange(id, estAdmin);
   };
 
@@ -231,7 +232,7 @@ function Admin() {
                       {i.nom} {i.prenom}
                     </td>
                     <td className="td-center">
-                      <MdOutlineCheckBoxOutlineBlank />
+                      <input type="checkbox" />
                     </td>
                     <td className="td-center">
                       <input
