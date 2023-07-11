@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import LoginContext from "../../navigation/LoginContext";
 
@@ -9,7 +9,8 @@ function Compte() {
   const [password, setPassword] = useState("");
   const { setUser, setIsConnected } = useContext(LoginContext);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const [compteConfirmation, setCompteConfirmation] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ function Compte() {
         console.warn("TOKEN UTILISATEUR", utilisateur);
         setUser(utilisateur);
         setIsConnected(true);
+        navigate("/galerie");
       })
       .catch((err) => console.error(err));
   };
