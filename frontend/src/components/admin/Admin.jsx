@@ -214,9 +214,6 @@ function Admin() {
               </tr>
               <tr className="admin-tableau-champs">
                 <th className="admin-table-name">Nom de l'utilisateur</th>
-                <th className="admin-table-comment">
-                  Bloquer les commentaires
-                </th>
                 <th>Admin</th>
                 <th>
                   <FaTrashAlt />
@@ -228,11 +225,8 @@ function Admin() {
               {userData.map((i) => {
                 return (
                   <tr key={i.id}>
-                    <td>
+                    <td className="nom_prenom">
                       {i.nom} {i.prenom}
-                    </td>
-                    <td className="td-center">
-                      <input type="checkbox" />
                     </td>
                     <td className="td-center">
                       <input
@@ -257,11 +251,6 @@ function Admin() {
             </tbody>
           </table>
         </section>
-      </div>
-      <div className="admin-button-deconnexion-container">
-        <button type="button" className="admin-button-deconnexion">
-          Déconnexion
-        </button>
       </div>
     </div>
   );
