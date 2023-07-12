@@ -20,7 +20,7 @@ function Router() {
       <Route path="/galerie" element={<Galerie />} />
       <Route path="/galerie/:id" element={<Description />} />
       <Route path="/favoris" element={<Favoris />} />
-      <Route path="/utilisateur" element={<User />} />
+      <Route path="/utilisateur/:id" element={<User />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/ajoutOeuvre" element={<AjoutOeuvre />} />
       <Route path="/oeuvre/admin/:id" element={<ModifierOeuvre />} />

@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FavoriteCard from "../favoriteCard/FavoriteCard";
+import LoginContext from "../../navigation/LoginContext";
 
 function Favoris() {
   const [oeuvreFavorite, setOeuvreFavorite] = useState([]);
+  const { isConnected } = useContext(LoginContext);
 
   useEffect(() => {
-    fetch("http://localhost:5001/oeuvres") // il faudra remplacer cet url par celui de la route getAllFavorites elle sera opérationnelle RL
-      .then((response) => response.json())
-      .then((res) => {
-        console.warn("les oeuvres favorites", res);
-        setOeuvreFavorite(res);
-      })
-      .catch((err) =>
-        console.error("Erreur lors de la récupération des données", err)
-      );
-  }, []);
+    if (isConnected) {
+      fetch("http://localhost:5001/oeuvres") // il faudra remplacer cet url par celui de la route getAllFavorites elle sera opérationnelle RL
+        .then((response) => response.json())
+        .then((res) => {
+          console.warn("les oeuvres favorites", res);
+          setOeuvreFavorite(res);
+        })
+        .catch((err) =>
+          console.error("Erreur lors de la récupération des données", err)
+        );
+    }
+  }, [isConnected]);
 
   return (
     <div>

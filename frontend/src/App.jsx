@@ -13,12 +13,19 @@ function App() {
   //   localStorage.removeItem("token");
   // };
 
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState({
+    nom: "",
+    prenom: "",
+    mail: "",
+    estAdmin: "",
+  });
   const [isConnected, setIsConnected] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const loginContextValue = useMemo(
-    () => ({ user, setUser, isConnected, setIsConnected }),
+    () => ({ user, setUser, isConnected, setIsConnected, isAdmin, setIsAdmin }),
     [user]
   );
+  console.warn("coucou", user);
 
   useEffect(() => {
     function disableRightClick(event) {

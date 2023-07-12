@@ -7,17 +7,22 @@ import LoginContext from "../../navigation/LoginContext";
 
 function SingleCard({ titreResume, titre, categorie, image, id }) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const { isConnected } = useContext(LoginContext);
+  const { user, isConnected } = useContext(LoginContext);
 
-  const handleClick = (req) => {
+  const handleClick = () => {
     setIsFavorite(!isFavorite);
 
-    const userId = req.params.id;
-    const oeuvreId = { id };
+    const userId = user.utilisateur.id;
+    const oeuvreId = id.toString();
 
-    axios
-      .post("http://localhost:5001/utilisateurs/:id/favoris", userId, oeuvreId)
-      .then((response) => console.warn(response /* , userId, oeuvreId */));
+    if (isConnected) {
+      axios
+        .post(`http://localhost:5001/utilisateurs/${userId}/favoris`, {
+          oeuvreId,
+        })
+        .then((response) => console.warn(response))
+        .catch((err) => console.error(err));
+    }
   };
 
   return (

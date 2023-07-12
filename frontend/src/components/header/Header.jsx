@@ -82,6 +82,7 @@ function Header() {
             FAVORIS
           </NavLink>
         )}
+        {/* {user.estAmin && */}
         <NavLink
           to="/admin"
           className={({ isActive }) =>
@@ -90,6 +91,7 @@ function Header() {
         >
           ADMIN
         </NavLink>
+        {/* } */}
       </nav>
     </div>
   );

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
 
 function User() {
@@ -15,7 +15,7 @@ function User() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  // const { id } = useParams();
+  const { id } = useParams();
 
   const handleModifyPasswordClick = () => setModifyButton(!modifyButton);
   const handleModifyEmailClick = () => setModifyEmail(!modifyEmail);
@@ -45,7 +45,7 @@ function User() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/utilisateurs/2`)
+      .get(`http://localhost:5001/utilisateurs/${id}`)
       .then((res) => {
         const result = res.data;
         setNom(result.nom);
@@ -67,7 +67,7 @@ function User() {
     };
 
     axios
-      .put(`http://localhost:5001/utilisateurs/2`, data)
+      .put(`http://localhost:5001/utilisateurs/${id}`, data)
       .then((res) => {
         console.warn(res.data);
       })
@@ -80,7 +80,7 @@ function User() {
     };
 
     axios
-      .put(`http://localhost:5001/utilisateurs/2/password`, data)
+      .put(`http://localhost:5001/utilisateurs/${id}/password`, data)
       .then((res) => {
         console.warn(res.data);
       })
