@@ -85,10 +85,21 @@ function ModifierOeuvre() {
       });
   };
 
+  const modifierReturnHandler = () => {
+    navigate(-1);
+  };
+
   return (
     <ul className="modifierOeuvre">
       {!isOeuvreUpdated && (
         <>
+          <button
+            className="return-button"
+            type="button"
+            onClick={modifierReturnHandler}
+          >
+            Retour
+          </button>
           <li className="modifierOeuvre_title">
             <h2>Modifier une oeuvre</h2>
           </li>

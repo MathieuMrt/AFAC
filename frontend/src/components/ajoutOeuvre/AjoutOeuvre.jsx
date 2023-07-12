@@ -57,11 +57,22 @@ function AjoutOeuvre() {
       });
   };
 
+  const ajoutReturnHandler = () => {
+    navigate(-1);
+  };
+
   return (
     <ul className="ajoutOeuvre">
       {!isOeuvreSended && (
         <>
           <li className="ajoutOeuvre_title">
+            <button
+              className="return-button"
+              type="button"
+              onClick={ajoutReturnHandler}
+            >
+              Retour
+            </button>
             <h2>Ajouter une oeuvre</h2>
           </li>
 

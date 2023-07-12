@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Description() {
   const [details, setDetails] = useState("");
@@ -32,9 +32,21 @@ function Description() {
       handleZoomClick();
     }
   }
+  const navigate = useNavigate();
+
+  const descriptionReturnHandler = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="description">
+      <button
+        className="return-button"
+        type="button"
+        onClick={descriptionReturnHandler}
+      >
+        Retour
+      </button>
       <div className="description_oeuvre">
         <button
           type="button"
