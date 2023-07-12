@@ -28,7 +28,6 @@ function ModifierOeuvre() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((response) => response.json())
       .then((res) => {
-        console.warn("Artoung", res);
         setFormData({
           ref_archives: res.ref_archives,
           titre: res.titre,
@@ -85,10 +84,21 @@ function ModifierOeuvre() {
       });
   };
 
+  const modifierReturnHandler = () => {
+    navigate(-1);
+  };
+
   return (
     <ul className="modifierOeuvre">
       {!isOeuvreUpdated && (
         <>
+          <button
+            className="return-button"
+            type="button"
+            onClick={modifierReturnHandler}
+          >
+            Retour
+          </button>
           <li className="modifierOeuvre_title">
             <h2>Modifier une oeuvre</h2>
           </li>
