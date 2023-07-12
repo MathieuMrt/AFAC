@@ -12,17 +12,24 @@ function SingleCard({ titreResume, titre, categorie, image, id }) {
   const handleClick = () => {
     setIsFavorite(!isFavorite);
 
-    const userId = user.utilisateur.id;
-    const oeuvreId = id.toString();
+    const userId = user.id;
+    console.warn("USER ID", userId);
+    const oeuvreId = id;
+    console.warn("OEUVRE ID", localStorage.getItem("token"));
 
-    if (isConnected) {
-      axios
-        .post(`http://localhost:5001/utilisateurs/${userId}/favoris`, {
-          oeuvreId,
-        })
-        .then((response) => console.warn(response))
-        .catch((err) => console.error(err));
-    }
+    axios
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${userId}/favoris`,
+        { oeuvreId },
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
+      .then((response) => console.warn(response));
   };
 
   return (

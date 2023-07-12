@@ -42,13 +42,13 @@ function Apropos() {
         </p>
         <br />
         <p>
-          Mentions légales : Les images visibles sur le site ne sont pas libre
+          Mentions légales : Les images visibles sur le site ne sont pas libres
           de droit.
         </p>
       </article>
 
       <article className="apropos-partenaires">
-        <h4>Nos partenaires: </h4>
+        <h4>Nos partenaires : </h4>
 
         <div className="apropos-partenaires-logo-container">
           <a

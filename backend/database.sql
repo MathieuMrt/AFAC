@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
     `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(45) NOT NULL,
     `prenom` VARCHAR(45) NOT NULL,
-
     `mail` VARCHAR(45) NOT NULL UNIQUE,
     `hashedPassword` VARCHAR(200) NOT NULL,
     `estAdmin` TINYINT DEFAULT 0,   

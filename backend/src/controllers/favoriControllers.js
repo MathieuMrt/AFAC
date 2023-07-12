@@ -16,11 +16,12 @@ const getFavoritesByUser = (req, res) => {
 
 const add = (req, res) => {
   const favori = req.body;
+  const userId = req.params.id;
 
   // TODO validations (length, format...)
 
   models.favori
-    .insert(favori)
+    .insert(userId, favori)
     .then(([result]) => {
       res.location(`/favori/${result.insertId}`).sendStatus(201);
     })

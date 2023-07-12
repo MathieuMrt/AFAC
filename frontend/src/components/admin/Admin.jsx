@@ -17,7 +17,7 @@ function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/utilisateurs")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs`)
       .then((res) => {
         setUserData(res.data);
       })
@@ -27,7 +27,7 @@ function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/oeuvres")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`)
       .then((res) => {
         setOeuvresData(res.data);
       })
@@ -48,7 +48,7 @@ function Admin() {
   const validateDeleteOeuvreHandler = () => {
     const id = OeuvreCurrentId;
     axios
-      .delete(`http://localhost:5001/oeuvres/${id}`)
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
 
@@ -59,7 +59,7 @@ function Admin() {
   const validateDeleteUserHandler = () => {
     const id = userCurrentId;
     axios
-      .delete(`http://localhost:5001/utilisateurs/${id}`)
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${id}`)
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
 
@@ -70,14 +70,14 @@ function Admin() {
   const adminChange = (id, estAdmin) => {
     if (estAdmin === 0 || estAdmin === null) {
       axios
-        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+        .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/admin/${id}`, {
           estAdmin: 1,
         })
         .then((res) => console.warn(res))
         .catch((err) => console.error(err));
     } else {
       axios
-        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+        .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/admin/${id}`, {
           estAdmin: 0,
         })
         .then((res) => console.warn(res))
@@ -214,9 +214,6 @@ function Admin() {
               </tr>
               <tr className="admin-tableau-champs">
                 <th className="admin-table-name">Nom de l'utilisateur</th>
-                <th className="admin-table-comment">
-                  Bloquer les commentaires
-                </th>
                 <th>Admin</th>
                 <th>
                   <FaTrashAlt />
@@ -228,11 +225,8 @@ function Admin() {
               {userData.map((i) => {
                 return (
                   <tr key={i.id}>
-                    <td>
+                    <td className="nom_prenom">
                       {i.nom} {i.prenom}
-                    </td>
-                    <td className="td-center">
-                      <input type="checkbox" />
                     </td>
                     <td className="td-center">
                       <input
@@ -257,11 +251,6 @@ function Admin() {
             </tbody>
           </table>
         </section>
-      </div>
-      <div className="admin-button-deconnexion-container">
-        <button type="button" className="admin-button-deconnexion">
-          Déconnexion
-        </button>
       </div>
     </div>
   );

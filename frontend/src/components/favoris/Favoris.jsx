@@ -4,21 +4,28 @@ import LoginContext from "../../navigation/LoginContext";
 
 function Favoris() {
   const [oeuvreFavorite, setOeuvreFavorite] = useState([]);
-  const { isConnected } = useContext(LoginContext);
+  const { user } = useContext(LoginContext);
 
   useEffect(() => {
-    if (isConnected) {
-      fetch("http://localhost:5001/oeuvres") // il faudra remplacer cet url par celui de la route getAllFavorites elle sera opérationnelle RL
-        .then((response) => response.json())
-        .then((res) => {
-          console.warn("les oeuvres favorites", res);
-          setOeuvreFavorite(res);
-        })
-        .catch((err) =>
-          console.error("Erreur lors de la récupération des données", err)
-        );
-    }
-  }, [isConnected]);
+    const userId = user.id;
+
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${userId}/favoris`,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        console.warn("les oeuvres favorites", res);
+        setOeuvreFavorite(res);
+      })
+      .catch((err) =>
+        console.error("Erreur lors de la récupération des données", err)
+      );
+  }, []);
 
   return (
     <div>
