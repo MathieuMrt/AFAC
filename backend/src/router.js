@@ -31,9 +31,10 @@ router.post(
   "/login",
   utilisateurControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
-);
+); // connection
+/// middleware au milieu ?
 
-router.post("/utilisateurs", hashPassword, utilisateurControllers.postUser); // OK
+router.post("/utilisateurs", hashPassword, utilisateurControllers.postUser); // Inscription
 
 router.get(
   "/utilisateurs/:id/favoris",
