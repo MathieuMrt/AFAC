@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import LoginContext from "../../navigation/LoginContext";
 
@@ -20,7 +20,10 @@ function Compte() {
     setEmailDejaUtilise(false);
   };
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const [compteConfirmation, setCompteConfirmation] = useState(false);
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -46,6 +49,7 @@ function Compte() {
         setUser(utilisateur);
         setIsConnected(true);
         console.warn("token validé ");
+        navigate("/galerie");
       })
       .catch((err) => {
         console.error("mot de passe ou ident incorrect", err);

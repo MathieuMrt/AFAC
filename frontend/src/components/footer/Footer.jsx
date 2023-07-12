@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import AFAC from "../../assets/img/footer/logo_afac.png";
 import IHOI from "../../assets/img/footer/logo_ihoi.jpg";
 import OBJET_TEMOIN from "../../assets/img/footer/logo_objet_temoin.png";
@@ -16,9 +17,11 @@ function Footer() {
           © Wild Code School.
         </a>
       </section>
-      <section className="footer-logo-afac">
-        <img src={AFAC} alt="logo AFAC" />
-      </section>
+      <NavLink to="/">
+        <section className="footer-logo-afac">
+          <img src={AFAC} alt="logo AFAC" />
+        </section>
+      </NavLink>
       <section className="footer-partenaires">
         <h4>Nos Partenaires: </h4>
         <a
