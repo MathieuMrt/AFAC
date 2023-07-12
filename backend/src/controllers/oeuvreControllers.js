@@ -54,6 +54,7 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const oeuvre = req.body;
+  oeuvre.img = process.env.BACKEND_IMAGE_URL + req.fname;
 
   // TODO validations (length, format...)
 
