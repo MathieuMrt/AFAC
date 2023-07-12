@@ -16,7 +16,6 @@
 
 .admin-tableau-container {
   width: 90%;
-
   margin: 0 auto;
   color: black;
   flex-direction: column;
@@ -26,11 +25,15 @@
 
   .admin-navlink {
     color: black;
+    opacity: 50%;
+    &:hover {
+      opacity: 100%;
+    }
   }
 
   table {
     width: 100%;
-    border-collapse: collapse;
+    // border-collapse: collapse;
   }
 
   tbody {
@@ -48,12 +51,13 @@
 }
 
 .admin-tableau-title {
-  padding: 3%;
-  font-weight: 300;
+  padding: 30px;
+  font-weight: 600;
 }
 
 .admin-tableau-champs {
   background: rgba(255, 255, 255, 0.46);
+  height: 40px;
 
   .admin-table-comment {
     max-width: 70px;
@@ -126,8 +130,10 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+    opacity: 50%;
     &:hover {
       opacity: 0.6;
+      opacity: 100%;
     }
   }
 }

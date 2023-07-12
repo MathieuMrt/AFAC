@@ -18,8 +18,9 @@
   padding: 4%;
 
   animation-name: articleAnimation;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
 
   @keyframes articleAnimation {
     0% {

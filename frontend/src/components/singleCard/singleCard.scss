@@ -1,32 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 .singleCard {
   display: flex;
   position: relative;
-  max-width: 399px;
-  justify-content: flex-start;
+  width: 399px;
+  justify-content: space-around;
   align-items: center;
   background-color: rgba(164, 160, 160, 0.4);
   max-height: 258px;
   min-height: 258px;
-  border-radius: 20px;
+  border-radius: 5px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.3s;
 
   .icon-container {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 4%;
+    right: 3%;
+    color: #ffffff;
 
     .heart-not-fav {
       color: #ffffffaf;
       font-size: 20px;
+
       &:hover {
         transform: scale(1.2);
         background-position: -60px;
         cursor: pointer;
       }
+
       &:active {
         transform: scale(1.4);
         background-position: 500px;
@@ -36,15 +39,30 @@
     .heart-fav {
       color: #ffffff;
       font-size: 20px;
+
       &:hover {
         transform: scale(1.2);
         background-position: -60px;
         cursor: pointer;
       }
+
       &:active {
         transform: scale(1.4);
         background-position: 500px;
       }
+    }
+  }
+
+  .info-container {
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-family: Montserrat;
+
+    .titre-carte {
+      font-family: Montserrat, sans-serif;
+      font-size: 1.1em;
+      font-weight: 700;
     }
   }
 }
@@ -75,14 +93,18 @@
   .bouton-plus-info {
     text-decoration: none;
     color: #ffffff;
-    background-color: var(--red);
+    background-color: var(--dark-purple);
     padding: 8px;
     border-radius: 5px;
-    width: 60%;
+    width: fit-content;
+    font-weight: 500;
     font-size: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    &:hover {
+      background-color: #d17ab7;
+      transition: 0.2s;
+    }
   }
 }
 

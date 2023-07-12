@@ -47,22 +47,36 @@
   .description_details_oeuvre {
     display: flex;
     flex-direction: column;
-    gap: 50px;
     justify-content: space-around;
     align-items: center;
     width: 80%;
-    padding: 10px 0 10px 0;
+    padding: 30px;
+    gap: 30px;
     margin-bottom: 50px;
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #3e5b69;
+    font-family: Montserrat;
+    color: #ffffff;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .description-auteur-link {
+      color: var(--light-purple);
+      text-decoration: none;
+      font-weight: 500;
+      &:hover {
+        color: #d17ab7;
+      }
+    }
 
     .description_title {
       display: flex;
       justify-content: center;
       width: 80%;
       text-align: center;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 2.5em;
     }
 
     .description_descriptif {
@@ -82,9 +96,12 @@
       width: 100%;
       flex-wrap: wrap;
 
-      span {
+      .description-infos-style {
         font-weight: bold;
-        text-decoration: underline;
+        background-color: #ffffff33;
+        width: fit-content;
+        padding: 6px;
+        border-radius: 3px;
       }
     }
   }

@@ -66,29 +66,38 @@ function Description() {
         <div className="description_informations">
           {details.format && (
             <p>
-              <span>Format:</span> {details.format} cm
+              <span className="description-infos-style">Format:</span>{" "}
+              {details.format} cm
             </p>
           )}
           {details.date_creation && (
             <p>
-              <span>Date de creation:</span> {details.date_creation}
+              <span className="description-infos-style">Date de creation:</span>{" "}
+              {details.date_creation}
             </p>
           )}
           {details.technique && (
             <p>
-              <span>Technique:</span> {details.technique}
+              <span className="description-infos-style">Technique:</span>{" "}
+              {details.technique}
             </p>
           )}
           {details.auteur && (
             <p>
-              <span>Auteur:</span> {details.auteur}
+              <span className="description-infos-style">Auteur:</span>{" "}
+              {details.auteur}
             </p>
           )}
           {details.lien_article && (
             <a href={details.lien_article}>Lien de l'oeuvre</a>
           )}
           {details.lien_page_auteur && (
-            <a href={details.lien_page_auteur}>Page de l'auteur</a>
+            <a
+              className="description-auteur-link"
+              href={details.lien_page_auteur}
+            >
+              Page de l'auteur
+            </a>
           )}
         </div>
       </div>

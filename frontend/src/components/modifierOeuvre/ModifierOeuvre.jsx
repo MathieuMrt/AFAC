@@ -28,7 +28,6 @@ function ModifierOeuvre() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((response) => response.json())
       .then((res) => {
-        console.warn("Artoung", res);
         setFormData({
           ref_archives: res.ref_archives,
           titre: res.titre,
