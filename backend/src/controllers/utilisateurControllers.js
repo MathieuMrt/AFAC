@@ -26,8 +26,11 @@ const postUser = (req, res) => {
       res.location(`/utilisateurs/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
+      console.error(err.code);
+      if (err.code === "ER_DUP_ENTRY") {
+        return res.status(400).send("email error");
+      }
+      return res.sendStatus(500, "Internal Error");
     });
 };
 
