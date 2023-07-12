@@ -7,7 +7,19 @@ function Compte() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser, setIsConnected } = useContext(LoginContext);
+  const [errPasswordConexion, setErrPasswordConexion] = useState(false);
   const [compteConfirmation, setCompteConfirmation] = useState(false);
+  const [emailDejaUtilise, setEmailDejaUtilise] = useState(false);
+
+  const closeErrPasswordConexion = () => {
+    setErrPasswordConexion(false);
+  };
+
+  const closeErrEmailDejaUtilise = () => {
+    setEmailDejaUtilise(false);
+  };
+
+  const navigate = useNavigate();
 
   const handleConnexion = (e) => {
     e.preventDefault();
@@ -23,8 +35,13 @@ function Compte() {
         console.warn("TOKEN UTILISATEUR", utilisateur.utilisateur);
         setUser(utilisateur.utilisateur);
         setIsConnected(true);
+        console.warn("token validé ");
+        navigate("/galerie");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error("mot de passe ou ident incorrect", err);
+        setErrPasswordConexion(true);
+      });
   };
 
   const [credentials, setCredentials] = useState({
@@ -34,27 +51,8 @@ function Compte() {
     prenom: "",
   });
 
-  const compteHandleChange = (e) => {
-    setCredentials({
-      ...credentials,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      axios
-        .post("http://localhost:5001/utilisateurs", credentials)
-        .then((res) => console.warn(res));
-    } catch (error) {
-      console.error(error);
-    }
-
-    setCompteConfirmation(!compteConfirmation);
-  };
-
   const compteConfirmationCloseHandler = () => {
-    setCompteConfirmation(!compteConfirmation);
+    setCompteConfirmation(false);
     setCredentials({
       mail: "",
       password: "",
@@ -63,20 +61,88 @@ function Compte() {
     });
   };
 
+  const compteHandleChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs`, credentials)
+      .then((res) => {
+        console.warn(res);
+        setCompteConfirmation(true);
+      })
+      .catch((error) => {
+        console.warn(error);
+        if (error.response.data === "email error") {
+          setEmailDejaUtilise(true);
+        }
+      });
+  };
+
   return (
     <div className="compte">
-      {compteConfirmation && (
+      {!emailDejaUtilise && compteConfirmation && (
         <div className="compteCreationConfirmation">
-          <button
-            type="button"
-            className="compteConfirmationClose"
-            onClick={compteConfirmationCloseHandler}
-          >
-            X
-          </button>
-          <h4>Votre compte a bien été enregistré !</h4>
+          <div className="compteCreationConfirmation_content">
+            <button
+              type="button"
+              className="compteConfirmationClose"
+              onClick={compteConfirmationCloseHandler}
+            >
+              X
+            </button>
+            <h4>Votre compte a bien été enregistré !</h4>
+            <p>
+              Vous pouvez à présent ajouter des oeuvres à vos favoris, et aussi
+              laisser des commentaires !
+            </p>
+          </div>
         </div>
       )}
+      {emailDejaUtilise && (
+        <div className="error_message_password">
+          <div className="error_message_password_content">
+            <h4>Oups !</h4>
+            <br />
+            <p>Cet email est déjà utilisé !</p>
+            <br />
+            <button
+              className="buttonpopup_compte"
+              type="button"
+              onClick={closeErrEmailDejaUtilise}
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+
+      {errPasswordConexion && (
+        <div className="error_message_password">
+          <div className="error_message_password_content">
+            <h4>Oups !</h4>
+            <br />
+            <p>
+              Il semble que votre mot de passe ou votre identifiant soit
+              incorrect
+            </p>
+            <button
+              className="buttonpopup_compte"
+              type="button"
+              onClick={closeErrPasswordConexion}
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="connectez_vous">
         <h2>Connectez-vous :</h2>
 

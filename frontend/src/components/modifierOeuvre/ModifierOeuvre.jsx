@@ -25,7 +25,7 @@ function ModifierOeuvre() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5001/oeuvres/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((response) => response.json())
       .then((res) => {
         console.warn("Artoung", res);
@@ -68,7 +68,7 @@ function ModifierOeuvre() {
       return;
     }
     axios
-      .put(`http://localhost:5001/oeuvres/${id}`, formData)
+      .put(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`, formData)
       .then((res) => {
         console.warn(res.data);
       })

@@ -36,7 +36,7 @@ function AjoutOeuvre() {
       return;
     }
 
-    fetch("http://localhost:5001/oeuvres", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
