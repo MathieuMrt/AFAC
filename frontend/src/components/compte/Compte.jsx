@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import LoginContext from "../../navigation/LoginContext";
 
@@ -8,18 +7,7 @@ function Compte() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser, setIsConnected } = useContext(LoginContext);
-
-  // const navigate = useNavigate();
   const [compteConfirmation, setCompteConfirmation] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const utilisateur = jwtDecode(token);
-      console.warn("TOKEN UTILISATEUR", utilisateur);
-      setUser(utilisateur);
-    }
-  }, []);
 
   const handleConnexion = (e) => {
     e.preventDefault();
@@ -32,8 +20,8 @@ function Compte() {
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         const utilisateur = jwtDecode(res.data.token);
-        console.warn("TOKEN UTILISATEUR", utilisateur);
-        setUser(utilisateur);
+        console.warn("TOKEN UTILISATEUR", utilisateur.utilisateur);
+        setUser(utilisateur.utilisateur);
         setIsConnected(true);
       })
       .catch((err) => console.error(err));
@@ -115,7 +103,6 @@ function Compte() {
             required
             value={password}
             minLength="6"
-            maxLength="15"
             onChange={(e) => setPassword(e.target.value)}
           />
         </form>

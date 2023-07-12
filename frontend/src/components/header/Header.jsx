@@ -4,10 +4,18 @@ import MenuBurger from "./MenuBurger";
 import LoginContext from "../../navigation/LoginContext";
 
 function Header() {
-  const { setUser, isConnected, setIsConnected } = useContext(LoginContext);
+  const { user, setUser, isConnected, setIsConnected } =
+    useContext(LoginContext);
 
   const handleDisconnect = () => {
-    setUser(undefined);
+    setUser({
+      commentaire_bloque: "",
+      estAdmin: "",
+      id: "",
+      mail: "",
+      nom: "",
+      prenom: "",
+    });
     setIsConnected(false);
     localStorage.removeItem("token");
   };
@@ -82,14 +90,16 @@ function Header() {
             FAVORIS
           </NavLink>
         )}
-        <NavLink
-          to="/admin"
-          className={({ isActive }) =>
-            isActive ? "activeNavlinks" : "navlinks"
-          }
-        >
-          ADMIN
-        </NavLink>
+        {user.estAdmin === 1 && (
+          <NavLink
+            to="/admin"
+            className={({ isActive }) =>
+              isActive ? "activeNavlinks" : "navlinks"
+            }
+          >
+            ADMIN
+          </NavLink>
+        )}
       </nav>
     </div>
   );
