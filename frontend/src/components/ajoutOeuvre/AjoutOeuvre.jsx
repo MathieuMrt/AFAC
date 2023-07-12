@@ -67,90 +67,98 @@ function AjoutOeuvre() {
 
           <li className="ajoutOeuvre_form">
             <form id="id_form_ajoutOeuvre" method="POST">
+              <label htmlFor="ref_archives">Ref_archives </label>
               <input
                 type="text"
-                placeholder="Ref_archives"
                 name="ref_archives"
                 onChange={handleChange}
                 value={formData.ref_archives}
               />
+              <label htmlFor="titre">Titre </label>
 
               <input
                 type="text"
-                placeholder="Titre"
+                placeholder="Champs requis *"
                 name="titre"
                 onChange={handleChange}
                 value={formData.titre}
                 required
               />
+              <label htmlFor="auteur">Auteur </label>
               <input
                 type="text"
-                placeholder="Auteur"
                 name="auteur"
                 onChange={handleChange}
                 value={formData.auteur}
               />
+              <label htmlFor="date_creation">Date de création </label>
               <input
                 type="text"
-                placeholder="Date_creation"
                 name="date_creation"
                 onChange={handleChange}
                 value={formData.date_creation}
               />
+              <label htmlFor="format">Format </label>
               <input
                 type="text"
-                placeholder="Format"
                 name="format"
                 onChange={handleChange}
                 value={formData.format}
               />
+              <label htmlFor="technique">Technique utilisée </label>
               <input
                 type="text"
-                placeholder="Technique"
                 name="technique"
                 onChange={handleChange}
                 value={formData.technique}
               />
+              <label htmlFor="lien_page_auteur">
+                Site internet de l'auteur
+              </label>
               <input
                 type="text"
-                placeholder="Lien_page_auteur"
                 name="lien_page_auteur"
                 onChange={handleChange}
                 value={formData.lien_page_auteur}
               />
+              <label htmlFor="lien_article">Lien de l'article</label>
               <input
                 type="text"
-                placeholder="Lien_article"
                 name="lien_article"
                 onChange={handleChange}
                 value={formData.lien_article}
               />
+              <label htmlFor="categorie">
+                Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
+              </label>
               <input
                 type="text"
-                placeholder="Categorie"
+                placeholder="Champs requis *"
                 name="categorie"
                 onChange={handleChange}
                 value={formData.categorie}
                 required
               />
+              <label htmlFor="details">Détails</label>
               <input
                 type="text"
-                placeholder="Details"
                 name="details"
                 onChange={handleChange}
                 value={formData.details}
               />
+              <label htmlFor="resume">Titre résumé</label>
               <input
                 type="text"
-                placeholder="Resume"
+                placeholder="Champ requis *"
                 name="resume"
                 onChange={handleChange}
                 value={formData.resume}
                 required
               />
+              <label htmlFor="img">Url de l'image</label>
               <input
                 type="text"
-                placeholder="Image"
+                placeholder="Champs requis *"
                 name="img"
                 onChange={handleChange}
                 value={formData.img}
