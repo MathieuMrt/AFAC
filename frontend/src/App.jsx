@@ -28,7 +28,7 @@ function App() {
     const token = localStorage.getItem("token");
     if (token) {
       const utilisateur = jwtDecode(token);
-      console.warn("TOKEN UTILISATEUR", utilisateur.utilisateur);
+      // console.warn("TOKEN UTILISATEUR", utilisateur.utilisateur);
       setUser(utilisateur.utilisateur);
       setIsConnected(true);
     }

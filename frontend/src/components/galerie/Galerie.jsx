@@ -9,7 +9,6 @@ function Galerie() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`)
       .then((response) => response.json())
       .then((res) => {
-        console.warn("La réponse", res);
         setOeuvre(res);
       })
       .catch((err) =>
