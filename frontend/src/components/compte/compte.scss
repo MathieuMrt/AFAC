@@ -19,48 +19,70 @@
     width: 100vw;
 
     .error_message_password_content {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%);
       display: flex;
       flex-direction: column;
+      justify-content: space-around;
       align-items: center;
-      gap: 10px;
-      background-color: #277594;
-      padding: 20px;
+      height: 25vh;
+      background-color: var(--red);
       border-radius: 5px;
-      box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.432);
+      gap: 10px;
+      padding: 40px;
+      color: #ffffff;
+      z-index: 10;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
   }
-
   .compteCreationConfirmation {
     position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(164, 160, 160, 0.4);
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    height: 25vh;
-    background-color: var(--red);
-    border-radius: 5px;
-    gap: 20px;
-    padding: 40px;
-    color: #ffffff;
-    z-index: 10;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    height: 100vh;
+    width: 100vw;
 
-    .compteConfirmationClose {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: fit-content;
-      height: fit-content;
-      font-weight: 600;
-      font-size: 20px;
+    .compteCreationConfirmation_content {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 25vh;
+      background-color: #3e5b69;
+      border-radius: 5px;
+      gap: 10px;
+      padding: 40px;
+      color: #ffffff;
+      z-index: 10;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+      .compteConfirmationClose {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: fit-content;
+        height: fit-content;
+        font-weight: 600;
+        font-size: 20px;
+      }
     }
   }
-
   .connectez_vous {
     display: flex;
     text-align: center;
@@ -100,7 +122,23 @@
     padding: 5px;
     border: none;
   }
-
+  .buttonpopup_compte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12vw;
+    height: 5vh;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(217, 217, 217, 0.3);
+    font-size: clamp(0.7em, 1.5vw, 2em);
+    &:hover {
+      background-color: #bc627a;
+    }
+  }
   button {
     display: flex;
     justify-content: center;

@@ -48,7 +48,7 @@ function Compte() {
         console.warn("token validé ");
       })
       .catch((err) => {
-        console.error("mot de passe incorrect", err);
+        console.error("mot de passe ou ident incorrect", err);
         setErrPasswordConexion(true);
       });
   };
@@ -59,6 +59,7 @@ function Compte() {
     nom: "",
     prenom: "",
   });
+
   const compteConfirmationCloseHandler = () => {
     setCompteConfirmation(false);
     setCredentials({
@@ -86,8 +87,10 @@ function Compte() {
         setCompteConfirmation(true);
       })
       .catch((error) => {
-        console.error("Oups il semble qu'il y ait eu un problème", error);
-        setEmailDejaUtilise(true);
+        console.warn(error);
+        if (error.response.data === "email error") {
+          setEmailDejaUtilise(true);
+        }
       });
   };
 
@@ -95,18 +98,20 @@ function Compte() {
     <div className="compte">
       {!emailDejaUtilise && compteConfirmation && (
         <div className="compteCreationConfirmation">
-          <button
-            type="button"
-            className="compteConfirmationClose"
-            onClick={compteConfirmationCloseHandler}
-          >
-            X
-          </button>
-          <h4>Votre compte a bien été enregistré !</h4>
-          <p>
-            Vous pouvez à présent ajouter des oeuvres à vos favoris, et aussi
-            laisser des commentaires !
-          </p>
+          <div className="compteCreationConfirmation_content">
+            <button
+              type="button"
+              className="compteConfirmationClose"
+              onClick={compteConfirmationCloseHandler}
+            >
+              X
+            </button>
+            <h4>Votre compte a bien été enregistré !</h4>
+            <p>
+              Vous pouvez à présent ajouter des oeuvres à vos favoris, et aussi
+              laisser des commentaires !
+            </p>
+          </div>
         </div>
       )}
       {emailDejaUtilise && (
@@ -114,8 +119,13 @@ function Compte() {
           <div className="error_message_password_content">
             <h4>Oups !</h4>
             <br />
-            <p>NOOOOOOOOOOOOIl semble cet email soit déjà utilisé !</p>
-            <button type="button" onClick={closeErrEmailDejaUtilise}>
+            <p>Cet email est déjà utilisé !</p>
+            <br />
+            <button
+              className="buttonpopup_compte"
+              type="button"
+              onClick={closeErrEmailDejaUtilise}
+            >
               Fermer
             </button>
           </div>
@@ -127,8 +137,15 @@ function Compte() {
           <div className="error_message_password_content">
             <h4>Oups !</h4>
             <br />
-            <p>Il semble que votre mot de passe soit incorrect</p>
-            <button type="button" onClick={closeErrPasswordConexion}>
+            <p>
+              Il semble que votre mot de passe ou votre identifiant soit
+              incorrect
+            </p>
+            <button
+              className="buttonpopup_compte"
+              type="button"
+              onClick={closeErrPasswordConexion}
+            >
               Fermer
             </button>
           </div>
