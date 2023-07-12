@@ -14,11 +14,11 @@ class FavorisManager extends AbstractManager {
     );
   }
 
-  insert(favori) {
+  insert(id, favori) {
     return this.database.query(
       `insert into ${this.table} 
       (oeuvres_id, utilisateur_id) values (?, ?)`,
-      [favori.oeuvres_id, favori.utilisateur_id]
+      [favori.oeuvreId, id]
     );
   }
 }

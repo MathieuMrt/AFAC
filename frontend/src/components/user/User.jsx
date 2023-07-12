@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
 
 function User() {
@@ -15,7 +15,7 @@ function User() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  // const { id } = useParams();
+  const { id } = useParams();
 
   const handleModifyPasswordClick = () => setModifyButton(!modifyButton);
   const handleModifyEmailClick = () => setModifyEmail(!modifyEmail);
@@ -45,7 +45,7 @@ function User() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/2`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${id}`)
       .then((res) => {
         const result = res.data;
         setNom(result.nom);
