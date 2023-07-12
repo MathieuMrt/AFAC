@@ -8,7 +8,7 @@ function Description() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5001/oeuvres/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((response) => response.json())
       .then((res) => {
         console.warn("Artoung Bicyclette", res);

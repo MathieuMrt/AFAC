@@ -16,7 +16,11 @@ function SingleCard({ titreResume, titre, categorie, image, id }) {
     const oeuvreId = { id };
 
     axios
-      .post("http://localhost:5001/utilisateurs/:id/favoris", userId, oeuvreId)
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/:id/favoris`,
+        userId,
+        oeuvreId
+      )
       .then((response) => console.warn(response /* , userId, oeuvreId */));
   };
 

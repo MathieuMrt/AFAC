@@ -58,7 +58,7 @@ function Compte() {
     event.preventDefault();
     try {
       axios
-        .post("http://localhost:5001/utilisateurs", credentials)
+        .post(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs`, credentials)
         .then((res) => console.warn(res));
     } catch (error) {
       console.error(error);

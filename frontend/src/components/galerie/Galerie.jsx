@@ -6,7 +6,7 @@ function Galerie() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5001/oeuvres")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`)
       .then((response) => response.json())
       .then((res) => {
         console.warn("La réponse", res);

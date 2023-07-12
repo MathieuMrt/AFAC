@@ -45,7 +45,7 @@ function User() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/utilisateurs/2`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/2`)
       .then((res) => {
         const result = res.data;
         setNom(result.nom);
@@ -67,7 +67,7 @@ function User() {
     };
 
     axios
-      .put(`http://localhost:5001/utilisateurs/2`, data)
+      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/2`, data)
       .then((res) => {
         console.warn(res.data);
       })
@@ -80,7 +80,7 @@ function User() {
     };
 
     axios
-      .put(`http://localhost:5001/utilisateurs/2/password`, data)
+      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/2/password`, data)
       .then((res) => {
         console.warn(res.data);
       })
