@@ -17,7 +17,7 @@ function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/utilisateurs")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs`)
       .then((res) => {
         setUserData(res.data);
       })
@@ -27,7 +27,7 @@ function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/oeuvres")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`)
       .then((res) => {
         setOeuvresData(res.data);
       })
@@ -48,7 +48,7 @@ function Admin() {
   const validateDeleteOeuvreHandler = () => {
     const id = OeuvreCurrentId;
     axios
-      .delete(`http://localhost:5001/oeuvres/${id}`)
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
 
@@ -59,7 +59,7 @@ function Admin() {
   const validateDeleteUserHandler = () => {
     const id = userCurrentId;
     axios
-      .delete(`http://localhost:5001/utilisateurs/${id}`)
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${id}`)
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
 
@@ -70,14 +70,14 @@ function Admin() {
   const adminChange = (id, estAdmin) => {
     if (estAdmin === 0 || estAdmin === null) {
       axios
-        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+        .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/admin/${id}`, {
           estAdmin: 1,
         })
         .then((res) => console.warn(res))
         .catch((err) => console.error(err));
     } else {
       axios
-        .put(`http://localhost:5001/utilisateurs/admin/${id}`, {
+        .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/admin/${id}`, {
           estAdmin: 0,
         })
         .then((res) => console.warn(res))

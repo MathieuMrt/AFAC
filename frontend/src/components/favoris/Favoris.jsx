@@ -5,7 +5,7 @@ function Favoris() {
   const [oeuvreFavorite, setOeuvreFavorite] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/oeuvres") // il faudra remplacer cet url par celui de la route getAllFavorites elle sera opérationnelle RL
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`) // il faudra remplacer cet url par celui de la route getAllFavorites elle sera opérationnelle RL
       .then((response) => response.json())
       .then((res) => {
         console.warn("les oeuvres favorites", res);

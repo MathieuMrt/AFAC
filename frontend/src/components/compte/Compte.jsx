@@ -81,6 +81,17 @@ function Compte() {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs`, credentials)
+        .then((res) => console.warn(res));
+    } catch (error) {
+      console.error(error);
+    }
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
