@@ -146,7 +146,7 @@ function Admin() {
             <thead>
               <tr>
                 <th className="admin-tableau-title" colSpan="5">
-                  Liste des OEUVRES
+                  OEUVRES
                 </th>
               </tr>
               <tr className="admin-tableau-champs">
@@ -209,7 +209,7 @@ function Admin() {
             <thead>
               <tr>
                 <th className="admin-tableau-title" colSpan="4">
-                  Liste des UTILISATEURS
+                  UTILISATEURS
                 </th>
               </tr>
               <tr className="admin-tableau-champs">

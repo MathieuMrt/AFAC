@@ -23,6 +23,7 @@ function App() {
     nom: "",
     prenom: "",
   });
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,9 +36,10 @@ function App() {
   }, []);
 
   const loginContextValue = useMemo(
-    () => ({ user, setUser, isConnected, setIsConnected }),
+    () => ({ user, setUser, isConnected, setIsConnected, isAdmin, setIsAdmin }),
     [user]
   );
+  console.warn("coucou", user);
 
   useEffect(() => {
     function disableRightClick(event) {

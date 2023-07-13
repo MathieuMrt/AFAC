@@ -7,21 +7,29 @@ import LoginContext from "../../navigation/LoginContext";
 
 function SingleCard({ titreResume, titre, categorie, image, id }) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const { isConnected } = useContext(LoginContext);
+  const { user, isConnected } = useContext(LoginContext);
 
-  const handleClick = (req) => {
+  const handleClick = () => {
     setIsFavorite(!isFavorite);
 
-    const userId = req.params.id;
-    const oeuvreId = { id };
+    const userId = user.id;
+    console.warn("USER ID", userId);
+    const oeuvreId = id;
+    console.warn("OEUVRE ID", localStorage.getItem("token"));
 
     axios
       .post(
-        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/:id/favoris`,
-        userId,
-        oeuvreId
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${userId}/favoris`,
+        { oeuvreId },
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
       )
-      .then((response) => console.warn(response /* , userId, oeuvreId */));
+      .then((response) => console.warn(response));
   };
 
   return (

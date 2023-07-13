@@ -31,7 +31,7 @@ function Router() {
         }
       />
       <Route
-        path="/utilisateur"
+        path="/utilisateur/:id"
         element={
           <Protected>
             <User />

@@ -1,11 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FavoriteCard from "../favoriteCard/FavoriteCard";
+import LoginContext from "../../navigation/LoginContext";
 
 function Favoris() {
   const [oeuvreFavorite, setOeuvreFavorite] = useState([]);
+  const { user } = useContext(LoginContext);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`) // il faudra remplacer cet url par celui de la route getAllFavorites elle sera opérationnelle RL
+    const userId = user.id;
+
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${userId}/favoris`,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((res) => {
         console.warn("les oeuvres favorites", res);

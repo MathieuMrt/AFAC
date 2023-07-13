@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import LoginContext from "../../navigation/LoginContext";
 
 function Accueil() {
+  const { isConnected } = useContext(LoginContext);
   return (
     <div className="acc-container">
       <div className="acc-main-text">
@@ -34,14 +36,19 @@ function Accueil() {
           </div>
         </article>
         <div className="bloc-info-galerie">
-          <div className="bloc-info-container">
-            <h3>Composez votre galerie personnalisée</h3>
-            <img
-              src="src/assets/img/preview-galerie.png"
-              alt="galerie preview"
-            />
-            <h4>Et envoyez vos œuvres favorites à vos proches</h4>
-          </div>
+          <NavLink
+            to={!isConnected ? "/compte" : "/favoris"}
+            className="accueil-navlink"
+          >
+            <div className="bloc-info-container">
+              <h3>Composez votre galerie personnalisée</h3>
+              <img
+                src="src/assets/img/preview-galerie.png"
+                alt="galerie preview"
+              />
+              <h4>Et envoyez vos œuvres favorites à vos proches</h4>
+            </div>
+          </NavLink>
         </div>
       </div>
       <div className="acc-main-text">
