@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuBurger from "./MenuBurger";
 import LoginContext from "../../navigation/LoginContext";
-import RouageIcon from "../../assets/img/header/rouage-icon.png";
+import RouageIcon from "../../assets/img/header/utilisateur-icon.png";
 
 function Header() {
   const [showSettings, setShowSettings] = useState(false);
