@@ -68,15 +68,17 @@ function MenuBurger() {
           </NavLink>
         )}
         {user.estAdmin === 1 && (
-          <NavLink to="/admin" className="mb_connexion">
+          <NavLink to="/admin" className="mb_connexion" onClick={toggleMenu}>
             ADMIN
           </NavLink>
         )}
-        <NavLink to="/compte">
-          <button type="button" className="mb_connexion" onClick={toggleMenu}>
-            Connexion
-          </button>
-        </NavLink>
+        {!isConnected && (
+          <NavLink to="/compte">
+            <button type="button" className="mb_connexion" onClick={toggleMenu}>
+              Connexion
+            </button>
+          </NavLink>
+        )}
       </nav>
     </div>
   );
