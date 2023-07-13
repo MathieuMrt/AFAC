@@ -1,0 +1,21 @@
+.pathError_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Montserrat;
+
+  .pathError {
+    background-color: #3e5b69;
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+    padding: 50px;
+  }
+}
