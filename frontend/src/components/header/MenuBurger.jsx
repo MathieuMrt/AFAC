@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import LoginContext from "../../navigation/LoginContext";
 
 function MenuBurger() {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -7,6 +8,8 @@ function MenuBurger() {
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
   };
+
+  const { user, isConnected } = useContext(LoginContext);
 
   return (
     <div className={`menuBurger ${menuVisible ? "visible" : "hidden"}`}>
@@ -37,6 +40,7 @@ function MenuBurger() {
         >
           ACCUEIL
         </NavLink>
+
         <NavLink
           className="mb_navlinks"
           to="/galerie"
@@ -53,14 +57,21 @@ function MenuBurger() {
         >
           A PROPOS
         </NavLink>
-        <NavLink
-          className="mb_navlinks"
-          to="favoris"
-          onClick={toggleMenu}
-          role="button"
-        >
-          FAVORIS
-        </NavLink>
+        {isConnected && (
+          <NavLink
+            className="mb_navlinks"
+            to="favoris"
+            onClick={toggleMenu}
+            role="button"
+          >
+            FAVORIS
+          </NavLink>
+        )}
+        {user.estAdmin === 1 && (
+          <NavLink to="/admin" className="mb_connexion">
+            ADMIN
+          </NavLink>
+        )}
         <NavLink to="/compte">
           <button type="button" className="mb_connexion" onClick={toggleMenu}>
             Connexion
