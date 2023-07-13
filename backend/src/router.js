@@ -23,7 +23,7 @@ const { hashPassword, verifyPassword, verifyToken } = require("./auth");
 
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
-router.put("/oeuvres/:id", oeuvreControllers.edit);
+router.put("/oeuvres/:id", upload.single("updateFile"), oeuvreControllers.edit);
 router.post("/oeuvres", upload.single("file"), oeuvreControllers.add);
 router.delete("/oeuvres/:id", oeuvreControllers.destroy);
 
