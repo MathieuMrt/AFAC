@@ -82,9 +82,12 @@
       font-size: 1.3rem;
     }
   }
-
-  .connexion {
+  .connexionOn {
     position: absolute;
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    align-items: center;
     width: 150px;
     height: 35px;
     top: 20px;
@@ -95,13 +98,108 @@
     color: white;
     font-weight: bold;
     font-family: Verdana, sans-serif;
-    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .buttonrouage {
+      display: flex;
+      justify-content: flex-start;
+      background-color: transparent;
+      border: none;
+    }
+
+    img {
+      height: 4vh;
+      padding-left: 5px;
+      filter: brightness(0) invert(1);
+      background-color: transparent;
+      color: transparent;
+    }
+    img:hover {
+      scale: 1, 0;
+      transform: translate(-3%, -3%);
+      transition: 0.2s;
+    }
   }
 
-  .connexion:hover {
-    background-color: rgba(255, 255, 255, 0.465);
+  .connexionOn_open {
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    width: 150px;
+    height: 80px;
+    top: 20px;
+    right: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(217, 217, 217, 0.3);
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: Verdana, sans-serif;
+
+    .buttonrouage {
+      height: 100%;
+      display: flex;
+      padding-top: 5px;
+      justify-content: flex-start;
+      background-color: transparent;
+      border: none;
+    }
+
+    img {
+      height: 4vh;
+      padding-left: 5px;
+      filter: brightness(0) invert(1);
+      background-color: transparent;
+      color: transparent;
+    }
+    img:hover {
+      scale: 1, 0;
+      transform: translate(-3%, -3%);
+      transition: 0.2s;
+    }
+
+    .connectionOn_open_div {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      color: white;
+
+      .boutonDeco {
+        cursor: pointer;
+      }
+      .linkProfilConnexion {
+        text-decoration: double;
+        color: white;
+      }
+    }
   }
 }
+
+.connexion {
+  position: absolute;
+  width: 150px;
+  height: 35px;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(217, 217, 217, 0.3);
+  color: white;
+  font-weight: bold;
+  font-family: Verdana, sans-serif;
+  cursor: pointer;
+}
+
+.connexion:hover {
+  background-color: rgba(255, 255, 255, 0.465);
+}
+
 /*________Small device / Menu Burger ________*/
 
 @media screen and (max-width: 718px) {
