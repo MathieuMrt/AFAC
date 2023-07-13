@@ -62,7 +62,7 @@ function Header() {
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">{user.prenom}</div>
-          <NavLink className="linkProfilConnexion" to="/utilisateur">
+          <NavLink className="linkProfilConnexion" to="/utilisateur/:id">
             <h5>Profil</h5>
           </NavLink>
           <h5
