@@ -182,8 +182,10 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="details"
+                placeholder="Champs requis *"
                 onChange={handleChange}
                 value={formData.details}
+                required
               />
               <label htmlFor="resume">Titre résumé</label>
               <input

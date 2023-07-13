@@ -5,6 +5,11 @@ import ModifierOeuvreForm from "./ModifierOeuvreForm";
 
 function ModifierOeuvre() {
   const [isOeuvreUpdated, setIsOeuvreUpdated] = useState(false);
+  const [image, setImage] = useState("");
+  const [imageFile, setFile] = useState();
+  const getImage = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const [formData, setFormData] = useState({
     ref_archives: "",
@@ -32,7 +37,7 @@ function ModifierOeuvre() {
           ref_archives: res.ref_archives,
           titre: res.titre,
           auteur: res.auteur,
-          img: res.img,
+          /* img: res.img, */
           date_creation: res.date_creation,
           format: res.format,
           technique: res.technique,
@@ -66,11 +71,32 @@ function ModifierOeuvre() {
       // Afficher les erreurs ou effectuer une action appropriée
       return;
     }
-    axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`, formData)
-      .then((res) => {
-        console.warn(res.data);
+
+    const newData = new FormData(); // create new form object
+    newData.append("ref_archives", formData.ref_archives);
+    newData.append("titre", formData.titre);
+    newData.append("auteur", formData.auteur);
+    newData.append("date_creation", formData.date_creation);
+    newData.append("format", formData.format);
+    newData.append("technique", formData.technique);
+    newData.append("lien_page_auteur", formData.lien_page_auteur);
+    newData.append("lien_article", formData.lien_article);
+    newData.append("categorie", formData.categorie);
+    newData.append("details", formData.details);
+    newData.append("resume", formData.resume);
+    //
+    newData.append("updateFile", imageFile);
+
+    axios({
+      method: "put",
+      url: `${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`,
+      data: newData, // send image to server
+    })
+      .then((response) => {
+        const { data } = response; // return image url of uploaded img
+        setImage(data.url); // set url to image variable
       })
+
       .then(() => {
         setIsOeuvreUpdated(true);
 
@@ -109,6 +135,8 @@ function ModifierOeuvre() {
               handleSubmit={handleSubmit}
               formData={formData}
               setFormData={setFormData}
+              getImage={getImage}
+              image={image}
             />
           </li>
         </>
