@@ -157,6 +157,7 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="lien_page_auteur"
+                placeholder="https://www."
                 onChange={handleChange}
                 value={formData.lien_page_auteur}
               />
@@ -164,6 +165,7 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="lien_article"
+                placeholder="https://www."
                 onChange={handleChange}
                 value={formData.lien_article}
               />
