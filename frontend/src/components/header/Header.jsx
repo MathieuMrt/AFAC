@@ -26,6 +26,10 @@ function Header() {
     setShowSettings(!showSettings);
   };
 
+  const toggleParametresClose = () => {
+    setShowSettings(!showSettings);
+  };
+
   function connect() {
     if (!isConnected) {
       return (
@@ -50,6 +54,7 @@ function Header() {
         </div>
       );
     }
+
     return (
       <div className="connexionOn_open">
         <button
@@ -61,7 +66,11 @@ function Header() {
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">{user.prenom}</div>
-          <NavLink className="linkProfilConnexion" to="/utilisateur/:id">
+          <NavLink
+            className="linkProfilConnexion"
+            to="/utilisateur/:id"
+            onClick={toggleParametresClose}
+          >
             <h5>Profil</h5>
           </NavLink>
           <h5
