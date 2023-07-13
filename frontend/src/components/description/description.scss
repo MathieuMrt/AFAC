@@ -11,13 +11,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 550px;
     width: 100%;
     margin: 20px 0 20px 0;
+    gap: 5px;
 
     button {
       height: 100%;
       border: none;
+      cursor: pointer;
     }
 
     img {
@@ -41,6 +44,10 @@
       transition: transform 0.3s ease-in-out;
       object-fit: contain;
       background-color: black;
+    }
+
+    h5 {
+      color: white;
     }
   }
 
