@@ -60,7 +60,7 @@ function ModifierOeuvreForm({
       <label htmlFor="lien_page_auteur">Site internet de l'auteur</label>
       <input
         type="text"
-        placeholder="Lien_page_auteur"
+        placeholder="https://www."
         name="lien_page_auteur"
         onChange={(e) => handleChange(e)}
         value={formData.lien_page_auteur}
@@ -68,7 +68,7 @@ function ModifierOeuvreForm({
       <label htmlFor="lien_article">Lien de l'article</label>
       <input
         type="text"
-        placeholder="Lien_article"
+        placeholder="https://www."
         name="lien_article"
         onChange={(e) => handleChange(e)}
         value={formData.lien_article}

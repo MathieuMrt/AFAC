@@ -11,7 +11,6 @@ function Header() {
 
   const handleDisconnect = () => {
     setUser({
-      commentaire_bloque: "",
       estAdmin: "",
       id: "",
       mail: "",
