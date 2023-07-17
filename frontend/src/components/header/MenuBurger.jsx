@@ -1,15 +1,34 @@
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import LoginContext from "../../navigation/LoginContext";
 
 function MenuBurger() {
-  const [menuVisible, setMenuVisible] = useState(false);
+  const { user, isConnected } = useContext(LoginContext);
 
+  const [menuVisible, setMenuVisible] = useState(false); // Menu Burger
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
   };
 
+  const menuRef = useRef(null);
+  useEffect(() => {
+    const handleClickAway = (event) => {
+      // fermer MB si click en dehors
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuVisible(false);
+      }
+    };
+    document.addEventListener("click", handleClickAway);
+    return () => {
+      document.removeEventListener("click", handleClickAway);
+    };
+  }, []);
+
   return (
-    <div className={`menuBurger ${menuVisible ? "visible" : "hidden"}`}>
+    <div
+      className={`menuBurger ${menuVisible ? "visible" : "hidden"}`}
+      ref={menuRef}
+    >
       <div className="mb_container">
         <button
           className={`mb_burger ${
@@ -37,6 +56,7 @@ function MenuBurger() {
         >
           ACCUEIL
         </NavLink>
+
         <NavLink
           className="mb_navlinks"
           to="/galerie"
@@ -53,19 +73,28 @@ function MenuBurger() {
         >
           A PROPOS
         </NavLink>
-        <NavLink
-          className="mb_navlinks"
-          to="favoris"
-          onClick={toggleMenu}
-          role="button"
-        >
-          FAVORIS
-        </NavLink>
-        <NavLink to="/compte">
-          <button type="button" className="mb_connexion" onClick={toggleMenu}>
-            Connexion
-          </button>
-        </NavLink>
+        {isConnected && (
+          <NavLink
+            className="mb_navlinks"
+            to="favoris"
+            onClick={toggleMenu}
+            role="button"
+          >
+            FAVORIS
+          </NavLink>
+        )}
+        {user.estAdmin === 1 && (
+          <NavLink to="/admin" className="mb_connexion" onClick={toggleMenu}>
+            ADMIN
+          </NavLink>
+        )}
+        {!isConnected && (
+          <NavLink to="/compte">
+            <button type="button" className="mb_connexion" onClick={toggleMenu}>
+              Connexion
+            </button>
+          </NavLink>
+        )}
       </nav>
     </div>
   );

@@ -9,7 +9,7 @@ footer {
   background-color: #3e5b69;
   height: 70px;
   padding: 0 10px 0 10px;
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: 810px) {
     padding: 0 20px 0 20px;
   }
 
@@ -33,13 +33,13 @@ section {
 
   img {
     height: 65%;
-    @media screen and (max-width: 590px) {
+    @media screen and (max-width: 810px) {
       display: none;
     }
   }
 }
 .footer-mentions-rgpd a {
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: 810px) {
     font-size: 0.8rem;
   }
 }

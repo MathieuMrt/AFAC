@@ -99,10 +99,7 @@ function Compte() {
               X
             </button>
             <h4>Votre compte a bien été enregistré !</h4>
-            <p>
-              Vous pouvez à présent ajouter des oeuvres à vos favoris, et aussi
-              laisser des commentaires !
-            </p>
+            <p>Vous pouvez à présent ajouter des oeuvres à vos favoris !</p>
           </div>
         </div>
       )}
@@ -111,7 +108,7 @@ function Compte() {
           <div className="error_message_password_content">
             <h4>Oups !</h4>
             <br />
-            <p>Cet email est déjà utilisé !</p>
+            <p className="p_email">Cet email est déjà utilisé !</p>
             <br />
             <button
               className="buttonpopup_compte"

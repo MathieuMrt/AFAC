@@ -146,7 +146,7 @@ function Admin() {
             <thead>
               <tr>
                 <th className="admin-tableau-title" colSpan="5">
-                  Liste des OEUVRES
+                  OEUVRES
                 </th>
               </tr>
               <tr className="admin-tableau-champs">
@@ -209,13 +209,13 @@ function Admin() {
             <thead>
               <tr>
                 <th className="admin-tableau-title" colSpan="4">
-                  Liste des UTILISATEURS
+                  UTILISATEURS
                 </th>
               </tr>
               <tr className="admin-tableau-champs">
                 <th className="admin-table-name">Nom de l'utilisateur</th>
                 <th>Admin</th>
-                <th>
+                <th className="admin-th-trash">
                   <FaTrashAlt />
                 </th>
               </tr>
@@ -223,6 +223,8 @@ function Admin() {
             <tbody>
               {/* ---------------------------------------Users------------------------------------------ */}
               {userData.map((i) => {
+                const isAdminPrincipal = i.id === 1;
+
                 return (
                   <tr key={i.id}>
                     <td className="nom_prenom">
@@ -232,18 +234,38 @@ function Admin() {
                       <input
                         type="checkbox"
                         defaultChecked={i.estAdmin === 1}
-                        onChange={() => adminCheckboxHandler(i.id, i.estAdmin)}
+                        /* onChange={() => {
+                          const isAdminPrincipal = i.id === 1;
+                          if (isAdminPrincipal) {
+                          } else {
+                            adminCheckboxHandler(i.id, i.estAdmin);
+                          }
+                        }}
+                        disabled={isAdminPrincipal} */
+                        onChange={() => {
+                          adminCheckboxHandler(i.id, i.estAdmin);
+                        }}
+                        disabled={isAdminPrincipal}
                       />
                     </td>
                     <td className="trash-cell">
-                      <button
-                        type="button"
-                        className="td-center admin-trash"
-                        onKeyDown={() => adminDeleteUserHandler(i.id)}
-                        onClick={() => adminDeleteUserHandler(i.id)}
-                      >
-                        <FaTrashAlt />
-                      </button>
+                      {isAdminPrincipal ? (
+                        <button
+                          type="button"
+                          className="td-center admin-trash disabled"
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="td-center admin-trash"
+                          onKeyDown={() => adminDeleteUserHandler(i.id)}
+                          onClick={() => adminDeleteUserHandler(i.id)}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      )}
                     </td>
                   </tr>
                 );

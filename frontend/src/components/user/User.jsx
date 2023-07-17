@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
 import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
+import LoginContext from "../../navigation/LoginContext";
 
 function User() {
   const [modifyButton, setModifyButton] = useState(false);
@@ -15,7 +15,7 @@ function User() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { id } = useParams();
+  const { user } = useContext(LoginContext);
 
   const handleModifyPasswordClick = () => setModifyButton(!modifyButton);
   const handleModifyEmailClick = () => setModifyEmail(!modifyEmail);
@@ -45,7 +45,7 @@ function User() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${id}`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`)
       .then((res) => {
         const result = res.data;
         setNom(result.nom);
@@ -67,7 +67,7 @@ function User() {
     };
 
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/2`, data)
+      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, data)
       .then((res) => {
         console.warn(res.data);
       })
@@ -80,7 +80,10 @@ function User() {
     };
 
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/2/password`, data)
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/password`,
+        data
+      )
       .then((res) => {
         console.warn(res.data);
       })

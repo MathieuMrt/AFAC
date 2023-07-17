@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function AjoutOeuvre() {
+  const [image, setImage] = useState("");
+  const [imageFile, setFile] = useState();
+  const getImage = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const [isOeuvreSended, setIsOeuvreSended] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -21,11 +28,17 @@ function AjoutOeuvre() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    const capitalizedValue =
+      name === "categorie"
+        ? value.charAt(0).toUpperCase() + value.slice(1)
+        : value;
     setFormData((previousValue) => ({
       ...previousValue,
-      [e.target.name]: e.target.value,
+      [name]: capitalizedValue,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -36,14 +49,30 @@ function AjoutOeuvre() {
       return;
     }
 
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(formData),
+    const newData = new FormData(); // create new form object
+    newData.append("ref_archives", formData.ref_archives);
+    newData.append("titre", formData.titre);
+    newData.append("auteur", formData.auteur);
+    newData.append("date_creation", formData.date_creation);
+    newData.append("format", formData.format);
+    newData.append("technique", formData.technique);
+    newData.append("lien_page_auteur", formData.lien_page_auteur);
+    newData.append("lien_article", formData.lien_article);
+    newData.append("categorie", formData.categorie);
+    newData.append("details", formData.details);
+    newData.append("resume", formData.resume);
+    //
+    newData.append("file", imageFile);
+
+    axios({
+      method: "post",
+      url: `${import.meta.env.VITE_BACKEND_URL}/oeuvres`,
+      data: newData, // send image to server
     })
+      .then((response) => {
+        const { data } = response; // return image url of uploaded img
+        setImage(data.url); // set url to image variable
+      })
       .then(() => {
         setIsOeuvreSended(true);
 
@@ -57,16 +86,32 @@ function AjoutOeuvre() {
       });
   };
 
+  const ajoutReturnHandler = () => {
+    navigate(-1);
+  };
+
   return (
     <ul className="ajoutOeuvre">
       {!isOeuvreSended && (
         <>
           <li className="ajoutOeuvre_title">
+            <button
+              className="return-button"
+              type="button"
+              onClick={ajoutReturnHandler}
+            >
+              Retour
+            </button>
             <h2>Ajouter une oeuvre</h2>
           </li>
 
           <li className="ajoutOeuvre_form">
-            <form id="id_form_ajoutOeuvre" method="POST">
+            <form
+              action="/oeuvres"
+              encType="multipart/form-data"
+              id="id_form_ajoutOeuvre"
+              method="POST"
+            >
               <label htmlFor="ref_archives">Ref_archives </label>
               <input
                 type="text"
@@ -118,6 +163,7 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="lien_page_auteur"
+                placeholder="https://www."
                 onChange={handleChange}
                 value={formData.lien_page_auteur}
               />
@@ -125,12 +171,11 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="lien_article"
+                placeholder="https://www."
                 onChange={handleChange}
                 value={formData.lien_article}
               />
-              <label htmlFor="categorie">
-                Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
-              </label>
+              <label htmlFor="categorie">Catégorie</label>
               <input
                 type="text"
                 placeholder="Champs requis *"
@@ -143,8 +188,10 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="details"
+                placeholder="Champs requis *"
                 onChange={handleChange}
                 value={formData.details}
+                required
               />
               <label htmlFor="resume">Titre résumé</label>
               <input
@@ -155,16 +202,17 @@ function AjoutOeuvre() {
                 value={formData.resume}
                 required
               />
-              <label htmlFor="img">Url de l'image</label>
+              <label htmlFor="img">Image</label>
               <input
-                type="text"
+                className="input-file"
+                id="input-file"
+                type="file"
                 placeholder="Champs requis *"
-                name="img"
-                onChange={handleChange}
-                value={formData.img}
+                name="file"
+                onChange={getImage}
                 required
               />
-
+              {image}
               <div className="ajoutOeuvre-button-container">
                 <button
                   className="ajoutOeuvre-button"

@@ -1,5 +1,18 @@
 const express = require("express");
+const multer = require("multer");
 
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "public/assets/images/afac-img/");
+  },
+  filename(req, file, cb) {
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+    req.fname = `${uniqueSuffix}-${file.originalname}`;
+    cb(null, `${uniqueSuffix}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage });
 const router = express.Router();
 
 const oeuvreControllers = require("./controllers/oeuvreControllers");
@@ -10,8 +23,8 @@ const { hashPassword, verifyPassword, verifyToken } = require("./auth");
 
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
-router.put("/oeuvres/:id", oeuvreControllers.edit);
-router.post("/oeuvres", oeuvreControllers.add);
+router.put("/oeuvres/:id", upload.single("updateFile"), oeuvreControllers.edit);
+router.post("/oeuvres", upload.single("file"), oeuvreControllers.add);
 router.delete("/oeuvres/:id", oeuvreControllers.destroy);
 
 router.get("/utilisateurs", utilisateurControllers.browse); // OK

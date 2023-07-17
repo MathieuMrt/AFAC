@@ -8,13 +8,12 @@ class UtilisateursManager extends AbstractManager {
   insert(utilisateur) {
     return this.database.query(
       `insert into ${this.table} 
-      (nom, prenom, mail, hashedPassword, estAdmin, commentaire_bloque ) values (?, ?, ?, ?, ?, ?)`,
+      (nom, prenom, mail, hashedPassword, commentaire_bloque ) values (?, ?, ?, ?, ?)`,
       [
         utilisateur.nom,
         utilisateur.prenom,
         utilisateur.mail,
         utilisateur.hashedPassword,
-        utilisateur.estAdmin,
         utilisateur.commentaire_bloque,
       ]
     );

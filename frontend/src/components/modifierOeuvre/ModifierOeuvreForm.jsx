@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
 
-function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
+function ModifierOeuvreForm({
+  getImage,
+  formData,
+  handleSubmit,
+  handleChange,
+}) {
   return (
     <form id="id_form_modifierOeuvre" method="POST">
       <label htmlFor="ref_archives">Ref_archives </label>
@@ -55,7 +60,7 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
       <label htmlFor="lien_page_auteur">Site internet de l'auteur</label>
       <input
         type="text"
-        placeholder="Lien_page_auteur"
+        placeholder="https://www."
         name="lien_page_auteur"
         onChange={(e) => handleChange(e)}
         value={formData.lien_page_auteur}
@@ -63,14 +68,12 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
       <label htmlFor="lien_article">Lien de l'article</label>
       <input
         type="text"
-        placeholder="Lien_article"
+        placeholder="https://www."
         name="lien_article"
         onChange={(e) => handleChange(e)}
         value={formData.lien_article}
       />
-      <label htmlFor="categorie">
-        Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
-      </label>
+      <label htmlFor="categorie">Catégorie</label>
       <input
         type="text"
         placeholder="Champs requis *"
@@ -81,10 +84,11 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
       <label htmlFor="details">Détails</label>
       <input
         type="text"
-        placeholder="Details"
+        placeholder="Champs requis *"
         name="details"
         onChange={(e) => handleChange(e)}
         value={formData.details}
+        required
       />
       <label htmlFor="resume">Titre résumé</label>
       <input
@@ -97,11 +101,12 @@ function ModifierOeuvreForm({ formData, handleSubmit, handleChange }) {
       />
       <label htmlFor="img">Url de l'image</label>
       <input
-        type="text"
+        className="input-file"
+        type="file"
+        id="input-file"
         placeholder="Champs requis *"
-        name="img"
-        onChange={(e) => handleChange(e)}
-        value={formData.img}
+        name="updateFile"
+        onChange={(e) => getImage(e)}
         required
       />
 
@@ -125,4 +130,5 @@ ModifierOeuvreForm.propTypes = {
   formData: PropTypes.string.isRequired,
   handleChange: PropTypes.string.isRequired,
   handleSubmit: PropTypes.string.isRequired,
+  getImage: PropTypes.string.isRequired,
 };

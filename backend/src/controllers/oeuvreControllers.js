@@ -34,6 +34,7 @@ const edit = (req, res) => {
   // TODO validations (length, format...)
 
   oeuvre.id = parseInt(req.params.id, 10);
+  oeuvre.img = process.env.BACKEND_IMAGE_URL + req.fname;
 
   models.oeuvre
     .update(oeuvre)
@@ -54,6 +55,7 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const oeuvre = req.body;
+  oeuvre.img = process.env.BACKEND_IMAGE_URL + req.fname;
 
   // TODO validations (length, format...)
 
