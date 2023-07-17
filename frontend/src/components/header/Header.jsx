@@ -50,7 +50,9 @@ function Header() {
           >
             <img src={RouageIcon} alt="Rouage" />
           </button>
-          <div className="prenomUtilisateurConnexion">{user.prenom}</div>
+          <div className="prenomUtilisateurConnexion">
+            {user.prenom} {user.nom}
+          </div>
         </div>
       );
     }
@@ -65,7 +67,9 @@ function Header() {
           <img src={RouageIcon} alt="Rouage" />
         </button>
         <div className="connectionOn_open_div">
-          <div className="prenomUtilisateurConnexionOpen">{user.prenom}</div>
+          <div className="prenomUtilisateurConnexionOpen">
+            {user.prenom} {user.nom}
+          </div>
           <NavLink
             className="linkProfilConnexion"
             to="/utilisateur/:id"
