@@ -23,6 +23,7 @@ function App() {
     prenom: "",
   });
   const [isAdmin, setIsAdmin] = useState(false);
+  const [oeuvresFavorites, setOeuvresFavorites] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,8 +36,17 @@ function App() {
   }, []);
 
   const loginContextValue = useMemo(
-    () => ({ user, setUser, isConnected, setIsConnected, isAdmin, setIsAdmin }),
-    [user]
+    () => ({
+      user,
+      setUser,
+      isConnected,
+      setIsConnected,
+      isAdmin,
+      setIsAdmin,
+      oeuvresFavorites,
+      setOeuvresFavorites,
+    }),
+    [user, isConnected, isAdmin, oeuvresFavorites]
   );
 
   useEffect(() => {

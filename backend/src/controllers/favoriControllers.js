@@ -32,13 +32,19 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
+  const favori = req.params.oeuvreId;
+  const userId = req.params.id;
   models.favori
-    .delete(req.params.id)
+    .deleteFavori(userId, favori)
     .then(([result]) => {
       if (result.affectedRows === 0) {
-        res.sendStatus(404);
+        res
+          .status(404)
+          .send(
+            "L'oeuvre favorite ne semble pas correspondre à un favori existant"
+          );
       } else {
-        res.sendStatus(204);
+        res.status(200).send("L'oeuvre a bien été retirée de vos favoris !");
       }
     })
     .catch((err) => {

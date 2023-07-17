@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
+import { TbTrashX } from "react-icons/tb";
 import PropTypes from "prop-types";
+import axios from "axios";
+import LoginContext from "../../navigation/LoginContext";
 
-function FavoriteCard({ image, id }) {
+function FavoriteCard({ image, id, refreshFavs }) {
+  const { user } = useContext(LoginContext);
+
+  const favoriteCardHandler = () => {
+    const userId = user.id;
+    const oeuvreId = id;
+
+    axios
+      .delete(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/utilisateurs/${userId}/favoris/${oeuvreId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
+      .then((response) => refreshFavs(response))
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="fav-card">
       <div className="fav-container">
@@ -12,7 +37,11 @@ function FavoriteCard({ image, id }) {
           <NavLink to={`/galerie/${id}`} className="bouton-plus-info">
             +
           </NavLink>
-          <AiOutlineHeart className="fav-heart" />
+          <TbTrashX
+            className="fav-trash"
+            type="button"
+            onClick={favoriteCardHandler}
+          />
         </div>
       </div>
     </div>
@@ -22,6 +51,7 @@ function FavoriteCard({ image, id }) {
 FavoriteCard.propTypes = {
   image: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  refreshFavs: PropTypes.func.isRequired,
 };
 
 export default FavoriteCard;

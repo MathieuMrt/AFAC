@@ -56,7 +56,7 @@ router.get(
 );
 router.post("/utilisateurs/:id/favoris", verifyToken, favoriControllers.add);
 router.delete(
-  "/utilisateurs/:id/favoris/:id",
+  "/utilisateurs/:id/favoris/:oeuvreId",
   verifyToken,
   favoriControllers.destroy
 );
