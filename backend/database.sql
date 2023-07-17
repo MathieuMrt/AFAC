@@ -14,29 +14,18 @@ CREATE TABLE IF NOT EXISTS `oeuvres` (
     `resume` VARCHAR(200),
     `img` VARCHAR(200)
 );
-
 CREATE TABLE IF NOT EXISTS `favoris`(
     `oeuvres_id` INT NOT NULL,
     `utilisateur_id` INT NOT NULL,
     PRIMARY KEY (oeuvres_id, utilisateur_id)
 );
-
-CREATE TABLE IF NOT EXISTS `reaction` (
-    `oeuvres_reaction_id` INT NOT NULL,
-    `utilisateur_reaction_id` INT NOT NULL,
-    `commentaire` VARCHAR(500),
-    `etoiles` INT,
-    PRIMARY KEY (oeuvres_reaction_id, utilisateur_reaction_id)
-);
-
 CREATE TABLE IF NOT EXISTS `utilisateurs` (
     `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(45) NOT NULL,
     `prenom` VARCHAR(45) NOT NULL,
     `mail` VARCHAR(45) NOT NULL UNIQUE,
     `hashedPassword` VARCHAR(200) NOT NULL,
-    `estAdmin` TINYINT DEFAULT 0,   
-    `commentaire_bloque` TINYINT DEFAULT 0
+    `estAdmin` TINYINT DEFAULT 0   
 );
 
 
@@ -66,4 +55,4 @@ INSERT INTO oeuvres(ref_archives,titre,auteur,date_creation,format,technique,lie
 INSERT INTO oeuvres(ref_archives,titre,auteur,date_creation,format,technique,lien_page_auteur,lien_article,categorie,details,resume,img) VALUES ('40FI73','Charrette tirée par des mulets','Hippolyte Charles Napoléon Mortier, Duc de Trévise','1861','6.5 X 15.5','Dessin','https://forgetmenot.objettemoin.org/index.php/fr/actus/35-hippolyte-charles-napoleon-mortier-duc-de-trevise',NULL,'Animaux','4 mulets tirent une charrette apportant des cannes frâichement coupées à l''usine. Les mulets sont nombreux dans l''île à l''époque de l''industrialisation sucrière. Importés du Poitou, ce sont des bêtes robustes, qui coûtent moins chers que des boeufs ou des chevaux, pour lesquelles on construit des écuries. Elles ont des noms: on sait que dans l''Etablissement des Casernes, Tec Tec, Langoutil, et Malheur sont des noms de mules.',NULL,'http://localhost:5001/assets/images/afac-img/23-40FI73-Charrette_tirée_par_des_mulets.jpg');
 INSERT INTO oeuvres(ref_archives,titre,auteur,date_creation,format,technique,lien_page_auteur,lien_article,categorie,details,resume,img) VALUES ('40FI53.1','Caille de Bourbon','Hippolyte Charles Napoléon Mortier, Duc de Trévise','21 septembre 1861','19 X 23','Aquarelle','https://forgetmenot.objettemoin.org/index.php/fr/actus/35-hippolyte-charles-napoleon-mortier-duc-de-trevise','https://www.seor.fr/oiseau-25-caille-peinte.html','Animaux','En réalité, la caille fut introduite d''Asie, Inde ou chine, vers 1850. C''est la femelle qui est colorée ainsi de rouge au bas des ailes. A l''époque de Mortier de Trévise, c''est donc une curiosité, un peu en disparition, à cause de l''extension des champs cultivés en cannes à sucre.',NULL,'http://localhost:5001/assets/images/afac-img/24-40FI53.1-CailledeBourbon.jpg');
 
-INSERT INTO utilisateurs(nom, prenom, mail,  hashedPassword, estAdmin, commentaire_bloque) VALUES ('georges','dupont',"georges.dupont@gmail.com",'123456', 1, 0)
+INSERT INTO utilisateurs(nom, prenom, mail,  hashedPassword, estAdmin) VALUES ('afac','admin',"afac.admin@gmail.com",'$argon2id$v=19$m=65536,t=5,p=1$33OKvThbjibmdAkC2CURng$2KYozsvL89GFNswPiMyTOzv6a/YbN+W07jK8gcvTdDw', 1);

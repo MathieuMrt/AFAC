@@ -11,7 +11,7 @@ function Description() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((response) => response.json())
       .then((res) => {
-        console.warn("Artoung Bicyclette", res);
+        console.warn("la réponse", res);
         setDetails(res);
       })
       .catch((err) =>
@@ -59,6 +59,7 @@ function Description() {
             className={zoomed ? "zoomed" : ""}
           />
         </button>
+        <h5>Clique sur l'image pour l'agrandir</h5>
       </div>
       <div className="description_details_oeuvre">
         <h1 className="description_title">{details.titre}</h1>

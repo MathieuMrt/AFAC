@@ -28,11 +28,17 @@ function AjoutOeuvre() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    const capitalizedValue =
+      name === "categorie"
+        ? value.charAt(0).toUpperCase() + value.slice(1)
+        : value;
     setFormData((previousValue) => ({
       ...previousValue,
-      [e.target.name]: e.target.value,
+      [name]: capitalizedValue,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -157,6 +163,7 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="lien_page_auteur"
+                placeholder="https://www."
                 onChange={handleChange}
                 value={formData.lien_page_auteur}
               />
@@ -164,12 +171,11 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="lien_article"
+                placeholder="https://www."
                 onChange={handleChange}
                 value={formData.lien_article}
               />
-              <label htmlFor="categorie">
-                Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
-              </label>
+              <label htmlFor="categorie">Catégorie</label>
               <input
                 type="text"
                 placeholder="Champs requis *"
@@ -182,8 +188,10 @@ function AjoutOeuvre() {
               <input
                 type="text"
                 name="details"
+                placeholder="Champs requis *"
                 onChange={handleChange}
                 value={formData.details}
+                required
               />
               <label htmlFor="resume">Titre résumé</label>
               <input

@@ -16,7 +16,6 @@ function App() {
 
   const [isConnected, setIsConnected] = useState(false);
   const [user, setUser] = useState({
-    commentaire_bloque: "",
     estAdmin: "",
     id: "",
     mail: "",
@@ -39,7 +38,6 @@ function App() {
     () => ({ user, setUser, isConnected, setIsConnected, isAdmin, setIsAdmin }),
     [user]
   );
-  console.warn("coucou", user);
 
   useEffect(() => {
     function disableRightClick(event) {
