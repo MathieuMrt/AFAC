@@ -57,11 +57,17 @@ function ModifierOeuvre() {
   }, []);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    const capitalizedValue =
+      name === "categorie"
+        ? value.charAt(0).toUpperCase() + value.slice(1)
+        : value;
     setFormData((previousValue) => ({
       ...previousValue,
-      [e.target.name]: e.target.value,
+      [name]: capitalizedValue,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

@@ -28,11 +28,17 @@ function AjoutOeuvre() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    const capitalizedValue =
+      name === "categorie"
+        ? value.charAt(0).toUpperCase() + value.slice(1)
+        : value;
     setFormData((previousValue) => ({
       ...previousValue,
-      [e.target.name]: e.target.value,
+      [name]: capitalizedValue,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -169,9 +175,7 @@ function AjoutOeuvre() {
                 onChange={handleChange}
                 value={formData.lien_article}
               />
-              <label htmlFor="categorie">
-                Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
-              </label>
+              <label htmlFor="categorie">Catégorie</label>
               <input
                 type="text"
                 placeholder="Champs requis *"
