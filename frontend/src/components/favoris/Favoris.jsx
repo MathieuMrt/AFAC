@@ -1,38 +1,49 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import axios from "axios";
 import FavoriteCard from "../favoriteCard/FavoriteCard";
 import LoginContext from "../../navigation/LoginContext";
 
 function Favoris() {
-  const [oeuvreFavorite, setOeuvreFavorite] = useState([]);
-  const { user } = useContext(LoginContext);
+  const { user, oeuvresFavorites, setOeuvresFavorites } =
+    useContext(LoginContext);
+
+  const fetchFavorites = () => {
+    axios
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/favoris`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
+      .then((res) => {
+        setOeuvresFavorites(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
-    const userId = user.id;
-
-    fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${userId}/favoris`,
-      {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((res) => {
-        console.warn("les oeuvres favorites", res);
-        setOeuvreFavorite(res);
-      })
-      .catch((err) =>
-        console.error("Erreur lors de la récupération des données", err)
-      );
-  }, []);
+    if (user.id !== "") {
+      fetchFavorites();
+    }
+  }, [user]);
 
   return (
-    <div>
+    <div className="fav-box">
       <h2 className="fav-title">MES FAVORIS</h2>
       <ul className="fav_ul">
-        {oeuvreFavorite.map((el) => {
-          return <FavoriteCard key={el.id} image={el.img} id={el.id} />;
+        {oeuvresFavorites.map((el) => {
+          return (
+            <FavoriteCard
+              key={el.id}
+              image={el.img}
+              id={el.id}
+              refreshFavs={fetchFavorites}
+            />
+          );
         })}
       </ul>
     </div>

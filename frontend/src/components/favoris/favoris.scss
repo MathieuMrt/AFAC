@@ -1,16 +1,20 @@
-.fav-title {
-  font-family: galaxy, sans-serif;
-  color: #ffff;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-.fav_ul {
+.fav-box {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-  gap: 40px;
-  justify-content: space-around;
+
+  .fav-title {
+    font-family: galaxy, sans-serif;
+    color: #ffff;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .fav_ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 40px;
+    justify-content: space-around;
+  }
 }

@@ -1,4 +1,4 @@
--- Active: 1686212940047@@127.0.0.1@3306@afac
+-- Active: 1685625000744@@127.0.0.1@3306@afac
 CREATE TABLE IF NOT EXISTS `oeuvres` (
     `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `ref_archives` VARCHAR(45) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `oeuvres` (
     `img` VARCHAR(200)
 );
 
-CREATE TABLE IF NOT EXISTS `favoris`(
+CREATE TABLE IF NOT EXISTS `favoris` (
     `oeuvres_id` INT NOT NULL,
     `utilisateur_id` INT NOT NULL,
     PRIMARY KEY (oeuvres_id, utilisateur_id)
