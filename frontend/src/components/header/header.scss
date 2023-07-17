@@ -3,6 +3,10 @@
   height: 180px;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 590px) {
+    padding: 0 0 40px 0;
+    height: fit-content;
+  }
 
   .header_logo {
     z-index: 1;
@@ -14,8 +18,8 @@
     @media screen and (max-width: 718px) {
       width: 150px;
     }
-    @media screen and (max-width: 350px) {
-      width: 120px;
+    @media screen and (max-width: 360px) {
+      width: 90px;
     }
   }
 
@@ -27,8 +31,8 @@
     @media screen and (max-width: 718px) {
       width: 300px;
     }
-    @media screen and (max-width: 350px) {
-      width: 250px;
+    @media screen and (max-width: 360px) {
+      width: 200px;
     }
   }
 

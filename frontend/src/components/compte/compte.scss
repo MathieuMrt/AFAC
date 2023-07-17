@@ -4,6 +4,12 @@
   color: white;
   height: 60vh;
   font-family: Montserrat;
+  width: 100%;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 
   .error_message_password {
     position: fixed;
@@ -39,6 +45,7 @@
         rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
   }
+
   .compteCreationConfirmation {
     position: fixed;
     top: 0;
@@ -83,6 +90,7 @@
       }
     }
   }
+
   .connectez_vous {
     display: flex;
     text-align: center;
@@ -92,6 +100,9 @@
     height: 100vh;
     width: 45vw;
     gap: 30px;
+    @media screen and (max-width: 400px) {
+      width: 80%;
+    }
   }
 
   .ou {
@@ -112,6 +123,9 @@
     height: 100vh;
     width: 45vw;
     gap: 30px;
+    @media screen and (max-width: 400px) {
+      width: 80%;
+    }
   }
 
   input {
@@ -121,7 +135,11 @@
     border-radius: 3px;
     padding: 5px;
     border: none;
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
   }
+
   .buttonpopup_compte {
     display: flex;
     justify-content: center;
@@ -135,10 +153,12 @@
     color: white;
     background-color: rgba(217, 217, 217, 0.3);
     font-size: clamp(0.7em, 1.5vw, 2em);
+
     &:hover {
       background-color: #bc627a;
     }
   }
+
   button {
     display: flex;
     justify-content: center;
@@ -152,11 +172,13 @@
     color: white;
     background-color: var(--dark-purple);
     font-size: clamp(0.7em, 1.5vw, 2em);
+
     &:hover {
       background-color: #d17ab7;
       transition: 0.2s;
     }
   }
+
   h2,
   h3 {
     font-size: clamp(1em, 2.5vw, 2.1em);
@@ -173,21 +195,25 @@
     input {
       height: 3vh;
     }
+
     button {
       height: 4vh;
       width: 20vw;
     }
   }
+
   @media screen and (min-width: 412px) and (max-width: 1109px) {
     button {
       height: 4vh;
       width: 14vw;
     }
   }
+
   @media screen and (min-height: 713px) {
     input {
       height: 4vh;
     }
+
     form {
       gap: 30px;
     }
