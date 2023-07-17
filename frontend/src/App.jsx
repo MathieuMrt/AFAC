@@ -39,7 +39,6 @@ function App() {
     () => ({ user, setUser, isConnected, setIsConnected, isAdmin, setIsAdmin }),
     [user]
   );
-  console.warn("coucou", user);
 
   useEffect(() => {
     function disableRightClick(event) {

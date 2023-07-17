@@ -73,9 +73,7 @@ function ModifierOeuvreForm({
         onChange={(e) => handleChange(e)}
         value={formData.lien_article}
       />
-      <label htmlFor="categorie">
-        Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
-      </label>
+      <label htmlFor="categorie">Catégorie</label>
       <input
         type="text"
         placeholder="Champs requis *"
