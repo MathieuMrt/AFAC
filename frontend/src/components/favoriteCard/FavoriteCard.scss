@@ -33,11 +33,22 @@
       border-radius: 5px;
       font-size: 10px;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
+
+      &:hover {
+        background-color: #d17ab7;
+        transition: 0.2s;
+      }
+  }
 
     .fav-trash {
       color: #ffffff;
       font-size: 20px;
+
+      &:hover {
+        transform: scale(1.2);
+        background-position: -60px;
+        cursor: pointer;
     }
   }
-}
+    }
+  }
