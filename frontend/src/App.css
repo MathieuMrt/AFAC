@@ -78,3 +78,9 @@
 .return-button:hover {
   background-color: rgba(255, 255, 255, 0.46);
 }
+
+@media screen and (max-width: 810px) {
+  .app_main {
+    height: fit-content;
+  }
+}

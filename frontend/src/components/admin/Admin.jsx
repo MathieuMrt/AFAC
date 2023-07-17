@@ -215,7 +215,7 @@ function Admin() {
               <tr className="admin-tableau-champs">
                 <th className="admin-table-name">Nom de l'utilisateur</th>
                 <th>Admin</th>
-                <th>
+                <th className="admin-th-trash">
                   <FaTrashAlt />
                 </th>
               </tr>
