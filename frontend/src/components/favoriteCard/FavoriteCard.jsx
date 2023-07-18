@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import LoginContext from "../../navigation/LoginContext";
 
-function FavoriteCard({ image, id, refreshFavs }) {
+function FavoriteCard({ image, id, refreshFavs, titre, titreResume }) {
   const { user } = useContext(LoginContext);
 
   const favoriteCardHandler = () => {
@@ -33,6 +33,9 @@ function FavoriteCard({ image, id, refreshFavs }) {
     <div className="fav-card">
       <div className="fav-container">
         <img className="fav-img" src={image} alt="oeuvre" />
+        <div className="favEtiquette">
+          {titreResume ? titreResume.toUpperCase() : titre.toUpperCase()}
+        </div>
         <div className="fav-buttons">
           <NavLink to={`/galerie/${id}`} className="bouton-plus-info">
             +
@@ -52,6 +55,8 @@ FavoriteCard.propTypes = {
   image: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   refreshFavs: PropTypes.func.isRequired,
+  titre: PropTypes.string.isRequired,
+  titreResume: PropTypes.string.isRequired,
 };
 
 export default FavoriteCard;
