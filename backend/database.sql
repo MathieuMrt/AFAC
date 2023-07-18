@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
     `prenom` VARCHAR(45) NOT NULL,
     `mail` VARCHAR(45) NOT NULL UNIQUE,
     `hashedPassword` VARCHAR(200) NOT NULL,
-    `estAdmin` TINYINT DEFAULT 0   
+    `estAdmin` TINYINT DEFAULT 0
+
 );
 
 
