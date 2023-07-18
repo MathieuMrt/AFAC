@@ -3,33 +3,51 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 70vh;
-  width: 100%;
+  max-height: 300vh;
+  width: 100vw;
   overflow: hidden;
+  font-family: Montserrat;
+  gap: 20px;
 
   .return-button {
     padding: 0.5%;
   }
 
+  .description-info-resize {
+    font-weight: 400;
+  }
+
   .description_oeuvre {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    gap: 20px;
+    height: 600px;
     width: 100%;
     padding: 50px 10px 20px 10px;
+
+
+   // @media screen and (max-width: 590px) {
+    //  max-height: 300px;
+    }
 
     button {
       border: none;
       display: flex;
+      justify-content: center;
+      background-color: #ffffff25;
       max-height: 100%;
-      max-width: 80%;
+      border-radius: 5px;
       cursor: pointer;
+
+      //flex-wrap: nowrap;
+
     }
 
     img {
       object-fit: cover;
-      max-width: 100%;
+      max-height: 100%;
       height: auto;
       vertical-align: middle;
     }
@@ -67,7 +85,9 @@
     gap: 30px;
     margin-bottom: 50px;
     border-radius: 5px;
-    background-color: #3e5b69;
+    // background-color: #3e5b69;
+    background: rgb(15,50,64);
+    background: linear-gradient(0deg, rgb(25, 66, 82) 0%, rgba(62,91,105,1) 100%); 
     font-family: Montserrat;
     color: #ffffff;
     backdrop-filter: blur(10px);

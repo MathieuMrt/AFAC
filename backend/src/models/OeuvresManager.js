@@ -32,12 +32,11 @@ class OeuvresManager extends AbstractManager {
     const { id } = oeuvre;
     // const {ref_archives, titre, auteur, img, date_creation, format, technique, lien_page_auteur, lien_article, categorie, details, resume} = req.body;
     return this.database.query(
-      `update ${this.table} set ref_archives = ?, titre = ?, auteur = ?, img = ?, date_creation = ?, format = ?, technique = ?, lien_page_auteur = ?, lien_article = ?, categorie = ?, details = ?, resume = ? where id = ?`,
+      `update ${this.table} set ref_archives = ?, titre = ?, auteur = ?, date_creation = ?, format = ?, technique = ?, lien_page_auteur = ?, lien_article = ?, categorie = ?, details = ?, resume = ? where id = ?`,
       [
         oeuvre.ref_archives,
         oeuvre.titre,
         oeuvre.auteur,
-        oeuvre.img,
         oeuvre.date_creation,
         oeuvre.format,
         oeuvre.technique,

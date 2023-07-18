@@ -56,7 +56,7 @@ function User() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [user]);
 
   const handleClick = () => {
     const data = {

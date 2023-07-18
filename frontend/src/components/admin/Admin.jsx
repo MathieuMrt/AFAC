@@ -228,20 +228,12 @@ function Admin() {
                 return (
                   <tr key={i.id}>
                     <td className="nom_prenom">
-                      {i.nom} {i.prenom}
+                      {i.prenom} {i.nom}
                     </td>
                     <td className="td-center">
                       <input
                         type="checkbox"
                         defaultChecked={i.estAdmin === 1}
-                        /* onChange={() => {
-                          const isAdminPrincipal = i.id === 1;
-                          if (isAdminPrincipal) {
-                          } else {
-                            adminCheckboxHandler(i.id, i.estAdmin);
-                          }
-                        }}
-                        disabled={isAdminPrincipal} */
                         onChange={() => {
                           adminCheckboxHandler(i.id, i.estAdmin);
                         }}
