@@ -40,6 +40,8 @@ function Favoris() {
             <FavoriteCard
               key={el.id}
               image={el.img}
+              titreResume={el.resume}
+              titre={el.titre}
               id={el.id}
               refreshFavs={fetchFavorites}
             />
