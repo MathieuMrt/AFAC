@@ -5,6 +5,7 @@ import axios from "axios";
 function AjoutOeuvre() {
   const [image, setImage] = useState("");
   const [imageFile, setFile] = useState();
+  const [formError, setFormError] = useState(false);
   const getImage = (e) => {
     setFile(e.target.files[0]);
   };
@@ -45,7 +46,7 @@ function AjoutOeuvre() {
     // Vérification de la validité des champs requis
     const form = document.getElementById("id_form_ajoutOeuvre");
     if (!form.checkValidity()) {
-      // Afficher les erreurs ou effectuer une action appropriée
+      setFormError(true);
       return;
     }
 
@@ -119,7 +120,9 @@ function AjoutOeuvre() {
                 onChange={handleChange}
                 value={formData.ref_archives}
               />
-              <label htmlFor="titre">Titre </label>
+              <label htmlFor="titre">
+                Titre <h6>Champs requis</h6>
+              </label>
 
               <input
                 type="text"
@@ -175,7 +178,9 @@ function AjoutOeuvre() {
                 onChange={handleChange}
                 value={formData.lien_article}
               />
-              <label htmlFor="categorie">Catégorie</label>
+              <label htmlFor="categorie">
+                Catégorie <h6>Champs requis</h6>
+              </label>
               <input
                 type="text"
                 placeholder="Champs requis *"
@@ -184,7 +189,9 @@ function AjoutOeuvre() {
                 value={formData.categorie}
                 required
               />
-              <label htmlFor="details">Détails</label>
+              <label htmlFor="details">
+                Détails <h6>Champs requis</h6>
+              </label>
               <input
                 type="text"
                 name="details"
@@ -196,13 +203,13 @@ function AjoutOeuvre() {
               <label htmlFor="resume">Titre résumé</label>
               <input
                 type="text"
-                placeholder="Champ requis *"
                 name="resume"
                 onChange={handleChange}
                 value={formData.resume}
-                required
               />
-              <label htmlFor="img">Image</label>
+              <label htmlFor="img">
+                Image <h6>Champs requis</h6>
+              </label>
               <input
                 className="input-file"
                 id="input-file"
@@ -213,6 +220,11 @@ function AjoutOeuvre() {
                 required
               />
               {image}
+              {formError && (
+                <li className="ajoutOeuvre_message_error">
+                  <p>Veuillez remplir tous les champs requis.</p>
+                </li>
+              )}
               <div className="ajoutOeuvre-button-container">
                 <button
                   className="ajoutOeuvre-button"
