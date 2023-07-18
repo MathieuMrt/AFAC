@@ -40,11 +40,13 @@ function FavoriteCard({ image, id, refreshFavs, titre, titreResume }) {
           <NavLink to={`/galerie/${id}`} className="bouton-plus-info">
             +
           </NavLink>
-          <TbTrashX
-            className="fav-trash"
-            type="button"
-            onClick={favoriteCardHandler}
-          />
+          <div className="fav-trash_box">
+            <TbTrashX
+              className="fav-trash"
+              type="button"
+              onClick={favoriteCardHandler}
+            />
+          </div>
         </div>
       </div>
     </div>

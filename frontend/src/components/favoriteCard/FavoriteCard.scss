@@ -27,6 +27,7 @@
     font-weight: 500;
     font-size: 12px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
   }
 
   .fav-buttons {
@@ -66,5 +67,16 @@
         cursor: pointer;
       }
     }
+  }
+}
+@media screen and (max-width: 450px) {
+  .fav-container {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .fav-container {
+    width: 250px;
   }
 }

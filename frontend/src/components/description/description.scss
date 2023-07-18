@@ -27,10 +27,9 @@
     width: 100%;
     padding: 50px 10px 20px 10px;
 
-
-   // @media screen and (max-width: 590px) {
+    // @media screen and (max-width: 590px) {
     //  max-height: 300px;
-    }
+    // }
 
     button {
       border: none;
@@ -42,7 +41,6 @@
       cursor: pointer;
 
       //flex-wrap: nowrap;
-
     }
 
     img {
@@ -86,8 +84,12 @@
     margin-bottom: 50px;
     border-radius: 5px;
     // background-color: #3e5b69;
-    background: rgb(15,50,64);
-    background: linear-gradient(0deg, rgb(25, 66, 82) 0%, rgba(62,91,105,1) 100%); 
+    background: rgb(15, 50, 64);
+    background: linear-gradient(
+      0deg,
+      rgb(25, 66, 82) 0%,
+      rgba(62, 91, 105, 1) 100%
+    );
     font-family: Montserrat;
     color: #ffffff;
     backdrop-filter: blur(10px);
