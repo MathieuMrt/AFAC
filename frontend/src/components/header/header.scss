@@ -100,7 +100,7 @@
     justify-content: start;
     gap: 10px;
     align-items: center;
-    width: 160px;
+    width: fit-content;
     height: fit-content;
     min-height: 35px;
     top: 20px;
@@ -159,7 +159,7 @@
     position: absolute;
     display: flex;
     gap: 4px;
-    width: 160px;
+    width: fit-content;
     height: 120px;
     top: 20px;
     right: 20px;

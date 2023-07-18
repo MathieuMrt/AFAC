@@ -16,14 +16,14 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     height: 50vh;
-    width: 70%;
+    width: 75%;
     background-color: #afbdcc;
     border-radius: 5px;
     padding: 30px;
     @media screen and (max-width: 590px) {
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       gap: 20px;
-      height: 65vh;
+      height: fit-content;
       width: 90%;
     }
 

@@ -40,7 +40,7 @@ function MenuBurger() {
           <span className="mb_bar" />
         </button>
       </div>
-      <nav className="mb_navbar">
+      <nav className={`mb_navbar ${menuVisible ? "slideIn" : "slideOff"}`}>
         <NavLink to="/" onClick={toggleMenu} role="presentation">
           <img
             className="mb_header_logo"
@@ -48,6 +48,7 @@ function MenuBurger() {
             alt="logo AFAC"
           />
         </NavLink>
+        <div className="separator" />
         <NavLink
           className="mb_navlinks"
           to="/"
@@ -56,7 +57,7 @@ function MenuBurger() {
         >
           ACCUEIL
         </NavLink>
-
+        <div className="separator" />
         <NavLink
           className="mb_navlinks"
           to="/galerie"
@@ -65,6 +66,7 @@ function MenuBurger() {
         >
           GALERIE
         </NavLink>
+        <div className="separator" />
         <NavLink
           className="mb_navlinks"
           to="/apropos"
@@ -73,6 +75,7 @@ function MenuBurger() {
         >
           A PROPOS
         </NavLink>
+        <div className="separator" />
         {isConnected && (
           <NavLink
             className="mb_navlinks"
@@ -83,11 +86,13 @@ function MenuBurger() {
             FAVORIS
           </NavLink>
         )}
+        <div className="separator" />
         {user.estAdmin === 1 && (
           <NavLink to="/admin" className="mb_connexion" onClick={toggleMenu}>
             ADMIN
           </NavLink>
         )}
+
         {!isConnected && (
           <NavLink to="/compte">
             <button type="button" className="mb_connexion" onClick={toggleMenu}>
@@ -96,6 +101,7 @@ function MenuBurger() {
           </NavLink>
         )}
       </nav>
+      {/* <div className={menuVisible ? "slideIn" : "slideOff"}></div> */}
     </div>
   );
 }
