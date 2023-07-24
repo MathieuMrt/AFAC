@@ -46,7 +46,6 @@ function Accueil() {
                 src="src/assets/img/preview-galerie.png"
                 alt="galerie preview"
               />
-              <h4>Et envoyez vos œuvres favorites à vos proches</h4>
             </div>
           </NavLink>
         </div>
