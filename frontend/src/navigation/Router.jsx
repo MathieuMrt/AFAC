@@ -12,6 +12,8 @@ import AjoutOeuvre from "../components/ajoutOeuvre/AjoutOeuvre";
 import ModifierOeuvre from "../components/modifierOeuvre/ModifierOeuvre";
 import Protected from "./Protected";
 import PathError from "./PathError";
+import MotDePasseOublie from "../components/compte/MotDePasseOublie";
+import ResetMotDePasse from "../components/compte/ResetMotDePasse";
 
 function Router() {
   return (
@@ -20,6 +22,8 @@ function Router() {
       <Route path="/*" element={<PathError />} />
       <Route path="/apropos" element={<Apropos />} />
       <Route path="/compte" element={<Compte />} />
+      <Route path="/motdepasseoublie" element={<MotDePasseOublie />} />
+      <Route path="resetmotdepasse/:id" element={<ResetMotDePasse />} />
       <Route path="/galerie" element={<Galerie />} />
       <Route path="/galerie/:id" element={<Description />} />
       <Route

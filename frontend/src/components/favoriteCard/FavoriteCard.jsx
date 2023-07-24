@@ -5,28 +5,27 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import LoginContext from "../../navigation/LoginContext";
 
-function FavoriteCard({ image, id, refreshFavs, titre, titreResume }) {
+function FavoriteCard({ image, oeuvreId, refreshFavs, titre, titreResume }) {
   const { user } = useContext(LoginContext);
 
   const favoriteCardHandler = () => {
-    const userId = user.id;
-    const oeuvreId = id;
-
-    axios
-      .delete(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/utilisateurs/${userId}/favoris/${oeuvreId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      )
-      .then((response) => refreshFavs(response))
-      .catch((err) => console.error(err));
+    if (user?.id) {
+      axios
+        .delete(
+          `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${
+            user.id
+          }/favoris/${oeuvreId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        )
+        .then((response) => refreshFavs(response))
+        .catch((err) => console.error(err));
+    }
   };
 
   return (
@@ -37,7 +36,7 @@ function FavoriteCard({ image, id, refreshFavs, titre, titreResume }) {
           {titreResume ? titreResume.toUpperCase() : titre.toUpperCase()}
         </div>
         <div className="fav-buttons">
-          <NavLink to={`/galerie/${id}`} className="bouton-plus-info">
+          <NavLink to={`/galerie/${oeuvreId}`} className="bouton-plus-info">
             +
           </NavLink>
           <div className="fav-trash_box">
@@ -55,7 +54,7 @@ function FavoriteCard({ image, id, refreshFavs, titre, titreResume }) {
 
 FavoriteCard.propTypes = {
   image: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  oeuvreId: PropTypes.number.isRequired,
   refreshFavs: PropTypes.func.isRequired,
   titre: PropTypes.string.isRequired,
   titreResume: PropTypes.string.isRequired,
