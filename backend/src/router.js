@@ -18,8 +18,11 @@ const router = express.Router();
 const oeuvreControllers = require("./controllers/oeuvreControllers");
 const utilisateurControllers = require("./controllers/utilisateurControllers");
 const favoriControllers = require("./controllers/favoriControllers");
+const mailControllers = require("./controllers/mailControllers");
 
 const { hashPassword, verifyPassword, verifyToken } = require("./auth");
+
+router.post("/motdepasseoublie", mailControllers.sendContactMail);
 
 router.get("/oeuvres", oeuvreControllers.browse);
 router.get("/oeuvres/:id", oeuvreControllers.read);
