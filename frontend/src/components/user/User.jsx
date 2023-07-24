@@ -8,6 +8,8 @@ function User() {
   const [modifyEmail, setModifyEmail] = useState(false);
   const [modifyName, setModifyName] = useState(false);
   const [modifyFirstname, setModifyFirstname] = useState(false);
+  const [validationNewPassword, setValidationNewPassword] = useState(false);
+  const [noPasswordAlert, setNoPasswordAlert] = useState(false);
 
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
@@ -44,6 +46,7 @@ function User() {
   };
 
   useEffect(() => {
+
     if (user?.id) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`)
@@ -58,7 +61,7 @@ function User() {
           console.error(err);
         });
     }
-  }, [user]);
+  }, [user, validationNewPassword]);
 
   const handleClick = () => {
     const data = {
@@ -81,198 +84,248 @@ function User() {
       password,
     };
 
-    axios
-      .put(
-        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}/password`,
-        data
-      )
-      .then((res) => {
-        console.warn(res.data);
-      })
-      .catch((err) => console.warn(err));
+    if (data.password !== "") {
+      axios
+        .put(
+          `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}/password`,
+          data
+        )
+        .then((res) => {
+          if (res.status === 204) {
+            setValidationNewPassword(true);
+          }
+        })
+        .catch((err) => console.error(err));
+    } else {
+      setNoPasswordAlert(true);
+      console.error("Nouveau mot de passe non renseigné");
+    }
+  };
+
+  const userConfirmationCloseHandler = () => {
+    setValidationNewPassword(false);
+  };
+
+  const closeErrNoPassword = () => {
+    setNoPasswordAlert(false);
+
   };
 
   return (
-    <div className="user-global-container">
-      <div className="user-container-connexion">
-        <div className="user-name user-info-field">
-          <h5>Nom:</h5>
-          <div className="user-container-text-center">
-            {modifyName ? (
-              <form className="user-form">
-                <input
-                  type="text"
-                  name="nom"
-                  id="user-new-password-input"
-                  required
-                  placeholder="Nom Utilisateur"
-                  onChange={handleNom}
-                  value={nom}
-                />
-              </form>
-            ) : (
-              <p>{nom}</p>
-            )}
-          </div>
-          <div className="user-button-container">
-            {modifyName ? (
-              <button
-                className="user-button-change"
-                type="button"
-                onClick={() => {
-                  handleClick();
-                  handleModifyNameClick();
-                }}
-              >
-                Valider
-              </button>
-            ) : (
-              <button
-                className="user-button-change"
-                type="button"
-                onClick={handleModifyNameClick}
-              >
-                Modifier
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="user-name user-info-field">
-          <h5>Prénom:</h5>
-          <div className="user-container-text-center">
-            {modifyFirstname ? (
-              <form action="" method="get" className="user-form">
-                <input
-                  type="text"
-                  name="prenom"
-                  id="user-new-password-input"
-                  required
-                  placeholder="Nom Utilisateur"
-                  onChange={handlePrenom}
-                  value={prenom}
-                />
-              </form>
-            ) : (
-              <p>{prenom}</p>
-            )}
-          </div>
-          <div className="user-button-container">
-            {modifyFirstname ? (
-              <button
-                className="user-button-change"
-                type="button"
-                onClick={() => {
-                  handleClick();
-                  handleModifyFirstnameClick();
-                }}
-              >
-                Valider
-              </button>
-            ) : (
-              <button
-                className="user-button-change"
-                type="button"
-                onClick={handleModifyFirstnameClick}
-              >
-                Modifier
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="user-mail user-info-field">
-          <h5>Email:</h5>
-          <div className="user-container-text-center">
-            {modifyEmail ? (
-              <form action="" method="get" className="user-form">
-                <input
-                  type="text"
-                  name="mail"
-                  id="user-new-password-input"
-                  required
-                  placeholder="utilisateur@gmail.com"
-                  onChange={handleMail}
-                  value={mail}
-                />
-              </form>
-            ) : (
-              <p>{mail}</p>
-            )}
-          </div>
-          <div className="user-button-container">
-            {modifyEmail ? (
-              <button
-                className="user-button-change"
-                type="button"
-                onClick={() => {
-                  handleClick();
-                  handleModifyEmailClick();
-                }}
-              >
-                Valider
-              </button>
-            ) : (
-              <button
-                className="user-button-change"
-                type="button"
-                onClick={handleModifyEmailClick}
-              >
-                Modifier
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="user-password user-info-field">
-          <h5>Mot de passe:</h5>
-          <div className="user-container-text-center">
-            <p>**********</p>
-          </div>
-          <div className="user-button-container">
+    <>
+      {noPasswordAlert && (
+        <div className="error_message_password">
+          <div className="error_message_password_content">
+            <h4>Oups !</h4>
+
+            <p className="p_email">Nouveau mot de passe non renseigné !</p>
+
             <button
-              className="user-button-change"
+              className="buttonpopup_compte"
               type="button"
-              onClick={handleModifyPasswordClick}
+              onClick={closeErrNoPassword}
             >
-              Modifier
+              Fermer
             </button>
           </div>
         </div>
-        {modifyButton && (
-          <div className="user-new-password user-info-field">
-            <h5 className="user-new-pass-text">Nouveau mot de passe:</h5>
+      )}
+      {validationNewPassword && (
+        <div className="validationNewPassword">
+          <div className="validationNewPassword_content">
+            <button
+              type="button"
+              className="compteConfirmationClose"
+              onClick={userConfirmationCloseHandler}
+            >
+              X
+            </button>
+            <h4>Votre mot de passe a bien été modifié !</h4>
+          </div>
+        </div>
+      )}
+
+      <div className="user-global-container">
+        <div className="user-container-connexion">
+          <div className="user-name user-info-field">
+            <h5>Nom:</h5>
             <div className="user-container-text-center">
-              <form action="" method="get" className="user-form">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="name"
-                  id="user-new-password-input"
-                  required
-                  onChange={handlePassword}
-                />
+              {modifyName ? (
+                <form className="user-form">
+                  <input
+                    type="text"
+                    name="nom"
+                    id="user-new-password-input"
+                    required
+                    placeholder="Nom Utilisateur"
+                    onChange={handleNom}
+                    value={nom}
+                  />
+                </form>
+              ) : (
+                <p>{nom}</p>
+              )}
+            </div>
+            <div className="user-button-container">
+              {modifyName ? (
                 <button
-                  className="user-eyes-icons"
+                  className="user-button-change"
                   type="button"
-                  onClick={handleShowPassword}
+                  onClick={() => {
+                    handleClick();
+                    handleModifyNameClick();
+                  }}
                 >
-                  {showPassword ? <PiEyeBold /> : <PiEyeClosedBold />}
+                  Valider
                 </button>
-              </form>
+              ) : (
+                <button
+                  className="user-button-change"
+                  type="button"
+                  onClick={handleModifyNameClick}
+                >
+                  Modifier
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="user-name user-info-field">
+            <h5>Prénom:</h5>
+            <div className="user-container-text-center">
+              {modifyFirstname ? (
+                <form action="" method="get" className="user-form">
+                  <input
+                    type="text"
+                    name="prenom"
+                    id="user-new-password-input"
+                    required
+                    placeholder="Nom Utilisateur"
+                    onChange={handlePrenom}
+                    value={prenom}
+                  />
+                </form>
+              ) : (
+                <p>{prenom}</p>
+              )}
+            </div>
+            <div className="user-button-container">
+              {modifyFirstname ? (
+                <button
+                  className="user-button-change"
+                  type="button"
+                  onClick={() => {
+                    handleClick();
+                    handleModifyFirstnameClick();
+                  }}
+                >
+                  Valider
+                </button>
+              ) : (
+                <button
+                  className="user-button-change"
+                  type="button"
+                  onClick={handleModifyFirstnameClick}
+                >
+                  Modifier
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="user-mail user-info-field">
+            <h5>Email:</h5>
+            <div className="user-container-text-center">
+              {modifyEmail ? (
+                <form action="" method="get" className="user-form">
+                  <input
+                    type="text"
+                    name="mail"
+                    id="user-new-password-input"
+                    required
+                    placeholder="utilisateur@gmail.com"
+                    onChange={handleMail}
+                    value={mail}
+                  />
+                </form>
+              ) : (
+                <p>{mail}</p>
+              )}
+            </div>
+            <div className="user-button-container">
+              {modifyEmail ? (
+                <button
+                  className="user-button-change"
+                  type="button"
+                  onClick={() => {
+                    handleClick();
+                    handleModifyEmailClick();
+                  }}
+                >
+                  Valider
+                </button>
+              ) : (
+                <button
+                  className="user-button-change"
+                  type="button"
+                  onClick={handleModifyEmailClick}
+                >
+                  Modifier
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="user-password user-info-field">
+            <h5>Mot de passe:</h5>
+            <div className="user-container-text-center">
+              <p>**********</p>
             </div>
             <div className="user-button-container">
               <button
                 className="user-button-change"
                 type="button"
-                onClick={() => {
-                  handleClickPassword();
-                  handleModifyPasswordClick();
-                }}
+                onClick={handleModifyPasswordClick}
               >
-                Valider
+                Modifier
               </button>
             </div>
           </div>
-        )}
+          {modifyButton && (
+            <div className="user-new-password user-info-field">
+              <h5 className="user-new-pass-text">Nouveau mot de passe:</h5>
+              <div className="user-container-text-center">
+                <form action="" method="get" className="user-form">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="name"
+                    id="user-new-password-input"
+                    required
+                    onChange={handlePassword}
+                  />
+                  <button
+                    className="user-eyes-icons"
+                    type="button"
+                    onClick={handleShowPassword}
+                  >
+                    {showPassword ? <PiEyeBold /> : <PiEyeClosedBold />}
+                  </button>
+                </form>
+              </div>
+              <div className="user-button-container">
+                <button
+                  className="user-button-change"
+                  type="button"
+                  onClick={() => {
+                    handleClickPassword();
+                    handleModifyPasswordClick();
+                  }}
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
