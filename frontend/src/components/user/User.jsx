@@ -76,7 +76,7 @@ function User() {
 
   const handleClickPassword = () => {
     const data = {
-      hashedPassword: password,
+      password,
     };
 
     axios
