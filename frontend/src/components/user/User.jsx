@@ -44,18 +44,20 @@ function User() {
   };
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`)
-      .then((res) => {
-        const result = res.data;
-        setNom(result.nom);
-        setPrenom(result.prenom);
-        setMail(result.mail);
-        setPassword(result.hashedPassword);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (user?.id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`)
+        .then((res) => {
+          const result = res.data;
+          setNom(result.nom);
+          setPrenom(result.prenom);
+          setMail(result.mail);
+          setPassword(result.hashedPassword);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }, [user]);
 
   const handleClick = () => {
@@ -67,7 +69,7 @@ function User() {
     };
 
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, data)
+      .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}`, data)
       .then((res) => {
         console.warn(res.data);
       })
@@ -81,7 +83,7 @@ function User() {
 
     axios
       .put(
-        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/password`,
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}/password`,
         data
       )
       .then((res) => {

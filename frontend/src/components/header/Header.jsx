@@ -56,7 +56,8 @@ function Header() {
             <img src={RouageIcon} alt="Rouage" />
           </button>
           <div className="prenomUtilisateurConnexion">
-            {userInformations.prenom} {userInformations.nom}
+
+            {user?.prenom} {user?.nom}
           </div>
         </div>
       );
@@ -73,7 +74,9 @@ function Header() {
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">
-            {userInformations.prenom} {userInformations.nom}
+
+            {user?.prenom} {user?.nom}
+
           </div>
           <NavLink
             className="linkProfilConnexion"
@@ -171,7 +174,7 @@ function Header() {
             FAVORIS
           </NavLink>
         )}
-        {user.estAdmin === 1 && (
+        {user?.estAdmin === 1 && (
           <NavLink
             to="/admin"
             className={({ isActive }) =>
