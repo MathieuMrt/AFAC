@@ -77,7 +77,7 @@ function Header() {
           </div>
           <NavLink
             className="linkProfilConnexion"
-            to="/utilisateur/:id"
+            to="/utilisateur"
             onClick={toggleParametresClose}
           >
             <h5>Profil</h5>
