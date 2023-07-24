@@ -28,26 +28,28 @@ function Galerie() {
   };
 
   const fetchFavorites = () => {
-    axios
-      .get(
-        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/favoris`,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      )
-      .then((res) => {
-        setOeuvresFavorites(res.data);
-        // console.log(res.data)
-      })
-      .catch((err) => console.error(err));
+    if (user?.id) {
+      axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/favoris`,
+          {
+            headers: {
+              Authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("token")
+              )}`,
+            },
+          }
+        )
+        .then((res) => {
+          setOeuvresFavorites(res.data);
+          // console.log(res.data)
+        })
+        .catch((err) => console.error(err));
+    }
   };
 
   useEffect(() => {
-    if (user.id !== "") {
+    if (user?.id !== "") {
       fetchFavorites();
     }
   }, [user]);
@@ -79,7 +81,7 @@ function Galerie() {
             return (
               <SingleCard
                 key={el.id}
-                id={el.id}
+                oeuvreId={el.id}
                 titreResume={el.resume}
                 titre={el.titre}
                 categorie={el.categorie}

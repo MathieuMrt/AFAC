@@ -87,7 +87,7 @@ function MenuBurger() {
           </NavLink>
         )}
         <div className="separator" />
-        {user.estAdmin === 1 && (
+        {user?.estAdmin === 1 && (
           <NavLink to="/admin" className="mb_connexion" onClick={toggleMenu}>
             ADMIN
           </NavLink>

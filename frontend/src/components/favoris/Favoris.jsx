@@ -10,7 +10,7 @@ function Favoris() {
   const fetchFavorites = () => {
     axios
       .get(
-        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/favoris`,
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}/favoris`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -26,7 +26,7 @@ function Favoris() {
   };
 
   useEffect(() => {
-    if (user.id !== "") {
+    if (user?.id !== "") {
       fetchFavorites();
     }
   }, [user]);
@@ -42,7 +42,7 @@ function Favoris() {
               image={el.img}
               titreResume={el.resume}
               titre={el.titre}
-              id={el.id}
+              oeuvreId={el.id}
               refreshFavs={fetchFavorites}
             />
           );
