@@ -46,7 +46,6 @@ function User() {
   };
 
   useEffect(() => {
-
     if (user?.id) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`)
@@ -87,7 +86,9 @@ function User() {
     if (data.password !== "") {
       axios
         .put(
-          `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}/password`,
+          `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${
+            user?.id
+          }/password`,
           data
         )
         .then((res) => {
@@ -108,7 +109,6 @@ function User() {
 
   const closeErrNoPassword = () => {
     setNoPasswordAlert(false);
-
   };
 
   return (
