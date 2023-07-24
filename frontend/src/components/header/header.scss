@@ -61,9 +61,10 @@
       color: white;
       z-index: 1;
       width: 20%;
+      transition: all 0.5s;
 
       &:hover {
-        color: rgb(215, 215, 215);
+        color: rgb(152, 167, 187);
       }
 
       @media screen and (max-width: 1200px) {
@@ -134,6 +135,7 @@
 
     img {
       height: 40px;
+      padding-left: 5px;
       filter: brightness(0) invert(1);
       background-color: transparent;
       color: transparent;
@@ -241,9 +243,10 @@
       .linkProfilConnexion {
         text-decoration: double;
         color: white;
+        transition: all 0.5s;
 
         &:hover {
-          opacity: 50%;
+          color: rgb(152, 167, 187);
         }
       }
     }
