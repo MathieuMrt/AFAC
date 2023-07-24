@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import SingleCard from "../singleCard/SingleCard";
+import LoginContext from "../../navigation/LoginContext";
 
 function Galerie() {
   const [oeuvre, setOeuvre] = useState([]);
   const [search, setSearch] = useState("");
+
+  const { user, setOeuvresFavorites } = useContext(LoginContext);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres`)
@@ -22,6 +26,33 @@ function Galerie() {
   const handleSelector = (e) => {
     setSearch(e.target.value);
   };
+
+  const fetchFavorites = () => {
+    axios
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}/favoris`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
+      .then((res) => {
+        setOeuvresFavorites(res.data);
+        // console.log(res.data)
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    if (user.id !== "") {
+      fetchFavorites();
+    }
+  }, [user]);
+
+  // console.log(oeuvresFavorites[0].oeuvres_id)
 
   return (
     <main className="galerie">
@@ -53,6 +84,7 @@ function Galerie() {
                 titre={el.titre}
                 categorie={el.categorie}
                 image={el.img}
+                refreshFavs={fetchFavorites}
               />
             );
           })}

@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 
 function ModifierOeuvreForm({
-  getImage,
+  image,
+  // getImage,
   formData,
   handleSubmit,
   handleChange,
+  formError,
 }) {
   return (
     <form id="id_form_modifierOeuvre" method="POST">
@@ -16,7 +18,9 @@ function ModifierOeuvreForm({
         onChange={(e) => handleChange(e)}
         value={formData.ref_archives}
       />
-      <label htmlFor="titre ">Titre </label>
+      <label htmlFor="titre ">
+        Titre <h6>Champs requis</h6>
+      </label>
       <input
         type="text"
         placeholder="Champs requis *"
@@ -74,7 +78,7 @@ function ModifierOeuvreForm({
         value={formData.lien_article}
       />
       <label htmlFor="categorie">
-        Catégorie (Usines,Travailleurs, Lieux, Animaux){" "}
+        Catégorie <h6>Champs requis</h6>
       </label>
       <input
         type="text"
@@ -83,7 +87,9 @@ function ModifierOeuvreForm({
         onChange={(e) => handleChange(e)}
         value={formData.categorie}
       />
-      <label htmlFor="details">Détails</label>
+      <label htmlFor="details">
+        Détails <h6>Champs requis</h6>
+      </label>
       <input
         type="text"
         placeholder="Champs requis *"
@@ -95,23 +101,26 @@ function ModifierOeuvreForm({
       <label htmlFor="resume">Titre résumé</label>
       <input
         type="text"
-        placeholder="Champs requis *"
+        placeholder="Titre résumé"
         name="resume"
         onChange={(e) => handleChange(e)}
         value={formData.resume}
-        required
       />
-      <label htmlFor="img">Url de l'image</label>
-      <input
+
+      <label htmlFor="img">Image</label>
+      <img src={image} alt={image} />
+      {/* <input
         className="input-file"
         type="file"
         id="input-file"
-        placeholder="Champs requis *"
         name="updateFile"
         onChange={(e) => getImage(e)}
-        required
-      />
-
+      /> */}
+      {formError && (
+        <li className="modifierOeuvre_message_error">
+          <p>Veuillez remplir tous les champs requis.</p>
+        </li>
+      )}
       <div className="modifierOeuvre-button-container">
         <button
           className="ajoutOeuvre-button"
@@ -130,7 +139,9 @@ export default ModifierOeuvreForm;
 
 ModifierOeuvreForm.propTypes = {
   formData: PropTypes.string.isRequired,
-  handleChange: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.string.isRequired,
-  getImage: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  // getImage: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired,
+  formError: PropTypes.bool.isRequired,
 };

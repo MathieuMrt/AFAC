@@ -115,6 +115,16 @@
       }
     }
   }
+  label {
+    display: flex;
+    gap: 20px;
+
+    h6 {
+      display: flex;
+      align-items: center;
+      color: lightcoral;
+    }
+  }
 }
 
 // et on masque le input

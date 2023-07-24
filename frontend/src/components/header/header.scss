@@ -4,6 +4,11 @@
   display: flex;
   justify-content: center;
 
+  @media screen and (max-width: 590px) {
+    padding: 0 0 40px 0;
+    height: fit-content;
+  }
+
   .header_logo {
     z-index: 1;
     width: 180px;
@@ -11,11 +16,13 @@
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
+
     @media screen and (max-width: 718px) {
       width: 150px;
     }
-    @media screen and (max-width: 350px) {
-      width: 120px;
+
+    @media screen and (max-width: 360px) {
+      width: 90px;
     }
   }
 
@@ -24,11 +31,13 @@
     width: 350px;
     left: 50%;
     transform: translate(-50%, -10%);
+
     @media screen and (max-width: 718px) {
       width: 300px;
     }
-    @media screen and (max-width: 350px) {
-      width: 250px;
+
+    @media screen and (max-width: 360px) {
+      width: 200px;
     }
   }
 
@@ -52,19 +61,22 @@
       color: white;
       z-index: 1;
       width: 20%;
+      transition: all 0.5s;
 
       &:hover {
-        color: rgb(215, 215, 215);
+        color: rgb(152, 167, 187);
       }
 
       @media screen and (max-width: 1200px) {
         font-size: 1.3rem;
       }
     }
+
     @media screen and (max-width: 1200px) {
       width: 100%;
     }
   }
+
   .activeNavlinks {
     display: flex;
     justify-content: center;
@@ -82,29 +94,34 @@
       font-size: 1.3rem;
     }
   }
+
   .connexionOn {
     position: absolute;
     display: flex;
     justify-content: start;
-    gap: 5px;
+    gap: 8px;
     align-items: center;
-    width: 150px;
-    height: 35px;
+    width: fit-content;
+    height: fit-content;
+    min-height: 35px;
     top: 20px;
     right: 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: rgba(217, 217, 217, 0.3);
     color: white;
     font-weight: bold;
     font-family: Verdana, sans-serif;
-    overflow: hidden;
+    padding: 6px;
     white-space: nowrap;
     word-wrap: break-word;
 
     @media screen and (max-width: 718px) {
       justify-content: flex-end;
       background: none;
+      top: 15px;
+      right: 15px;
     }
 
     .buttonrouage {
@@ -112,42 +129,40 @@
       justify-content: flex-start;
       background-color: transparent;
       border: none;
-
-      @media screen and (max-width: 718px) {
-        justify-content: flex-end;
-        padding-right: 5px;
-      }
+      height: fit-content;
+      width: fit-content;
     }
 
     img {
-      height: 4vh;
+      height: 40px;
       padding-left: 5px;
       filter: brightness(0) invert(1);
       background-color: transparent;
       color: transparent;
+      transition: 0.2s;
 
       @media screen and (max-width: 718px) {
         padding: 0;
         border-radius: 20px;
         background-color: rgba(217, 217, 217, 0.3);
+        height: 4vh;
       }
     }
+
     img:hover {
-      scale: 1, 0;
+      scale: 1.2;
       transform: translate(-3%, -3%);
       transition: 0.2s;
+      cursor: pointer;
     }
   }
 
   .connexionOn_open {
     position: absolute;
     display: flex;
-    justify-content: start;
-    flex-direction: row;
-    gap: 5px;
-    align-items: center;
-    width: 150px;
-    height: 80px;
+    gap: 4px;
+    width: fit-content;
+    height: 120px;
     top: 20px;
     right: 20px;
     border: none;
@@ -160,69 +175,79 @@
     font-family: Verdana, sans-serif;
 
     @media screen and (max-width: 718px) {
-      display: flex;
       flex-direction: column;
       align-items: flex-end;
       background: none;
+      top: 15px;
+      right: 15px;
+      padding: 3px;
 
       .prenomUtilisateurConnexionOpen {
         visibility: hidden;
       }
     }
+
     .buttonrouage {
-      height: 100%;
       width: 20%;
       display: flex;
-      padding-top: 5px;
       justify-content: flex-start;
       background-color: transparent;
       border: none;
-
-      @media screen and (max-width: 718px) {
-        height: 20%;
-        width: 20%;
-        justify-content: flex-start;
-      }
+      height: fit-content;
+      width: fit-content;
+      z-index: 4;
     }
 
     img {
-      height: 4vh;
+      height: 40px;
       padding-left: 5px;
       filter: brightness(0) invert(1);
       background-color: transparent;
       color: transparent;
+      transition: 0.2s;
 
       @media screen and (max-width: 718px) {
         padding: 0;
         border-radius: 20px;
         background-color: rgba(217, 217, 217, 0.3);
+        height: 4vh;
       }
     }
+
     img:hover {
-      scale: 1, 0;
+      scale: 1.2;
       transform: translate(-3%, -3%);
       transition: 0.2s;
+      cursor: pointer;
     }
 
     .connectionOn_open_div {
       display: flex;
+      justify-content: space-around;
+      padding: 5px;
       flex-direction: column;
-      gap: 7px;
+
       color: white;
 
       @media screen and (max-width: 718px) {
         align-items: flex-end;
-        justify-content: flex-end;
-        height: 70%;
-        padding-right: 5px;
+        gap: 10px;
+        transform: translate(0, -25px);
+        height: fit-content;
       }
 
       .boutonDeco {
         cursor: pointer;
       }
+
       .linkProfilConnexion {
         text-decoration: double;
         color: white;
+        transition: all 0.5s;
+
+        &:hover {
+          color: rgb(152, 167, 187);
+        }
       }
     }
   }
@@ -253,6 +278,7 @@
   .connexion {
     visibility: hidden;
   }
+
   .hiddenNavPrinc {
     visibility: hidden;
   }
@@ -267,26 +293,32 @@
     display: none;
   }
 }
+
 @media screen and (min-width: 1039px) and (max-width: 1192px) {
   .header nav .navlinks {
     font-size: 1.5rem;
   }
+
   .header .activeNavlinks {
     font-size: 1.5rem;
   }
 }
+
 @media screen and (max-width: 1039px) and (min-width: 835px) {
   .header nav .navlinks {
     font-size: 1.2rem;
   }
+
   .header .activeNavlinks {
     font-size: 1.2rem;
   }
 }
+
 @media screen and (max-width: 835px) {
   .header nav .navlinks {
     font-size: 1rem;
   }
+
   .header .activeNavlinks {
     font-size: 1rem;
   }

@@ -5,10 +5,11 @@ import ModifierOeuvreForm from "./ModifierOeuvreForm";
 
 function ModifierOeuvre() {
   const [isOeuvreUpdated, setIsOeuvreUpdated] = useState(false);
+  const [imageFile, setImageFile] = useState();
   const [image, setImage] = useState("");
-  const [imageFile, setFile] = useState();
+  const [formError, setFormError] = useState(false);
   const getImage = (e) => {
-    setFile(e.target.files[0]);
+    setImageFile(e.target.files[0]);
   };
 
   const [formData, setFormData] = useState({
@@ -37,7 +38,6 @@ function ModifierOeuvre() {
           ref_archives: res.ref_archives,
           titre: res.titre,
           auteur: res.auteur,
-          /* img: res.img, */
           date_creation: res.date_creation,
           format: res.format,
           technique: res.technique,
@@ -47,6 +47,7 @@ function ModifierOeuvre() {
           details: res.details,
           resume: res.resume,
         });
+        setImage(res.img);
       })
       .catch((err) =>
         console.error(
@@ -62,13 +63,14 @@ function ModifierOeuvre() {
       [e.target.name]: e.target.value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Vérification de la validité des champs requis
     const form = document.getElementById("id_form_modifierOeuvre");
     if (!form.checkValidity()) {
-      // Afficher les erreurs ou effectuer une action appropriée
+      setFormError(true);
       return;
     }
 
@@ -87,19 +89,14 @@ function ModifierOeuvre() {
     //
     newData.append("updateFile", imageFile);
 
-    axios({
-      method: "put",
-      url: `${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`,
-      data: newData, // send image to server
-    })
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`, newData)
       .then((response) => {
-        const { data } = response; // return image url of uploaded img
-        setImage(data.url); // set url to image variable
+        const { data } = response;
+        setImage(data.url);
       })
-
       .then(() => {
         setIsOeuvreUpdated(true);
-
         setTimeout(() => {
           navigate("/admin");
         }, 4000);
@@ -137,6 +134,7 @@ function ModifierOeuvre() {
               setFormData={setFormData}
               getImage={getImage}
               image={image}
+              formError={formError}
             />
           </li>
         </>

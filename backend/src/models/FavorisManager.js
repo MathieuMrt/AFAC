@@ -21,6 +21,13 @@ class FavorisManager extends AbstractManager {
       [favori.oeuvreId, id]
     );
   }
+
+  deleteFavori(id, favori) {
+    return this.database.query(
+      `delete from ${this.table} where utilisateur_id = ? and oeuvres_id = ?`,
+      [id, favori]
+    );
+  }
 }
 
 module.exports = FavorisManager;

@@ -59,7 +59,9 @@ function Description() {
             className={zoomed ? "zoomed" : ""}
           />
         </button>
-        <h5>Clique sur l'image pour l'agrandir</h5>
+        <h5 className="description-info-resize">
+          Cliquez sur l'image pour l'agrandir
+        </h5>
       </div>
       <div className="description_details_oeuvre">
         <h1 className="description_title">{details.titre}</h1>
@@ -90,7 +92,9 @@ function Description() {
             </p>
           )}
           {details.lien_article && (
-            <a href={details.lien_article}>Lien de l'oeuvre</a>
+            <a className="description-auteur-link" href={details.lien_article}>
+              Plus d'informations
+            </a>
           )}
           {details.lien_page_auteur && (
             <a

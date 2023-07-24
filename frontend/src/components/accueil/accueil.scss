@@ -7,6 +7,9 @@
   width: 100vw;
   padding: 20px 0 20px 0;
   max-height: 800px;
+  @media screen and (max-width: 810px) {
+    max-height: 100%;
+  }
 
   .acc-main-text {
     display: flex;
@@ -35,7 +38,7 @@
     width: 100%;
     padding: 10px;
 
-    @media screen and (max-width: 590px) {
+    @media screen and (max-width: 810px) {
       flex-direction: column;
       max-height: none;
       gap: 20px;
@@ -49,20 +52,22 @@
       align-items: center;
       overflow: hidden;
       transform: translate(15%, 0);
-      @media screen and (max-width: 590px) {
+      @media screen and (max-width: 810px) {
         max-height: 300px;
         transform: translate(0);
-        width: 80%;
+        // width: 80%;
+        width: fit-content;
       }
 
       .bloc-oeuvre {
         position: relative;
         display: flex;
         justify-content: center;
-        width: 60%;
+        // width: 60%;
+        width: fit-content;
         height: 100%;
         z-index: 3;
-        @media screen and (max-width: 590px) {
+        @media screen and (max-width: 810px) {
           width: 100%;
         }
 
@@ -95,7 +100,7 @@
       justify-content: center;
       align-items: center;
       transform: translate(-15%, 0);
-      @media screen and (max-width: 590px) {
+      @media screen and (max-width: 810px) {
         max-height: 300px;
         transform: translate(0);
         width: 80%;
