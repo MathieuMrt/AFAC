@@ -35,6 +35,25 @@ function Header() {
     setShowSettings(!showSettings);
   };
 
+  const fetchUserInformations = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      })
+      .then((res) => {
+        setUserInformations(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    if (user?.id !== "") {
+      fetchUserInformations();
+    }
+  }, [user]);
+
   function connect() {
     if (!isConnected) {
       return (
@@ -56,8 +75,7 @@ function Header() {
             <img src={RouageIcon} alt="Rouage" />
           </button>
           <div className="prenomUtilisateurConnexion">
-
-            {user?.prenom} {user?.nom}
+            {userInformations.prenom} {userInformations.nom}
           </div>
         </div>
       );
@@ -74,9 +92,7 @@ function Header() {
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">
-
-            {user?.prenom} {user?.nom}
-
+            {userInformations.prenom} {userInformations.nom}
           </div>
           <NavLink
             className="linkProfilConnexion"
@@ -98,25 +114,6 @@ function Header() {
       </div>
     );
   }
-
-  const fetchUserInformations = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
-      .then((res) => {
-        setUserInformations(res.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {
-    if (user.id !== "") {
-      fetchUserInformations();
-    }
-  }, [userInformations]);
 
   return (
     <div className="header">

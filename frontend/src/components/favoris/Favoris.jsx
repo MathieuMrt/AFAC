@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import FavoriteCard from "../favoriteCard/FavoriteCard";
+import MessagePasDeFavoris from "./MessagePasDeFavoris";
 import LoginContext from "../../navigation/LoginContext";
 
 function Favoris() {
@@ -35,18 +36,20 @@ function Favoris() {
     <div className="fav-box">
       <h2 className="fav-title">MES FAVORIS</h2>
       <ul className="fav_ul">
-        {oeuvresFavorites.map((el) => {
-          return (
-            <FavoriteCard
-              key={el.id}
-              image={el.img}
-              titreResume={el.resume}
-              titre={el.titre}
-              oeuvreId={el.id}
-              refreshFavs={fetchFavorites}
-            />
-          );
-        })}
+        {oeuvresFavorites &&
+          oeuvresFavorites.map((el) => {
+            return (
+              <FavoriteCard
+                key={el.id}
+                image={el.img}
+                titreResume={el.resume}
+                titre={el.titre}
+                oeuvreId={el.id}
+                refreshFavs={fetchFavorites}
+              />
+            );
+          })}
+        {oeuvresFavorites.length === 0 && <MessagePasDeFavoris />}
       </ul>
     </div>
   );
