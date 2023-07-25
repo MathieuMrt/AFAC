@@ -10,6 +10,10 @@
     flex-direction: column;
     gap: 20px;
   }
+  .modedepasseoublie-lien {
+    text-decoration: none !important;
+    color: white;
+  }
 
   .error_message_password {
     position: fixed;
@@ -228,8 +232,4 @@
       gap: 30px;
     }
   }
-}
-.modedepasseoublie-lien {
-  text-decoration: none;
-  color: white;
 }
