@@ -108,7 +108,6 @@ function SingleCard({
 SingleCard.propTypes = {
   titreResume: PropTypes.string.isRequired,
   titre: PropTypes.string.isRequired,
-  toUpperCase: PropTypes.func.isRequired,
   categorie: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   oeuvreId: PropTypes.number.isRequired,

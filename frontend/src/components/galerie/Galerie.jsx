@@ -78,11 +78,12 @@ function Galerie() {
         {oeuvre
           .filter((el) => search === "" || el.categorie === search)
           .map((el) => {
+            const titreResume = el.resume || ""; // permet d'éviter que la valeur de el.resume soit null
             return (
               <SingleCard
                 key={el.id}
                 oeuvreId={el.id}
-                titreResume={el.resume}
+                titreResume={titreResume}
                 titre={el.titre}
                 categorie={el.categorie}
                 image={el.img}
