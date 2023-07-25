@@ -16,6 +16,41 @@
     justify-content: center;
     text-align: center;
     gap: 50px;
-    padding: 50px;
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 582px) {
+  h1 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+}
+@media screen and (max-width: 582px) and (min-width: 508px) {
+  h1 {
+    font-size: 1.8em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 508px) and (min-width: 387px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 387px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 0.7em;
   }
 }
