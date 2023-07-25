@@ -7,10 +7,6 @@ import RouageIcon from "../../assets/img/header/utilisateur-icon.png";
 
 function Header() {
   const [showSettings, setShowSettings] = useState(false);
-  const [userInformations, setUserInformations] = useState({
-    nom: "",
-    prenom: "",
-  });
   const { user, setUser, isConnected, setIsConnected } =
     useContext(LoginContext);
 
@@ -35,24 +31,22 @@ function Header() {
     setShowSettings(!showSettings);
   };
 
-  const fetchUserInformations = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
-      .then((res) => {
-        setUserInformations(res.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
   useEffect(() => {
     if (user?.id !== "") {
-      fetchUserInformations();
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        })
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err) => console.error(err));
     }
-  }, [user]);
+  }, []);
 
   function connect() {
     if (!isConnected) {
@@ -75,7 +69,7 @@ function Header() {
             <img src={RouageIcon} alt="Rouage" />
           </button>
           <div className="prenomUtilisateurConnexion">
-            {userInformations.prenom} {userInformations.nom}
+            {user.prenom} {user.nom}
           </div>
         </div>
       );
@@ -92,7 +86,7 @@ function Header() {
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">
-            {userInformations.prenom} {userInformations.nom}
+            {user.prenom} {user.nom}
           </div>
           <NavLink
             className="linkProfilConnexion"
