@@ -178,7 +178,7 @@ function Compte() {
         >
           Connexion
         </button>
-        <NavLink to="/motdepasseoublie">
+        <NavLink className="modedepasseoublie-lien" to="/motdepasseoublie">
           <p className="modedepasseoublie-lien">Mot de passe oublié ?</p>
         </NavLink>
       </div>

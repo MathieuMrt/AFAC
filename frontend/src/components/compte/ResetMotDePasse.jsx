@@ -114,7 +114,7 @@ function ResetMotDePasse() {
     <section className="motdepasseoublie_merci">
       <h1>Votre mot de passe a bien été modifié</h1>
       <p>Vous pouvez désormais vous connecter</p>
-      <NavLink to="/compte">
+      <NavLink className="resetmotdepasse-retour-connexion" to="/compte">
         <button className="resetmotdepasse-retour-connexion" type="button">
           Connexion
         </button>
