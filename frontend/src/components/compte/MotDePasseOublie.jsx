@@ -56,7 +56,7 @@ export default function MotDePassOublie() {
     </div>
   ) : (
     <section className="motdepasseoublie_merci">
-      <h1>Merci pour l'envoi de votre message !</h1>
+      <h1>Votre demande a bien été prise en compte</h1>
       <p>Nous prendrons contact avec vous très rapidement...</p>
       <NavLink to="/">
         <button className="modedepasseoublie-retour-accueil" type="button">
