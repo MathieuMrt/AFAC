@@ -38,11 +38,12 @@ function Favoris() {
       <ul className="fav_ul">
         {oeuvresFavorites &&
           oeuvresFavorites.map((el) => {
+            const titreResume = el.resume || ""; // permet d'éviter que la valeur de el.resume soit null
             return (
               <FavoriteCard
                 key={el.id}
                 image={el.img}
-                titreResume={el.resume}
+                titreResume={titreResume}
                 titre={el.titre}
                 oeuvreId={el.id}
                 refreshFavs={fetchFavorites}
