@@ -17,7 +17,7 @@ function User() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { user } = useContext(LoginContext);
+  const { user, setUser } = useContext(LoginContext);
 
   const handleModifyPasswordClick = () => setModifyButton(!modifyButton);
   const handleModifyEmailClick = () => setModifyEmail(!modifyEmail);
@@ -74,6 +74,11 @@ function User() {
       .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user?.id}`, data)
       .then((res) => {
         console.warn(res.data);
+        setUser((prevUser) => ({
+          ...prevUser,
+          nom: data.nom,
+          prenom: data.prenom,
+        }));
       })
       .catch((err) => console.warn(err));
   };
