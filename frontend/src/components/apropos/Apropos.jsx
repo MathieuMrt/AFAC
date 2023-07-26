@@ -41,7 +41,7 @@ function Apropos() {
           La Réunion.
         </p>
         <br />
-        <p>
+        <p className="apropos-afac-mentions">
           Mentions légales : Les images visibles sur le site ne sont pas libres
           de droit.
         </p>
