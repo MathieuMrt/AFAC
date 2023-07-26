@@ -32,7 +32,7 @@ function Header() {
   };
 
   useEffect(() => {
-    if (user?.id !== "") {
+    if (user?.id) {
       axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${user.id}`, {
           headers: {
@@ -69,7 +69,7 @@ function Header() {
             <img src={RouageIcon} alt="Rouage" />
           </button>
           <div className="prenomUtilisateurConnexion">
-            {user.prenom} {user.nom}
+            {user?.prenom} {user?.nom}
           </div>
         </div>
       );
@@ -86,7 +86,7 @@ function Header() {
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">
-            {user.prenom} {user.nom}
+            {user?.prenom} {user?.nom}
           </div>
           <NavLink
             className="linkProfilConnexion"
