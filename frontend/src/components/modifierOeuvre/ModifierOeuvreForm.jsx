@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 
 function ModifierOeuvreForm({
   image,
-  // getImage,
   formData,
   handleSubmit,
   handleChange,
@@ -16,7 +15,7 @@ function ModifierOeuvreForm({
         placeholder="Ref_archives"
         name="ref_archives"
         onChange={(e) => handleChange(e)}
-        value={formData.ref_archives}
+        value={formData.ref_archives || ""}
       />
       <label htmlFor="titre ">
         Titre <h6>Champs requis</h6>
@@ -26,7 +25,7 @@ function ModifierOeuvreForm({
         placeholder="Champs requis *"
         name="titre"
         onChange={(e) => handleChange(e)}
-        value={formData.titre}
+        value={formData.titre || ""}
         required
       />
       <label htmlFor="auteur">Auteur </label>
@@ -35,7 +34,7 @@ function ModifierOeuvreForm({
         placeholder="Auteur"
         name="auteur"
         onChange={(e) => handleChange(e)}
-        value={formData.auteur}
+        value={formData.auteur || ""}
       />
       <label htmlFor="date_creation">Date de création </label>
       <input
@@ -43,7 +42,7 @@ function ModifierOeuvreForm({
         placeholder="Date_creation"
         name="date_creation"
         onChange={(e) => handleChange(e)}
-        value={formData.date_creation}
+        value={formData.date_creation || ""}
       />
       <label htmlFor="format">Format </label>
       <input
@@ -51,7 +50,7 @@ function ModifierOeuvreForm({
         placeholder="Format"
         name="format"
         onChange={(e) => handleChange(e)}
-        value={formData.format}
+        value={formData.format || ""}
       />
       <label htmlFor="technique">Technique utilisée </label>
       <input
@@ -59,7 +58,7 @@ function ModifierOeuvreForm({
         placeholder="Technique"
         name="technique"
         onChange={(e) => handleChange(e)}
-        value={formData.technique}
+        value={formData.technique || ""}
       />
       <label htmlFor="lien_page_auteur">Site internet de l'auteur</label>
       <input
@@ -67,7 +66,7 @@ function ModifierOeuvreForm({
         placeholder="https://www."
         name="lien_page_auteur"
         onChange={(e) => handleChange(e)}
-        value={formData.lien_page_auteur}
+        value={formData.lien_page_auteur || ""}
       />
       <label htmlFor="lien_article">Lien de l'article</label>
       <input
@@ -75,7 +74,7 @@ function ModifierOeuvreForm({
         placeholder="https://www."
         name="lien_article"
         onChange={(e) => handleChange(e)}
-        value={formData.lien_article}
+        value={formData.lien_article || ""}
       />
       <label htmlFor="categorie">
         Catégorie <h6>Champs requis</h6>
@@ -85,7 +84,7 @@ function ModifierOeuvreForm({
         placeholder="Champs requis *"
         name="categorie"
         onChange={(e) => handleChange(e)}
-        value={formData.categorie}
+        value={formData.categorie || ""}
       />
       <label htmlFor="details">
         Détails <h6>Champs requis</h6>
@@ -95,7 +94,7 @@ function ModifierOeuvreForm({
         placeholder="Champs requis *"
         name="details"
         onChange={(e) => handleChange(e)}
-        value={formData.details}
+        value={formData.details || ""}
         required
       />
       <label htmlFor="resume">Titre résumé</label>
@@ -104,18 +103,11 @@ function ModifierOeuvreForm({
         placeholder="Titre résumé"
         name="resume"
         onChange={(e) => handleChange(e)}
-        value={formData.resume}
+        value={formData.resume || ""}
       />
 
       <label htmlFor="img">Image</label>
       <img src={image} alt={image} />
-      {/* <input
-        className="input-file"
-        type="file"
-        id="input-file"
-        name="updateFile"
-        onChange={(e) => getImage(e)}
-      /> */}
       {formError && (
         <li className="modifierOeuvre_message_error">
           <p>Veuillez remplir tous les champs requis.</p>
@@ -138,10 +130,26 @@ function ModifierOeuvreForm({
 export default ModifierOeuvreForm;
 
 ModifierOeuvreForm.propTypes = {
-  formData: PropTypes.string.isRequired,
+  formData: PropTypes.shape({
+    ref_archives: PropTypes.string,
+    titre: PropTypes.string,
+    auteur: PropTypes.string,
+    img: PropTypes.string,
+    date_creation: PropTypes.string,
+    format: PropTypes.string,
+    technique: PropTypes.string,
+    lien_page_auteur: PropTypes.string,
+    lien_article: PropTypes.string,
+    categorie: PropTypes.string,
+    details: PropTypes.string,
+    resume: PropTypes.string,
+  }),
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  // getImage: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
   formError: PropTypes.bool.isRequired,
+};
+
+ModifierOeuvreForm.defaultProps = {
+  formData: null,
 };

@@ -49,7 +49,6 @@ function Admin() {
     const id = OeuvreCurrentId;
     axios
       .delete(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
-      .then((res) => console.warn(res))
       .catch((err) => console.error(err));
 
     setOeuvresNewFetch(!oeuvresNewFetch);
@@ -60,7 +59,7 @@ function Admin() {
     const id = userCurrentId;
     axios
       .delete(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${id}`)
-      .then((res) => console.warn(res))
+
       .catch((err) => console.error(err));
 
     setUsersNewFetch(!usersNewFetch);
@@ -73,19 +72,16 @@ function Admin() {
         .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/admin/${id}`, {
           estAdmin: 1,
         })
-        .then((res) => console.warn(res))
         .catch((err) => console.error(err));
     } else {
       axios
         .put(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs/admin/${id}`, {
           estAdmin: 0,
         })
-        .then((res) => console.warn(res))
         .catch((err) => console.error(err));
     }
     setUsersNewFetch(!usersNewFetch);
   };
-
   const adminCheckboxHandler = (id, estAdmin) => {
     setAdminChecked(!adminChecked);
     adminChange(id, estAdmin);

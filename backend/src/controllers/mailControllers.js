@@ -32,11 +32,8 @@ const sendContactMail = async (req, res) => {
                <p>http://localhost:3000/resetmotdepasse/${userId[0].id}</p>`,
     };
 
-    const error = await transporter.sendMail(mailOptions);
-    if (error) {
-      console.error(error);
-      return res.status(500).send("Quelque chose a mal tourné");
-    }
+    await transporter.sendMail(mailOptions);
+
     return res.status(200).send("Message envoyé");
   } catch (error) {
     console.error(error);

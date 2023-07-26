@@ -80,7 +80,7 @@ function User() {
           prenom: data.prenom,
         }));
       })
-      .catch((err) => console.warn(err));
+      .catch((err) => console.error(err));
   };
 
   const handleClickPassword = () => {

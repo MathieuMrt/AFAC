@@ -47,7 +47,7 @@ function ModifierOeuvre() {
           details: res.details,
           resume: res.resume,
         });
-        setImage(res.img);
+        setImage(res.img || "");
       })
       .catch((err) =>
         console.error(
@@ -100,7 +100,6 @@ function ModifierOeuvre() {
         setTimeout(() => {
           navigate("/admin");
         }, 4000);
-        console.warn("Modification réussie");
       })
       .catch((err) => {
         console.error(err);

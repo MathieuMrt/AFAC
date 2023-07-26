@@ -80,7 +80,6 @@ function AjoutOeuvre() {
         setTimeout(() => {
           navigate("/galerie");
         }, 4000);
-        console.warn("Insertion réussie");
       })
       .catch((err) => {
         console.error(err);

@@ -9,11 +9,6 @@ import Header from "./components/header/Header";
 import Cookie from "./components/cookieConsent/CookieConsent";
 
 function App() {
-  // const logout = () => {
-  //   setLoggedIn(false);
-  //   localStorage.removeItem("token");
-  // };
-
   const [isConnected, setIsConnected] = useState(false);
   const [user, setUser] = useState({
     estAdmin: "",
@@ -29,7 +24,6 @@ function App() {
     const token = localStorage.getItem("token");
     if (token) {
       const utilisateur = jwtDecode(token);
-      // console.warn("TOKEN UTILISATEUR", utilisateur.utilisateur);
       setUser(utilisateur.utilisateur);
       setIsConnected(true);
     }

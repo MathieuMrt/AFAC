@@ -11,7 +11,6 @@ function Description() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/oeuvres/${id}`)
       .then((response) => response.json())
       .then((res) => {
-        console.warn("la réponse", res);
         setDetails(res);
       })
       .catch((err) =>

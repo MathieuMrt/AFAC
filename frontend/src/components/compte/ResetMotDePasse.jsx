@@ -35,10 +35,7 @@ function ResetMotDePasse() {
           `${import.meta.env.VITE_BACKEND_URL}/utilisateurs/${id}/password`,
           data
         )
-        .then((res) => {
-          console.warn(res.data);
-        })
-        .catch((err) => console.warn(err));
+        .catch((err) => console.error(err));
 
       setSend(true);
     } else {
