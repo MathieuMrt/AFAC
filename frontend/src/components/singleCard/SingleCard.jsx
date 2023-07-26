@@ -98,7 +98,7 @@ function SingleCard({
         </h3>
         {categorie}
         <NavLink to={`/galerie/${oeuvreId}`} className="bouton-plus-info">
-          + D'INFORMATION
+          + D'INFORMATIONS
         </NavLink>
       </div>
     </div>

@@ -233,7 +233,6 @@ function Compte() {
             required
             onChange={compteHandleChange}
             minLength="6"
-            maxLength="15"
           />
         </form>
         <button type="submit" form="id_form_inscription">

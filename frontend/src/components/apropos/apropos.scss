@@ -16,10 +16,11 @@
 
 .apropos-afac {
   text-align: center;
+  font-size: 0.6em;
   width: 90%;
-  height: 100%;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 4%;
+  padding: 30px;
   border-radius: 5px;
 
   animation-name: articleAnimation;
@@ -50,7 +51,7 @@
 
 .apropos-afac-logo {
   text-align: center;
-  width: 30%;
+  width: 20%;
 }
 
 .apropos-afac-partie1 {
@@ -63,13 +64,17 @@
 .apropos-afac-partie2 {
   font-weight: 200;
   text-align: left;
-  font-size: 1.3rem;
+  font-size: 1rem;
+}
+.apropos-afac-mentions {
+  font-size: 1.3em;
 }
 
 .apropos-partenaires {
   display: flex;
   white-space: nowrap;
   align-items: center;
+  height: fit-content;
   justify-content: center;
   color: whitesmoke;
   font-size: 1.6rem;
@@ -84,7 +89,7 @@
   align-items: center;
 
   img {
-    width: 60%;
+    width: 40%;
 
     @media screen and (max-width: 810px) {
       width: 35%;
