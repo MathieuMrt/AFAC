@@ -6,11 +6,12 @@ function Cookie() {
       location="bottom"
       buttonText="J'ai compris"
       cookieName="myAwesomeCookieName2"
-      style={{ background: "#b982ae" }}
+      style={{ background: "#b982ae", fontFamily: "Montserrat" }}
       buttonStyle={{
         color: "white",
         fontSize: "80%",
         backgroundColor: "#277594",
+        fontFamily: "Montserrat",
       }}
       expires={150}
     >

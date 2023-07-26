@@ -75,18 +75,25 @@
     transform: translate(-50%);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-around center;
     align-items: center;
     height: 25vh;
     background-color: var(--red);
     border-radius: 5px;
     gap: 10px;
-    padding: 40px;
+    padding: 30px;
     color: #ffffff;
     z-index: 10;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
       rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    font-family: Montserrat;
+
+    @media screen and (max-width: 537px) {
+      height: fit-content;
+      text-align: center;
+      padding: 20px;
+    }
   }
   button {
     display: flex;
@@ -104,6 +111,10 @@
     &:hover {
       background-color: #d17ab7;
       transition: 0.2s;
+    }
+
+    @media screen and (max-width: 537px) {
+      width: 80%;
     }
   }
 }
