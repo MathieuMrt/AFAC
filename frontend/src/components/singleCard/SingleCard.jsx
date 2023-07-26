@@ -17,11 +17,6 @@ function SingleCard({
 
   const { user, isConnected, oeuvresFavorites } = useContext(LoginContext);
 
-  // const userId = user.id;
-  // // console.warn("USER ID", userId);
-  // const oeuvreId = id;
-  // // console.warn("OEUVRE ID", oeuvreId);
-
   useEffect(() => {
     if (isConnected && user && oeuvresFavorites) {
       const found = oeuvresFavorites.find(

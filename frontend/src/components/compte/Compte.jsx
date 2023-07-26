@@ -33,10 +33,8 @@ function Compte() {
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         const utilisateur = jwtDecode(res.data.token);
-        console.warn("TOKEN UTILISATEUR", utilisateur.utilisateur);
         setUser(utilisateur.utilisateur);
         setIsConnected(true);
-        console.warn("token validé ");
         navigate("/galerie");
       })
       .catch((err) => {
@@ -74,12 +72,11 @@ function Compte() {
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/utilisateurs`, credentials)
-      .then((res) => {
-        console.warn(res);
+      .then(() => {
         setCompteConfirmation(true);
       })
       .catch((error) => {
-        console.warn(error);
+        console.error(error);
         if (error.response.data === "email error") {
           setEmailDejaUtilise(true);
         }
@@ -160,7 +157,6 @@ function Compte() {
           />
 
           <input
-            id=""
             type="password"
             placeholder="Mot de passe"
             name="password"
@@ -210,7 +206,6 @@ function Compte() {
             type="text"
             placeholder="Nom"
             name="nom"
-            id=""
             value={credentials.nom}
             required
             onChange={compteHandleChange}
@@ -225,7 +220,6 @@ function Compte() {
           />
 
           <input
-            id=""
             type="password"
             placeholder="Mot de passe"
             name="password"
