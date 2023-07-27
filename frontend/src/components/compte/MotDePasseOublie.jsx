@@ -20,7 +20,7 @@ export default function MotDePassOublie() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5001/motdepasseoublie", data)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/motdepasseoublie`, data)
       .then((res) => {
         console.info(res);
       })
