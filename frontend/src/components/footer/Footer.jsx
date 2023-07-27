@@ -1,8 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import AFAC from "../../../public/assets/img/footer/logo_afac.png";
-import IHOI from "../../../public/assets/img/footer/logo_ihoi.jpg";
-import OBJET_TEMOIN from "../../../public/assets/img/footer/logo_objet_temoin.png";
 
 function Footer() {
   return (
@@ -19,7 +16,7 @@ function Footer() {
       </section>
       <NavLink to="/">
         <section className="footer-logo-afac">
-          <img src={AFAC} alt="logo AFAC" />
+          <img src="/assets/img/footer/logo_afac.png" alt="logo AFAC" />
         </section>
       </NavLink>
       <section className="footer-partenaires">
@@ -29,7 +26,7 @@ function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src={IHOI} alt="IHOI" />
+          <img src="/assets/img/footer/logo_ihoi.jpg" alt="IHOI" />
         </a>
 
         <a
@@ -37,7 +34,10 @@ function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src={OBJET_TEMOIN} alt="Objet Temoin" />
+          <img
+            src="/assets/img/footer/logo_objet_temoin.png"
+            alt="Objet Temoin"
+          />
         </a>
       </section>
     </footer>
