@@ -20,12 +20,12 @@ function Accueil() {
           <div className="bloc-oeuvre">
             <img
               className="img-bloc-oeuvres"
-              src="../../../public/assets/img/apercu1.jpg"
+              src="/assets/img/apercu1.jpg"
               alt="dessin homme qui danse"
             />
             <img
               className="img-bloc-oeuvres"
-              src="../../../public/assets/img/apercu2.jpg"
+              src="/assets/img/apercu2.jpg"
               alt="aquarelle paysage"
             />
             <NavLink to="/galerie">
@@ -43,7 +43,7 @@ function Accueil() {
             <div className="bloc-info-container">
               <h3>Composez votre galerie personnalisée</h3>
               <img
-                src="../../../public/assets/img/preview-galerie.png"
+                src="/assets/img/preview-galerie.png"
                 alt="galerie preview"
               />
             </div>
@@ -55,7 +55,7 @@ function Accueil() {
           Des expositions accessibles pour tous, sans se déplacer
           <span className="acc-main-span">
             <br />
-            la culture à porter de main pour nos enfants
+            la culture à portée de main pour nos enfants
           </span>
         </h2>
       </div>

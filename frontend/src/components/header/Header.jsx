@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import MenuBurger from "./MenuBurger";
 import LoginContext from "../../navigation/LoginContext";
-import RouageIcon from "../../../public/assets/img/header/utilisateur-icon.png";
 
 function Header() {
   const [showSettings, setShowSettings] = useState(false);
@@ -66,7 +65,7 @@ function Header() {
             className="buttonrouage"
             onClick={toggleParametresOpen}
           >
-            <img src={RouageIcon} alt="Rouage" />
+            <img src="/assets/img/header/utilisateur-icon.png" alt="Rouage" />
           </button>
           <div className="prenomUtilisateurConnexion">
             {user?.prenom} {user?.nom}
@@ -82,7 +81,7 @@ function Header() {
           className="buttonrouage"
           onClick={toggleParametresOpen}
         >
-          <img src={RouageIcon} alt="Rouage" />
+          <img src="/assets/img/header/utilisateur-icon.png" alt="Rouage" />
         </button>
         <div className="connectionOn_open_div">
           <div className="prenomUtilisateurConnexionOpen">
@@ -117,13 +116,13 @@ function Header() {
       <NavLink to="/">
         <img
           className="header_logo"
-          src="../../../public/assets/img/AFAC974_Logo_600x237nega.png"
+          src="/assets/img/AFAC974_Logo_600x237nega.png"
           alt="logo AFAC"
         />
       </NavLink>
       <img
         className="header_hexagone"
-        src="../../../public/assets/img/hexagone.png"
+        src="/assets/img/hexagone.png"
         alt="hexagone"
       />
       <div className="hexagone">

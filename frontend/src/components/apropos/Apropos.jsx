@@ -1,13 +1,14 @@
 import React from "react";
-import AFAC from "../../../public/assets/img/apropos/logo_afac_noir.png";
-import IHOI from "../../../public/assets/img/footer/logo_ihoi.jpg";
-import OBJET_TEMOIN from "../../../public/assets/img/footer/logo_objet_temoin.png";
 
 function Apropos() {
   return (
     <section className="apropos-container">
       <article className="apropos-afac">
-        <img className="apropos-afac-logo" src={AFAC} alt="logo AFAC" />
+        <img
+          className="apropos-afac-logo"
+          src="/assets/img/apropos/logo_afac_noir.png"
+          alt="logo AFAC"
+        />
 
         <p className="apropos-afac-partie1">
           L'AFAC 974 est une association à but non-lucratif basée à La Réunion,
@@ -56,7 +57,10 @@ function Apropos() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={OBJET_TEMOIN} alt="Objet Temoin" />
+            <img
+              src="/assets/img/footer/logo_objet_temoin.png"
+              alt="Objet Temoin"
+            />
           </a>
 
           <a
@@ -64,7 +68,7 @@ function Apropos() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={IHOI} alt="IHOI" />
+            <img src="/assets/img/footer/logo_ihoi.jpg" alt="IHOI" />
           </a>
         </div>
       </article>
