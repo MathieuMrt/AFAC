@@ -1,0 +1,151 @@
+.acc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: Montserrat;
+  width: 100vw;
+  padding: 20px 0 20px 0;
+  max-height: 800px;
+  @media screen and (max-width: 810px) {
+    max-height: 100%;
+  }
+
+  .acc-main-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 60%;
+
+    h2 {
+      text-align: center;
+      font-size: clamp(1em, 2.5vw, 2.1em);
+
+      span {
+        font-size: clamp(0.6em, 1.5vw, 2em);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .acc-bloc-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 300px;
+    width: 100%;
+    padding: 10px;
+
+    @media screen and (max-width: 810px) {
+      flex-direction: column;
+      max-height: none;
+      gap: 20px;
+    }
+
+    .div-bloc-oeuvre {
+      display: flex;
+      width: 50%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transform: translate(15%, 0);
+      @media screen and (max-width: 810px) {
+        max-height: 300px;
+        transform: translate(0);
+        // width: 80%;
+        width: fit-content;
+      }
+
+      .bloc-oeuvre {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        // width: 60%;
+        width: fit-content;
+        height: 100%;
+        z-index: 3;
+        @media screen and (max-width: 810px) {
+          width: 100%;
+        }
+
+        .voir-oeuvre-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          padding: 10px;
+          z-index: 2;
+          background-color: var(--dark-purple);
+          color: white;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            background-color: var(--light-purple);
+            transition: 0.2s;
+          }
+        }
+      }
+    }
+
+    .bloc-info-galerie {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translate(-15%, 0);
+      @media screen and (max-width: 810px) {
+        max-height: 300px;
+        transform: translate(0);
+        width: 80%;
+      }
+
+      .accueil-navlink {
+        text-decoration: none;
+        height: 100%;
+      }
+
+      .bloc-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background: var(--dark-purple);
+        border-radius: 3px;
+        padding: 15px;
+        gap: 5%;
+        height: 100%;
+        min-width: 50%;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+          background-color: var(--light-purple);
+          transition: 0.2s;
+        }
+        img {
+          height: auto;
+          max-height: 80%;
+        }
+
+        h3,
+        h4 {
+          text-align: center;
+          color: white;
+          font-size: 1rem;
+        }
+        h4 {
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

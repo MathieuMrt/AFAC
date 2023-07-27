@@ -1,0 +1,35 @@
+.galerie {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .select-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .categorie_selection {
+    height: 50px;
+    max-width: 50%;
+    min-width: 20%;
+    border-radius: 10px;
+    box-shadow: inset rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 10px;
+    color: grey;
+    &:hover {
+      color: rgb(63, 63, 63);
+      cursor: pointer;
+    }
+  }
+
+  .galerie_ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 40px;
+  }
+}

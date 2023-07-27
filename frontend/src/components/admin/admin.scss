@@ -1,0 +1,193 @@
+.page-admin-globale {
+  width: 100%;
+  text-decoration: none;
+}
+
+.page-admin-container {
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  width: 100%;
+  padding: 20px 10px;
+  font-weight: 200;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  @media screen and (max-width: 810px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.admin-tableau-container {
+  width: 90%;
+  margin: 0 auto;
+  color: black;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  min-width: 350px;
+
+  .admin-navlink {
+    color: black;
+    opacity: 50%;
+    &:hover {
+      opacity: 100%;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      @media screen and (max-width: 590px) {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      padding: 1%;
+      @media screen and (max-width: 590px) {
+        font-size: 0.7em;
+      }
+    }
+    .td-center {
+      text-align: center;
+    }
+  }
+}
+
+.admin-user-small-table {
+  width: 50%;
+}
+
+.admin-tableau-title {
+  padding: 30px;
+  font-weight: 600;
+}
+
+.admin-tableau-champs {
+  background: rgba(255, 255, 255, 0.46);
+  height: 40px;
+
+  .admin-table-comment {
+    max-width: 70px;
+  }
+  .admin-table-comment {
+    max-width: 100px;
+  }
+
+  th {
+    padding: 1%;
+  }
+}
+
+.admin-colonne-width-small {
+  width: 10%;
+}
+
+.admin-colonne-width-medium {
+  width: 35%;
+}
+
+.admin-button-deconnexion-container {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-button-deconnexion {
+  padding: 0.5%;
+  background-color: var(--red);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background-color: #bc627a;
+  }
+}
+
+.admin-button-ajout-oeuvre-container {
+  text-align: left;
+}
+
+.admin-button-ajout-oeuvre {
+  padding: 0.7%;
+  background-color: rgba(255, 255, 255, 0.46);
+  border: none;
+
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3%;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.15);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.181);
+  }
+}
+.trash-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+
+  .admin-trash {
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    opacity: 50%;
+    &:hover {
+      opacity: 0.6;
+      opacity: 100%;
+    }
+  }
+}
+
+.admin-delete-user-confirmation {
+  position: fixed;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 25vh;
+  background-color: var(--red);
+  border-radius: 5px;
+  gap: 20px;
+  padding: 40px;
+  color: #ffffff;
+  z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  .admin-button-delete-validation {
+    display: flex;
+    gap: 40px;
+    button {
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}
+tr:hover {
+  background: rgba(255, 255, 255, 0.275);
+}
+
+.nom_prenom {
+  display: flex;
+  justify-content: center;
+}

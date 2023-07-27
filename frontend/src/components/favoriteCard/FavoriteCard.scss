@@ -1,0 +1,82 @@
+.fav-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  height: px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 400px;
+  padding: 10px;
+
+  .fav-img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .favEtiquette {
+    background-color: #e9dbc29e;
+    padding: 8px;
+    margin-top: 15px;
+    border-radius: 5px;
+    color: black;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: center;
+  }
+
+  .fav-buttons {
+    width: 30%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .bouton-plus-info {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: var(--red);
+      padding: 8px;
+      border-radius: 5px;
+
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      &:hover {
+        background-color: #d17ab7;
+        transition: 0.2s;
+      }
+    }
+
+    .fav-trash {
+      color: #ffffff;
+      font-size: 35px;
+      background-color: var(--red);
+      padding: 8px;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      &:hover {
+        background-color: #d17ab7;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .fav-container {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .fav-container {
+    width: 250px;
+  }
+}

@@ -1,0 +1,56 @@
+.pathError_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Montserrat;
+
+  .pathError {
+    background-color: #3e5b69;
+    width: 50%;
+    height: fit-content;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 582px) {
+  h1 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+}
+@media screen and (max-width: 582px) and (min-width: 508px) {
+  h1 {
+    font-size: 1.8em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 508px) and (min-width: 387px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 387px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 0.7em;
+  }
+}

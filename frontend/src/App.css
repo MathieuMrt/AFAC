@@ -1,56 +1,88 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 100vw;
+  height: fit-content;
 }
 
-.App-link {
-  color: #61dafb;
+.app_main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+:root {
+  --purple: #73668b;
+  --blue: #277594;
+  --light-purple: #b982ae;
+  --dark-purple: #63557c;
+  --red: #80273f;
+  --pink: #be7d61;
+  --grey: #404041;
+}
+
+#root {
+  background: rgb(39, 117, 148);
+  background: linear-gradient(
+    0deg,
+    rgba(39, 117, 148, 1) 0%,
+    rgba(115, 102, 139, 1) 100%,
+    rgba(2, 0, 36, 1) 277594%
+  );
+  width: 100%;
+}
+
+.return-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.7%;
+  background-color: rgba(255, 255, 255, 0.46);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3%;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.15);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.181);
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+.return-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 1.2%;
+  background-color: rgba(255, 255, 255, 0.181);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3%;
+  color: #fff;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.15);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.return-button:hover {
+  background-color: rgba(255, 255, 255, 0.46);
+}
+
+@media screen and (max-width: 810px) {
+  .app_main {
+    height: fit-content;
+  }
 }
