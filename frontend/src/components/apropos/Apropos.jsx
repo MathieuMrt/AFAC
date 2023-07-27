@@ -1,7 +1,7 @@
 import React from "react";
-import AFAC from "../../assets/img/apropos/logo_afac_noir.png";
-import IHOI from "../../assets/img/footer/logo_ihoi.jpg";
-import OBJET_TEMOIN from "../../assets/img/footer/logo_objet_temoin.png";
+import AFAC from "../../../public/assets/img/apropos/logo_afac_noir.png";
+import IHOI from "../../../public/assets/img/footer/logo_ihoi.jpg";
+import OBJET_TEMOIN from "../../../public/assets/img/footer/logo_objet_temoin.png";
 
 function Apropos() {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import AFAC from "../../assets/img/footer/logo_afac.png";
-import IHOI from "../../assets/img/footer/logo_ihoi.jpg";
-import OBJET_TEMOIN from "../../assets/img/footer/logo_objet_temoin.png";
+import AFAC from "../../../public/assets/img/footer/logo_afac.png";
+import IHOI from "../../../public/assets/img/footer/logo_ihoi.jpg";
+import OBJET_TEMOIN from "../../../public/assets/img/footer/logo_objet_temoin.png";
 
 function Footer() {
   return (
