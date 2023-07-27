@@ -29,7 +29,7 @@ const sendContactMail = async (req, res) => {
       texte: `Email : ${email}`,
       html: `<p>Suite à votre demande, voici le lien qui permet de réinitialiser votre mot de passe :</p>
                </br>
-               <p>http://localhost:3000/resetmotdepasse/${userId[0].id}</p>`,
+               <p>http://vps-d5babf40.vps.ovh.net:5030/resetmotdepasse/${userId[0].id}</p>`,
     };
 
     await transporter.sendMail(mailOptions);
