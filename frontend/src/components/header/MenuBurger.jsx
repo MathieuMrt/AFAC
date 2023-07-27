@@ -44,7 +44,7 @@ function MenuBurger() {
         <NavLink to="/" onClick={toggleMenu} role="presentation">
           <img
             className="mb_header_logo"
-            src="../../src/assets/img/AFAC974_Logo_600x237nega.png"
+            src="public/assets/img/AFAC974_Logo_600x237nega.png"
             alt="logo AFAC"
           />
         </NavLink>
